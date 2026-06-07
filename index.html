@@ -1,0 +1,2320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beer Biceps — Get Huge or Go Home</title>
+  <meta name="description" content="Beer Biceps: The world's only place where skinny beer drinkers get massive arms. Mumbai-based. Worldwide reach. No one like us." />
+  <meta name="keywords" content="biceps, beer, big arms, muscle, fitness, Mumbai, worldwide" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --magenta: #DD00E0;
+      --orange: #FF8000;
+      --blue: #0000FF;
+      --green: #00E626;
+      --yellow: #E6C700;
+      --black: #050505;
+      --white: #F5F5F0;
+      --gutter: clamp(1rem, 5vw, 4rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      overflow-x: hidden;
+      cursor: crosshair;
+    }
+
+    /* ─── NOISE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.06;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem var(--gutter);
+      background: rgba(5,5,5,0.92);
+      border-bottom: 2px solid var(--magenta);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-logo {
+      font-family: 'Black Ops One', cursive;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      color: var(--yellow);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-shadow: 0 0 20px var(--orange);
+    }
+
+    .nav-logo span { color: var(--magenta); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--white);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--green); }
+
+    .nav-cta {
+      background: var(--magenta);
+      color: var(--white) !important;
+      padding: 0.4rem 1rem;
+      font-weight: 700 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--orange) !important; color: var(--black) !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--yellow);
+      transition: all 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      background: var(--black);
+      border-bottom: 2px solid var(--magenta);
+      padding: 1.5rem var(--gutter);
+      z-index: 999;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.6rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:hover { color: var(--magenta); }
+
+    /* ─── HERO ─── */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem var(--gutter) 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 50%, rgba(221,0,224,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(255,128,0,0.15) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 50% 20%, rgba(0,0,255,0.12) 0%, transparent 70%);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,230,38,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,230,38,0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: gridMove 20s linear infinite;
+    }
+
+    @keyframes gridMove {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(60px); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--green);
+      border: 1px solid var(--green);
+      padding: 0.3rem 1rem;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(5rem, 18vw, 16rem);
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+
+    .hero-h1 .line1 { color: var(--yellow); display: block; }
+    .hero-h1 .line2 {
+      color: transparent;
+      -webkit-text-stroke: 2px var(--magenta);
+      display: block;
+    }
+
+    .hero-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-weight: 600;
+      color: rgba(245,245,240,0.7);
+      max-width: 600px;
+      margin: 1.5rem auto;
+      line-height: 1.5;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+
+    .hero-sub strong { color: var(--orange); }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.3s ease both;
+      margin-top: 2rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--magenta);
+      color: var(--white);
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.3rem;
+      letter-spacing: 0.1em;
+      padding: 0.75rem 2rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    }
+
+    .btn-primary:hover {
+      background: var(--orange);
+      color: var(--black);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255,128,0,0.5);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--yellow);
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.3rem;
+      letter-spacing: 0.1em;
+      padding: 0.72rem 2rem;
+      text-decoration: none;
+      border: 2px solid var(--yellow);
+      cursor: pointer;
+      transition: all 0.2s;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    }
+
+    .btn-secondary:hover {
+      background: var(--yellow);
+      color: var(--black);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      justify-content: center;
+      margin-top: 4rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Black Ops One', cursive;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--green);
+      display: block;
+      text-shadow: 0 0 30px var(--green);
+    }
+
+    .stat-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245,245,240,0.5);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── MARQUEE ─── */
+    .marquee-wrap {
+      background: var(--magenta);
+      overflow: hidden;
+      padding: 0.6rem 0;
+      border-top: 2px solid var(--yellow);
+      border-bottom: 2px solid var(--yellow);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 3rem;
+      white-space: nowrap;
+      animation: marquee 12s linear infinite;
+      width: max-content;
+    }
+
+    .marquee-item {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.4rem;
+      letter-spacing: 0.1em;
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .marquee-dot { color: var(--yellow); font-size: 1rem; }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ─── SECTION BASE ─── */
+    section {
+      padding: clamp(4rem, 8vw, 8rem) var(--gutter);
+    }
+
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(3rem, 8vw, 7rem);
+      line-height: 0.9;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ─── ABOUT ─── */
+    #about {
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #about::before {
+      content: 'ABOUT';
+      position: absolute;
+      right: -2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(8rem, 20vw, 18rem);
+      color: rgba(221,0,224,0.05);
+      pointer-events: none;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-left .section-label { color: var(--orange); }
+
+    .about-left .section-title { color: var(--yellow); }
+
+    .about-left .section-title span { color: var(--magenta); }
+
+    .about-text {
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      line-height: 1.7;
+      color: rgba(245,245,240,0.75);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-highlight {
+      font-family: 'Black Ops One', cursive;
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      color: var(--green);
+      border-left: 4px solid var(--green);
+      padding-left: 1rem;
+      margin: 2rem 0;
+      line-height: 1.4;
+    }
+
+    .about-right {
+      position: relative;
+    }
+
+    .about-card {
+      background: #0d0d0d;
+      border: 1px solid rgba(221,0,224,0.3);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--magenta), var(--orange), var(--yellow));
+    }
+
+    .about-card-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2rem;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .about-pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .pill {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid;
+    }
+
+    .pill-m { border-color: var(--magenta); color: var(--magenta); }
+    .pill-o { border-color: var(--orange); color: var(--orange); }
+    .pill-g { border-color: var(--green); color: var(--green); }
+    .pill-y { border-color: var(--yellow); color: var(--yellow); }
+    .pill-b { border-color: var(--blue); color: #4d4dff; }
+
+    .about-card-stat {
+      font-family: 'Black Ops One', cursive;
+      font-size: 4rem;
+      color: var(--orange);
+      display: block;
+      line-height: 1;
+      text-shadow: 0 0 40px rgba(255,128,0,0.4);
+    }
+
+    .about-card-stat-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245,245,240,0.4);
+    }
+
+    /* ─── SERVICES ─── */
+    #services {
+      background: #080808;
+      position: relative;
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .services-header .section-label { color: var(--blue); color: #4d4dff; }
+    .services-header .section-title { color: var(--white); }
+    .services-header .section-title span { color: var(--magenta); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5px;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .service-card {
+      background: #080808;
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+
+    .service-card:hover { background: #0f0f0f; }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .service-card:nth-child(1)::after { background: var(--magenta); }
+    .service-card:nth-child(2)::after { background: var(--orange); }
+    .service-card:nth-child(3)::after { background: var(--green); }
+
+    .service-card:hover::after { transform: scaleX(1); }
+
+    .service-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .service-num {
+      font-family: 'Black Ops One', cursive;
+      font-size: 5rem;
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      line-height: 1;
+      opacity: 0.06;
+      color: var(--white);
+    }
+
+    .service-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+
+    .service-card:nth-child(1) .service-title { color: var(--magenta); }
+    .service-card:nth-child(2) .service-title { color: var(--orange); }
+    .service-card:nth-child(3) .service-title { color: var(--green); }
+
+    .service-desc {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: rgba(245,245,240,0.6);
+      margin-bottom: 1.5rem;
+    }
+
+    .service-link {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: gap 0.2s;
+    }
+
+    .service-card:nth-child(1) .service-link { color: var(--magenta); }
+    .service-card:nth-child(2) .service-link { color: var(--orange); }
+    .service-card:nth-child(3) .service-link { color: var(--green); }
+
+    .service-link:hover { gap: 1rem; }
+
+    /* ─── PRICING ─── */
+    #pricing {
+      background: var(--black);
+    }
+
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .pricing-header .section-label { color: var(--yellow); }
+    .pricing-header .section-title { color: var(--white); }
+    .pricing-header .section-title span { color: var(--yellow); }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .pricing-card.featured {
+      border-color: var(--magenta);
+      background: linear-gradient(135deg, rgba(221,0,224,0.08), rgba(255,128,0,0.05));
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: var(--magenta);
+      color: var(--white);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+    }
+
+    .pricing-tier {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245,245,240,0.4);
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-name {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.2rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-card:nth-child(1) .pricing-name { color: var(--green); }
+    .pricing-card:nth-child(2) .pricing-name { color: var(--magenta); }
+    .pricing-card:nth-child(3) .pricing-name { color: var(--yellow); }
+
+    .pricing-price {
+      display: flex;
+      align-items: baseline;
+      gap: 0.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .pricing-currency {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: rgba(245,245,240,0.6);
+    }
+
+    .pricing-amount {
+      font-family: 'Black Ops One', cursive;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .pricing-period {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      color: rgba(245,245,240,0.4);
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .pricing-features li {
+      font-size: 0.95rem;
+      color: rgba(245,245,240,0.7);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      line-height: 1.4;
+    }
+
+    .pricing-features li::before {
+      content: '→';
+      flex-shrink: 0;
+    }
+
+    .pricing-card:nth-child(1) .pricing-features li::before { color: var(--green); }
+    .pricing-card:nth-child(2) .pricing-features li::before { color: var(--magenta); }
+    .pricing-card:nth-child(3) .pricing-features li::before { color: var(--yellow); }
+
+    /* ─── TESTIMONIALS ─── */
+    #testimonials {
+      background: #080808;
+      overflow: hidden;
+    }
+
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .testimonials-header .section-label { color: var(--green); }
+    .testimonials-header .section-title { color: var(--white); }
+    .testimonials-header .section-title span { color: var(--green); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: #0d0d0d;
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 2rem;
+      position: relative;
+      transition: border-color 0.3s;
+    }
+
+    .testimonial-card:hover { border-color: rgba(221,0,224,0.3); }
+
+    .testimonial-quote {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 4rem;
+      color: var(--magenta);
+      line-height: 0.8;
+      opacity: 0.4;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .testimonial-text {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: rgba(245,245,240,0.8);
+      margin-bottom: 1.5rem;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .testimonial-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Black Ops One', cursive;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .avatar-m { background: var(--magenta); color: var(--black); }
+    .avatar-o { background: var(--orange); color: var(--black); }
+    .avatar-g { background: var(--green); color: var(--black); }
+
+    .testimonial-name {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      display: block;
+    }
+
+    .testimonial-location {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: rgba(245,245,240,0.4);
+    }
+
+    .stars {
+      color: var(--yellow);
+      font-size: 0.8rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* ─── FAQ ─── */
+    #faq {
+      background: var(--black);
+    }
+
+    .faq-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .faq-header .section-label { color: var(--orange); }
+    .faq-header .section-title { color: var(--white); }
+    .faq-header .section-title span { color: var(--orange); }
+
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .faq-item {
+      background: #0a0a0a;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 2rem;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.4rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      transition: color 0.2s;
+      list-style: none;
+      user-select: none;
+    }
+
+    .faq-question:hover { color: var(--magenta); }
+
+    .faq-question::marker { display: none; }
+
+    .faq-chevron {
+      width: 20px;
+      height: 20px;
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      flex-shrink: 0;
+      transition: transform 0.3s, border-color 0.3s, background 0.3s;
+    }
+
+    details[open] .faq-chevron {
+      transform: rotate(45deg);
+      border-color: var(--magenta);
+      background: var(--magenta);
+    }
+
+    .faq-answer {
+      padding: 0 2rem 1.5rem;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: rgba(245,245,240,0.6);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding-top: 1rem;
+    }
+
+    /* ─── GALLERY ─── */
+    #gallery {
+      background: #080808;
+      padding-bottom: 0;
+    }
+
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .gallery-header .section-label { color: var(--magenta); }
+    .gallery-header .section-title { color: var(--white); }
+    .gallery-header .section-title span { color: var(--magenta); }
+
+    .gallery-mosaic {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 300px 200px;
+      gap: 2px;
+      max-width: 100%;
+    }
+
+    .gallery-cell {
+      overflow: hidden;
+      position: relative;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-cell:nth-child(1) {
+      grid-column: 1 / 3;
+      grid-row: 1;
+    }
+
+    .gallery-cell:nth-child(2) { grid-column: 3; grid-row: 1; }
+    .gallery-cell:nth-child(3) { grid-column: 4; grid-row: 1; }
+    .gallery-cell:nth-child(4) { grid-column: 1; grid-row: 2; }
+    .gallery-cell:nth-child(5) { grid-column: 2 / 4; grid-row: 2; }
+    .gallery-cell:nth-child(6) { grid-column: 4; grid-row: 2; }
+
+    .gallery-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: transform 0.5s;
+    }
+
+    .gallery-cell:hover .gallery-placeholder { transform: scale(1.05); }
+
+    .gallery-placeholder-icon {
+      font-size: 2.5rem;
+      display: block;
+    }
+
+    .gallery-placeholder-label {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2rem;
+      letter-spacing: 0.1em;
+      opacity: 0.6;
+    }
+
+    /* Gallery gradient backgrounds */
+    .gallery-cell:nth-child(1) .gallery-placeholder { background: linear-gradient(135deg, #1a001a, #2d002e); }
+    .gallery-cell:nth-child(2) .gallery-placeholder { background: linear-gradient(135deg, #1a0800, #2d1400); }
+    .gallery-cell:nth-child(3) .gallery-placeholder { background: linear-gradient(135deg, #000020, #000040); }
+    .gallery-cell:nth-child(4) .gallery-placeholder { background: linear-gradient(135deg, #001a04, #002d08); }
+    .gallery-cell:nth-child(5) .gallery-placeholder { background: linear-gradient(135deg, #1a1200, #2d2000); }
+    .gallery-cell:nth-child(6) .gallery-placeholder { background: linear-gradient(135deg, #1a001a, #2d0040); }
+
+    /* ─── BLOG ─── */
+    #blog {
+      background: var(--black);
+    }
+
+    .blog-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .blog-header .section-label { color: var(--blue); color: #4d4dff; }
+    .blog-header .section-title { color: var(--white); }
+    .blog-header .section-title span { color: #4d4dff; }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+    }
+
+    .blog-card {
+      background: #0a0a0a;
+      border: 1px solid rgba(255,255,255,0.06);
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+      text-decoration: none;
+      display: block;
+    }
+
+    .blog-card:hover {
+      border-color: rgba(77,77,255,0.4);
+      transform: translateY(-4px);
+    }
+
+    .blog-card-header {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog-card:nth-child(1) .blog-card-header { background: linear-gradient(135deg, #0d001a 0%, #1a0028 100%); }
+    .blog-card:nth-child(2) .blog-card-header { background: linear-gradient(135deg, #001a08 0%, #002814 100%); }
+    .blog-card:nth-child(3) .blog-card-header { background: linear-gradient(135deg, #1a0a00 0%, #281800 100%); }
+
+    .blog-card-body { padding: 1.5rem; }
+
+    .blog-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      margin-bottom: 0.75rem;
+      display: inline-block;
+    }
+
+    .blog-card:nth-child(1) .blog-tag { background: rgba(77,77,255,0.15); color: #4d4dff; }
+    .blog-card:nth-child(2) .blog-tag { background: rgba(0,230,38,0.12); color: var(--green); }
+    .blog-card:nth-child(3) .blog-tag { background: rgba(255,128,0,0.12); color: var(--orange); }
+
+    .blog-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.6rem;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+      line-height: 1.1;
+      display: block;
+    }
+
+    .blog-excerpt {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: rgba(245,245,240,0.5);
+      margin-bottom: 1rem;
+    }
+
+    .blog-meta {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(245,245,240,0.3);
+    }
+
+    /* ─── BOOKING ─── */
+    #booking {
+      background: #080808;
+    }
+
+    .booking-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .booking-left .section-label { color: var(--green); }
+    .booking-left .section-title { color: var(--white); }
+    .booking-left .section-title span { color: var(--green); }
+
+    .booking-text {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: rgba(245,245,240,0.65);
+      margin-bottom: 2rem;
+    }
+
+    .booking-features {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .booking-feature {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1rem;
+      color: rgba(245,245,240,0.7);
+    }
+
+    .booking-feature-icon {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      border: 1px solid rgba(0,230,38,0.3);
+    }
+
+    .booking-form {
+      background: #0d0d0d;
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 2.5rem;
+      position: relative;
+    }
+
+    .booking-form::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--green), var(--blue));
+    }
+
+    .form-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.8rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-label {
+      display: block;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(245,245,240,0.4);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.75rem 1rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--green);
+    }
+
+    .form-select {
+      cursor: pointer;
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      background: var(--black);
+    }
+
+    .contact-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .contact-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .contact-header .section-label { color: var(--yellow); }
+    .contact-header .section-title { color: var(--white); }
+    .contact-header .section-title span { color: var(--yellow); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .contact-item-icon {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      border: 1px solid rgba(230,199,0,0.3);
+      color: var(--yellow);
+    }
+
+    .contact-item-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(245,245,240,0.3);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-item-value {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    a.contact-item-value:hover { color: var(--yellow); }
+
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: #25D366;
+      color: var(--black);
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.4rem;
+      letter-spacing: 0.1em;
+      padding: 0.85rem 2rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      margin-top: 1rem;
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    }
+
+    .whatsapp-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(37,211,102,0.4);
+    }
+
+    .contact-form {
+      background: #0a0a0a;
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 2.5rem;
+      position: relative;
+    }
+
+    .contact-form::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--yellow), var(--orange));
+    }
+
+    /* ─── SHOP ─── */
+    #shop {
+      background: #060606;
+    }
+
+    .shop-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .shop-header .section-label { color: var(--magenta); }
+    .shop-header .section-title { color: var(--white); }
+    .shop-header .section-title span { color: var(--magenta); }
+
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .shop-card {
+      background: #0d0d0d;
+      border: 1px solid rgba(255,255,255,0.06);
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .shop-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(221,0,224,0.3);
+    }
+
+    .shop-card-img {
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shop-card:nth-child(1) .shop-card-img { background: linear-gradient(135deg, #1a001a, #2d002e); }
+    .shop-card:nth-child(2) .shop-card-img { background: linear-gradient(135deg, #1a0800, #331400); }
+    .shop-card:nth-child(3) .shop-card-img { background: linear-gradient(135deg, #001a04, #002808); }
+    .shop-card:nth-child(4) .shop-card-img { background: linear-gradient(135deg, #1a1200, #2d2000); }
+
+    .shop-card-body { padding: 1.5rem; }
+
+    .shop-card-name {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .shop-card-desc {
+      font-size: 0.9rem;
+      color: rgba(245,245,240,0.5);
+      margin-bottom: 1rem;
+    }
+
+    .shop-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .shop-price {
+      font-family: 'Black Ops One', cursive;
+      font-size: 1.5rem;
+      color: var(--magenta);
+    }
+
+    .shop-add {
+      background: transparent;
+      border: 1px solid var(--magenta);
+      color: var(--magenta);
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      padding: 0.4rem 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .shop-add:hover {
+      background: var(--magenta);
+      color: var(--black);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #030303;
+      border-top: 1px solid rgba(221,0,224,0.2);
+      padding: 4rem var(--gutter) 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto 4rem;
+    }
+
+    .footer-brand .nav-logo {
+      font-size: 1.6rem;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .footer-desc {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: rgba(245,245,240,0.4);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-col-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2rem;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .footer-links a {
+      font-size: 0.9rem;
+      color: rgba(245,245,240,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .footer-links a::before { content: '→'; font-size: 0.7rem; opacity: 0.5; }
+
+    .footer-links a:hover { color: var(--magenta); }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-copy {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: rgba(245,245,240,0.2);
+    }
+
+    .footer-copy a { color: rgba(245,245,240,0.4); text-decoration: none; }
+    .footer-copy a:hover { color: var(--yellow); }
+
+    /* ─── SCROLL TO TOP ─── */
+    .scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
+      background: var(--magenta);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s, transform 0.3s;
+      transform: translateY(10px);
+      z-index: 100;
+      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+    }
+
+    .scroll-top.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── WHATSAPP FLOAT ─── */
+    .wa-float {
+      position: fixed;
+      bottom: 2rem;
+      left: 2rem;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .wa-float-bubble {
+      background: #25D366;
+      color: var(--black);
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      padding: 0.3rem 0.8rem;
+      animation: pulse 2s ease infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    .wa-float-btn {
+      width: 52px;
+      height: 52px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .wa-float-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 30px rgba(37,211,102,0.6);
+    }
+
+    /* ─── REVEAL ANIMATION ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .about-grid, .booking-inner, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 200px); }
+      .gallery-cell:nth-child(1) { grid-column: 1; grid-row: 1; }
+      .gallery-cell:nth-child(2) { grid-column: 2; grid-row: 1; }
+      .gallery-cell:nth-child(3) { grid-column: 1; grid-row: 2; }
+      .gallery-cell:nth-child(4) { grid-column: 2; grid-row: 2; }
+      .gallery-cell:nth-child(5) { grid-column: 1 / 3; grid-row: 3; }
+      .gallery-cell:nth-child(6) { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-stats { gap: 1.5rem; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .wa-float { bottom: 1rem; left: 1rem; }
+      .scroll-top { bottom: 1rem; right: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="#home" class="nav-logo">BEER<span>BICEPS</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#booking">Booking</a></li>
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="https://wa.me/919619495852" class="nav-cta" target="_blank">WhatsApp Us</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#pricing" onclick="closeMenu()">Pricing</a>
+  <a href="#gallery" onclick="closeMenu()">Gallery</a>
+  <a href="#blog" onclick="closeMenu()">Blog</a>
+  <a href="#booking" onclick="closeMenu()">Book Now</a>
+  <a href="#shop" onclick="closeMenu()">Shop</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Mumbai → Worldwide · Est. 2001</div>
+    <h1 class="hero-h1">
+      <span class="line1">BEER</span>
+      <span class="line2">BICEPS</span>
+    </h1>
+    <p class="hero-sub">
+      The world's only program that turns <strong>skinny beer lovers</strong> into<br>
+      massive, arm-swinging machines. No one does this like us. <strong>No one.</strong>
+    </p>
+    <div class="hero-ctas">
+      <a href="#booking" class="btn-primary">💪 Book Your Session</a>
+      <a href="https://wa.me/919619495852" target="_blank" class="btn-secondary">💬 WhatsApp Us</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">23+</span>
+        <span class="stat-label">Years Building Arms</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">∞</span>
+        <span class="stat-label">Beer Lovers Transformed</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">0</span>
+        <span class="stat-label">Excuses Tolerated</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">1</span>
+        <span class="stat-label">Mission: Big Arms</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MARQUEE ─── -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">BEER BICEPS <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">BIG ARMS WORLDWIDE <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">NO ONE LIKE US <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">SKINNY TO SWOLE <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">MUMBAI BASED <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">EVERYONE HAS BICEPS <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">BEER BICEPS <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">BIG ARMS WORLDWIDE <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">NO ONE LIKE US <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">SKINNY TO SWOLE <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">MUMBAI BASED <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">EVERYONE HAS BICEPS <span class="marquee-dot">✦</span></span>
+  </div>
+</div>
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-left reveal">
+      <div class="section-label">Who We Are</div>
+      <h2 class="section-title">THE ONLY <span>ARM LAB</span> ON EARTH</h2>
+      <p class="about-text">
+        Beer Biceps was born in Mumbai 23 years ago from one radical idea: that beer lovers — the most underserved demographic in fitness — deserve massive arms too. We built a system. We proved it worked. Now the world wants in.
+      </p>
+      <div class="about-highlight">
+        "Skinny beer users get good biceps. That's not a promise — that's a guarantee."
+      </div>
+      <p class="about-text">
+        Our approach combines cutting-edge training science with a deeply personal methodology. We don't believe in excuses, we don't believe in limits, and we absolutely don't believe your arms have to stay small just because you enjoy a cold one.
+      </p>
+      <div class="about-pill-list">
+        <span class="pill pill-m">Science-backed</span>
+        <span class="pill pill-o">Results-first</span>
+        <span class="pill pill-g">Global reach</span>
+        <span class="pill pill-y">Mumbai born</span>
+        <span class="pill pill-b">Beer-friendly</span>
+      </div>
+      <a href="#booking" class="btn-primary">Start Your Journey</a>
+    </div>
+    <div class="about-right reveal">
+      <div class="about-card">
+        <div class="about-card-title">Our Mission</div>
+        <p class="about-text">Everyone has biceps. Our job is to make yours impossible to ignore.</p>
+        <div class="about-pill-list">
+          <span class="pill pill-m">Strength</span>
+          <span class="pill pill-o">Confidence</span>
+          <span class="pill pill-g">Community</span>
+        </div>
+        <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 1.5rem 0;">
+        <span class="about-card-stat">₹2L</span>
+        <span class="about-card-stat-label">Complete Bicep Program — One price. Life-changing results.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ─── -->
+<section id="services">
+  <div class="services-header reveal">
+    <div class="section-label">What We Offer</div>
+    <h2 class="section-title">SERVICES THAT <span>ACTUALLY WORK</span></h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-num">01</span>
+      <span class="service-icon">💪</span>
+      <div class="service-title">Premium Bicep Program</div>
+      <p class="service-desc">
+        Our flagship offering. A fully personalised arm-building program built around your lifestyle — including your beer intake. Science. Structure. Size. Delivered worldwide.
+      </p>
+      <div class="about-pill-list" style="margin-bottom: 1rem;">
+        <span class="pill pill-m">Custom Plan</span>
+        <span class="pill pill-o">Online + In-Person</span>
+      </div>
+      <a href="#booking" class="service-link">Book Now →</a>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-num">02</span>
+      <span class="service-icon">🍺</span>
+      <div class="service-title">Beer-Compatible Training</div>
+      <p class="service-desc">
+        Most fitness programs tell you to quit beer. We say no. Our proprietary methodology works with your body chemistry to build serious mass without sacrificing your social life.
+      </p>
+      <div class="about-pill-list" style="margin-bottom: 1rem;">
+        <span class="pill pill-o">Lifestyle-first</span>
+        <span class="pill pill-g">No guilt</span>
+      </div>
+      <a href="#booking" class="service-link">Learn More →</a>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-num">03</span>
+      <span class="service-icon">🌍</span>
+      <div class="service-title">Global Online Coaching</div>
+      <p class="service-desc">
+        Can't make it to Mumbai? No problem. Our online coaching program reaches every corner of the planet. Same results, same commitment, same massive arms — delivered to your screen.
+      </p>
+      <div class="about-pill-list" style="margin-bottom: 1rem;">
+        <span class="pill pill-g">Worldwide</span>
+        <span class="pill pill-y">24/7 Support</span>
+      </div>
+      <a href="#booking" class="service-link">Sign Up →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRICING ─── -->
+<section id="pricing">
+  <div class="pricing-header reveal">
+    <div class="section-label">Transparent Pricing</div>
+    <h2 class="section-title">INVEST IN YOUR <span>ARMS</span></h2>
+    <p style="font-size: 1.1rem; color: rgba(245,245,240,0.5); max-width: 500px; margin: 1rem auto 0;">One program. Three ways to get there. Pick your path to massive.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-card reveal">
+      <div class="pricing-tier">Starter</div>
+      <div class="pricing-name">Skinny Starter</div>
+      <div class="pricing-price">
+        <span class="pricing-currency">₹</span>
+        <span class="pricing-amount">75,000</span>
+      </div>
+      <ul class="pricing-features">
+        <li>12-week foundational program</li>
+        <li>Weekly check-ins via WhatsApp</li>
+        <li>Nutrition guide included</li>
+        <li>Beer compatibility assessment</li>
+        <li>Access to online community</li>
+      </ul>
+      <a href="#booking" class="btn-secondary" style="width: 100%; justify-content: center;">Get Started</a>
+    </div>
+    <div class="pricing-card featured reveal">
+      <div class="pricing-badge">Most Popular</div>
+      <div class="pricing-tier">Best Value</div>
+      <div class="pricing-name">Bicep Beast</div>
+      <div class="pricing-price">
+        <span class="pricing-currency">₹</span>
+        <span class="pricing-amount">2,00,000</span>
+      </div>
+      <ul class="pricing-features">
+        <li>Full 6-month transformation program</li>
+        <li>Daily coaching & accountability</li>
+        <li>Custom meal plan (beer-friendly)</li>
+        <li>Bi-weekly video calls with Shahyan</li>
+        <li>Lifetime access to program materials</li>
+        <li>VIP community + priority support</li>
+      </ul>
+      <a href="#booking" class="btn-primary" style="width: 100%; justify-content: center;">Book This Plan</a>
+    </div>
+    <div class="pricing-card reveal">
+      <div class="pricing-tier">Elite</div>
+      <div class="pricing-name">The Full Arsenal</div>
+      <div class="pricing-price">
+        <span class="pricing-currency">₹</span>
+        <span class="pricing-amount">4,50,000</span>
+      </div>
+      <ul class="pricing-features">
+        <li>12-month elite program</li>
+        <li>In-person training (Mumbai)</li>
+        <li>Fully bespoke plan — zero templates</li>
+        <li>Unlimited 1-on-1 access to Shahyan</li>
+        <li>Photoshoot at end of program</li>
+        <li>Lifetime coaching guarantee</li>
+      </ul>
+      <a href="#booking" class="btn-secondary" style="width: 100%; justify-content: center;">Enquire Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ─── -->
+<section id="testimonials">
+  <div class="testimonials-header reveal">
+    <div class="section-label">Real Results</div>
+    <h2 class="section-title">THEY WERE SKINNY. <span>NOT ANYMORE.</span></h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <span class="testimonial-quote">"</span>
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">
+        I was 62 kg and drinking four Kingfishers a night. Six months later I'm 74 kg and my arms are genuinely scary. No one believes the before photos are real.
+      </p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar avatar-m">R</div>
+        <div>
+          <span class="testimonial-name">Rahul M.</span>
+          <span class="testimonial-location">📍 Pune · Bicep Beast Program</span>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <span class="testimonial-quote">"</span>
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">
+        I've tried every fitness program on the internet. Beer Biceps is the only one that didn't tell me to stop drinking. The arms? They speak for themselves. 43 cm.
+      </p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar avatar-o">J</div>
+        <div>
+          <span class="testimonial-name">James K.</span>
+          <span class="testimonial-location">📍 London · Global Online Coaching</span>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <span class="testimonial-quote">"</span>
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">
+        Shahyan doesn't just coach you — he rewires you. Flew in from Dubai for the in-person block. Worth every rupee. My sleeves don't fit anymore and I couldn't be happier.
+      </p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar avatar-g">A</div>
+        <div>
+          <span class="testimonial-name">Aarav S.</span>
+          <span class="testimonial-location">📍 Dubai · Full Arsenal Program</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section id="faq">
+  <div class="faq-header reveal">
+    <div class="section-label">Got Questions?</div>
+    <h2 class="section-title">WE'VE HEARD <span>EVERYTHING</span></h2>
+  </div>
+  <div class="faq-list">
+    <details class="faq-item reveal">
+      <summary class="faq-question">
+        Do I actually have to stop drinking beer?
+        <div class="faq-chevron">+</div>
+      </summary>
+      <div class="faq-answer">
+        Absolutely not. Beer is in the name for a reason. Our program is designed specifically for people who drink beer. We work with your lifestyle, not against it. We'll calibrate your plan around your intake.
+      </div>
+    </details>
+    <details class="faq-item reveal">
+      <summary class="faq-question">
+        How quickly will I see results?
+        <div class="faq-chevron">+</div>
+      </summary>
+      <div class="faq-answer">
+        Most clients notice visible arm changes within 6–8 weeks. By month 3, you'll be fielding comments from everyone around you. Exact timeline depends on your starting point and consistency.
+      </div>
+    </details>
+    <details class="faq-item reveal">
+      <summary class="faq-question">
+        Can I join from outside India?
+        <div class="faq-chevron">+</div>
+      </summary>
+      <div class="faq-answer">
+        Yes — we have clients in over 30 countries. Our online coaching program is fully remote and built for global clients. Timezone? Not an issue. We make it work.
+      </div>
+    </details>
+    <details class="faq-item reveal">
+      <summary class="faq-question">
+        What does the ₹2,00,000 program include?
+        <div class="faq-chevron">+</div>
+      </summary>
+      <div class="faq-answer">
+        The Bicep Beast plan includes 6 months of daily coaching, a fully custom training plan, beer-compatible nutrition guide, bi-weekly video calls with Shahyan, access to our VIP community, and lifetime access to all program materials. It's everything you need.
+      </div>
+    </details>
+    <details class="faq-item reveal">
+      <summary class="faq-question">
+        Do I need a gym membership?
+        <div class="faq-chevron">+</div>
+      </summary>
+      <div class="faq-answer">
+        A gym helps, but it's not mandatory. We can programme around home setups, hotel gyms, or outdoor training. We work with what you have and make it count.
+      </div>
+    </details>
+    <details class="faq-item reveal">
+      <summary class="faq-question">
+        How do I pay and get started?
+        <div class="faq-chevron">+</div>
+      </summary>
+      <div class="faq-answer">
+        Simply fill out the booking form below, or message us directly on WhatsApp at +91 96194 95852. We'll have a quick intro call, assess your situation, and get you started within 48 hours.
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ─── GALLERY ─── -->
+<section id="gallery" style="padding-bottom: 0;">
+  <div class="gallery-header reveal">
+    <div class="section-label">Visual Proof</div>
+    <h2 class="section-title">THE <span>RESULTS</span> SPEAK</h2>
+  </div>
+  <div class="gallery-mosaic">
+    <div class="gallery-cell">
+      <div class="gallery-placeholder">
+        <span class="gallery-placeholder-icon">💪</span>
+        <span class="gallery-placeholder-label">Client Transformation</span>
+      </div>
+    </div>
+    <div class="gallery-cell">
+      <div class="gallery-placeholder">
+        <span class="gallery-placeholder-icon">🍺</span>
+        <span class="gallery-placeholder-label">Beer & Gains</span>
+      </div>
+    </div>
+    <div class="gallery-cell">
+      <div class="gallery-placeholder">
+        <span class="gallery-placeholder-icon">🏋️</span>
+        <span class="gallery-placeholder-label">Training Sessions</span>
+      </div>
+    </div>
+    <div class="gallery-cell">
+      <div class="gallery-placeholder">
+        <span class="gallery-placeholder-icon">🌍</span>
+        <span class="gallery-placeholder-label">Global Community</span>
+      </div>
+    </div>
+    <div class="gallery-cell">
+      <div class="gallery-placeholder">
+        <span class="gallery-placeholder-icon">📸</span>
+        <span class="gallery-placeholder-label">Before & After</span>
+      </div>
+    </div>
+    <div class="gallery-cell">
+      <div class="gallery-placeholder">
+        <span class="gallery-placeholder-icon">🏆</span>
+        <span class="gallery-placeholder-label">Success Stories</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BLOG ─── -->
+<section id="blog">
+  <div class="blog-header reveal">
+    <div class="section-label">Knowledge Base</div>
+    <h2 class="section-title">THE BEER BICEPS <span>BLOG</span></h2>
+  </div>
+  <div class="blog-grid">
+    <a href="#" class="blog-card reveal">
+      <div class="blog-card-header">🍺💪</div>
+      <div class="blog-card-body">
+        <span class="blog-tag">Nutrition</span>
+        <span class="blog-title">How Beer Actually Affects Muscle Growth (The Truth)</span>
+        <p class="blog-excerpt">We spent 3 years studying this. The answer will surprise you — and it's not what the fitness industry wants you to believe.</p>
+        <span class="blog-meta">12 min read · June 2026</span>
+      </div>
+    </a>
+    <a href="#" class="blog-card reveal">
+      <div class="blog-card-header">🏋️📈</div>
+      <div class="blog-card-body">
+        <span class="blog-tag">Training</span>
+        <span class="blog-title">The 5 Bicep Exercises That Changed Everything For Our Clients</span>
+        <p class="blog-excerpt">No exotic equipment. No gym required. These five movements are responsible for more arm growth across our client base than anything else combined.</p>
+        <span class="blog-meta">8 min read · May 2026</span>
+      </div>
+    </a>
+    <a href="#" class="blog-card reveal">
+      <div class="blog-card-header">🌍✈️</div>
+      <div class="blog-card-body">
+        <span class="blog-tag">Community</span>
+        <span class="blog-title">From Pune to Dubai to London: Our Global Client Stories</span>
+        <p class="blog-excerpt">Three clients. Three continents. One mission. How Beer Biceps became a worldwide movement without a single paid ad.</p>
+        <span class="blog-meta">15 min read · April 2026</span>
+      </div>
+    </a>
+  </div>
+  <div style="text-align: center;">
+    <a href="#" class="btn-secondary">View All Posts →</a>
+  </div>
+</section>
+
+<!-- ─── BOOKING ─── -->
+<section id="booking">
+  <div class="booking-inner">
+    <div class="booking-left reveal">
+      <div class="section-label">Get Started</div>
+      <h2 class="section-title">BOOK YOUR <span>SESSION</span></h2>
+      <p class="booking-text">
+        Ready to stop being skinny? Fill out the form and we'll be in touch within 24 hours to get your personalised program underway. Beer optional (but encouraged).
+      </p>
+      <div class="booking-features">
+        <div class="booking-feature">
+          <div class="booking-feature-icon">⚡</div>
+          <span>Response within 24 hours</span>
+        </div>
+        <div class="booking-feature">
+          <div class="booking-feature-icon">🌍</div>
+          <span>Available worldwide — any timezone</span>
+        </div>
+        <div class="booking-feature">
+          <div class="booking-feature-icon">💬</div>
+          <span>WhatsApp-first communication</span>
+        </div>
+        <div class="booking-feature">
+          <div class="booking-feature-icon">🎯</div>
+          <span>Customised to your exact situation</span>
+        </div>
+      </div>
+      <a href="https://wa.me/919619495852" target="_blank" class="whatsapp-btn" style="margin-top: 2rem;">
+        💬 Message on WhatsApp
+      </a>
+    </div>
+    <div class="booking-form reveal">
+      <div class="form-title">Request Your Free Consult</div>
+      <div class="form-group">
+        <label class="form-label">Your Name</label>
+        <input type="text" class="form-input" placeholder="Raj Sharma" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" placeholder="raj@example.com" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">WhatsApp Number</label>
+        <input type="tel" class="form-input" placeholder="+91 98765 43210" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Program Interest</label>
+        <select class="form-select">
+          <option value="" disabled selected>Select a program</option>
+          <option>Skinny Starter — ₹75,000</option>
+          <option>Bicep Beast — ₹2,00,000</option>
+          <option>The Full Arsenal — ₹4,50,000</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Location / City</label>
+        <input type="text" class="form-input" placeholder="Mumbai / Dubai / London..." />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Your Goal (Optional)</label>
+        <textarea class="form-textarea" placeholder="e.g. 'I want 16-inch arms by December'"></textarea>
+      </div>
+      <button class="btn-primary" style="width: 100%; justify-content: center;" onclick="handleBooking()">
+        💪 Submit Request
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SHOP ─── -->
+<section id="shop">
+  <div class="shop-header reveal">
+    <div class="section-label">Merch & More</div>
+    <h2 class="section-title">THE BEER BICEPS <span>SHOP</span></h2>
+  </div>
+  <div class="shop-grid">
+    <div class="shop-card reveal">
+      <div class="shop-card-img">🎽</div>
+      <div class="shop-card-body">
+        <span class="shop-card-name">Beast Mode Tee</span>
+        <p class="shop-card-desc">Oversized, heavyweight cotton. Wear it to the gym. Wear it to the bar. We don't judge.</p>
+        <div class="shop-card-footer">
+          <span class="shop-price">₹1,499</span>
+          <button class="shop-add">Add →</button>
+        </div>
+      </div>
+    </div>
+    <div class="shop-card reveal">
+      <div class="shop-card-img">📘</div>
+      <div class="shop-card-body">
+        <span class="shop-card-name">Bicep Bible — PDF</span>
+        <p class="shop-card-desc">78-page deep dive into our methodology. Instant download. Start reading tonight.</p>
+        <div class="shop-card-footer">
+          <span class="shop-price">₹999</span>
+          <button class="shop-add">Add →</button>
+        </div>
+      </div>
+    </div>
+    <div class="shop-card reveal">
+      <div class="shop-card-img">🍺</div>
+      <div class="shop-card-body">
+        <span class="shop-card-name">Beer Biceps Shaker</span>
+        <p class="shop-card-desc">750ml. For protein shakes. And maybe beer. Stainless steel. Lifetime warranty.</p>
+        <div class="shop-card-footer">
+          <span class="shop-price">₹2,499</span>
+          <button class="shop-add">Add →</button>
+        </div>
+      </div>
+    </div>
+    <div class="shop-card reveal">
+      <div class="shop-card-img">🎓</div>
+      <div class="shop-card-body">
+        <span class="shop-card-name">12-Week Starter Course</span>
+        <p class="shop-card-desc">Self-paced video course. 60+ lessons. The same foundation our premium clients build on.</p>
+        <div class="shop-card-footer">
+          <span class="shop-price">₹9,999</span>
+          <button class="shop-add">Add →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-header reveal">
+      <div class="section-label">Say Hello</div>
+      <h2 class="section-title">LET'S <span>TALK ARMS</span></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div>
+            <span class="contact-item-label">Location</span>
+            <span class="contact-item-value">Mumbai, India · Worldwide Service</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📧</div>
+          <div>
+            <span class="contact-item-label">Email</span>
+            <a href="mailto:shahyan@beerbiceps.com" class="contact-item-value">shahyan@beerbiceps.com</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div>
+            <span class="contact-item-label">Phone</span>
+            <a href="tel:+919619495852" class="contact-item-value">+91 96194 95852</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">⏰</div>
+          <div>
+            <span class="contact-item-label">Response Time</span>
+            <span class="contact-item-value">Within 24 hours</span>
+          </div>
+        </div>
+        <a href="https://wa.me/919619495852" target="_blank" class="whatsapp-btn">
+          💬 Chat on WhatsApp
+        </a>
+      </div>
+      <div class="contact-form reveal">
+        <div class="form-title">Drop Us a Message</div>
+        <div class="form-group">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-input" placeholder="Your name" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" placeholder="your@email.com" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Subject</label>
+          <input type="text" class="form-input" placeholder="I want big arms..." />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea" rows="4" placeholder="Tell us everything..."></textarea>
+        </div>
+        <button class="btn-primary" style="width: 100%; justify-content: center;" onclick="handleContact()">
+          Send Message →
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#home" class="nav-logo">BEER<span>BICEPS</span></a>
+      <p class="footer-desc">
+        The world's only fitness program built specifically for beer lovers who want massive arms. Mumbai-based. Worldwide results.
+      </p>
+      <p class="footer-desc" style="font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em;">
+        shahyan@beerbiceps.com<br>
+        +91 96194 95852
+      </p>
+    </div>
+    <div>
+      <div class="footer-col-title">Program</div>
+      <ul class="footer-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#booking">Book a Session</a></li>
+        <li><a href="#shop">Shop</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#blog">Blog</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Support</div>
+      <ul class="footer-links">
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://wa.me/919619495852" target="_blank">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">
+      © 2026 Beer Biceps. All rights reserved. Mumbai, India. · Website by <a href="https://northstarweb.co" target="_blank">Northstar Web</a>
+    </span>
+    <span class="footer-copy">
+      No arms were harmed in the making of this website.
+    </span>
+  </div>
+</footer>
+
+<!-- ─── FLOAT BUTTONS ─── -->
+<div class="wa-float">
+  <span class="wa-float-bubble">Chat with us</span>
+  <a href="https://wa.me/919619495852" target="_blank" class="wa-float-btn" aria-label="WhatsApp">💬</a>
+</div>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<script>
+  // ─── MOBILE MENU ───
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  // ─── SCROLL TOP BUTTON ───
+  const scrollTopBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
+  });
+
+  // ─── REVEAL ON SCROLL ───
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // ─── FORM HANDLING ───
+  function handleBooking() {
+    const btn = event.target;
+    btn.textContent = '✅ Request Sent!';
+    btn.style.background = 'var(--green)';
+    btn.style.color = 'var(--black)';
+    setTimeout(() => {
+      btn.textContent = '💪 Submit Request';
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 3000);
+  }
+
+  function handleContact() {
+    const btn = event.target;
+    btn.textContent = '✅ Message Sent!';
+    btn.style.background = 'var(--green)';
+    btn.style.color = 'var(--black)';
+    setTimeout(() => {
+      btn.textContent = 'Send Message →';
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 3000);
+  }
+
+  // ─── SMOOTH ACTIVE NAV ───
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--magenta)' : '';
+    });
+  });
+</script>
+</body>
+</html>
