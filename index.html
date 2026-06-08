@@ -1,2320 +1,1279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Beer Biceps — Get Huge or Go Home</title>
-  <meta name="description" content="Beer Biceps: The world's only place where skinny beer drinkers get massive arms. Mumbai-based. Worldwide reach. No one like us." />
-  <meta name="keywords" content="biceps, beer, big arms, muscle, fitness, Mumbai, worldwide" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --magenta: #DD00E0;
-      --orange: #FF8000;
-      --blue: #0000FF;
-      --green: #00E626;
-      --yellow: #E6C700;
-      --black: #050505;
-      --white: #F5F5F0;
-      --gutter: clamp(1rem, 5vw, 4rem);
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--black);
-      color: var(--white);
-      font-family: 'Barlow Condensed', sans-serif;
-      overflow-x: hidden;
-      cursor: crosshair;
-    }
-
-    /* ─── NOISE OVERLAY ─── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.06;
-    }
-
-    /* ─── NAV ─── */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem var(--gutter);
-      background: rgba(5,5,5,0.92);
-      border-bottom: 2px solid var(--magenta);
-      backdrop-filter: blur(8px);
-    }
-
-    .nav-logo {
-      font-family: 'Black Ops One', cursive;
-      font-size: clamp(1.2rem, 3vw, 1.8rem);
-      color: var(--yellow);
-      text-decoration: none;
-      letter-spacing: 0.05em;
-      text-shadow: 0 0 20px var(--orange);
-    }
-
-    .nav-logo span { color: var(--magenta); }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--white);
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--green); }
-
-    .nav-cta {
-      background: var(--magenta);
-      color: var(--white) !important;
-      padding: 0.4rem 1rem;
-      font-weight: 700 !important;
-      transition: background 0.2s !important;
-    }
-
-    .nav-cta:hover { background: var(--orange) !important; color: var(--black) !important; }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--yellow);
-      transition: all 0.3s;
-    }
-
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 60px;
-      left: 0;
-      right: 0;
-      background: var(--black);
-      border-bottom: 2px solid var(--magenta);
-      padding: 1.5rem var(--gutter);
-      z-index: 999;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .mobile-menu.open { display: flex; }
-
-    .mobile-menu a {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.6rem;
-      color: var(--white);
-      text-decoration: none;
-      letter-spacing: 0.1em;
-      transition: color 0.2s;
-    }
-
-    .mobile-menu a:hover { color: var(--magenta); }
-
-    /* ─── HERO ─── */
-    #home {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8rem var(--gutter) 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 60% 50% at 80% 50%, rgba(221,0,224,0.18) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(255,128,0,0.15) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 40% at 50% 20%, rgba(0,0,255,0.12) 0%, transparent 70%);
-    }
-
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(0,230,38,0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,230,38,0.06) 1px, transparent 1px);
-      background-size: 60px 60px;
-      animation: gridMove 20s linear infinite;
-    }
-
-    @keyframes gridMove {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(60px); }
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 1100px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .hero-tag {
-      display: inline-block;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--green);
-      border: 1px solid var(--green);
-      padding: 0.3rem 1rem;
-      margin-bottom: 1.5rem;
-      animation: fadeUp 0.6s ease both;
-    }
-
-    .hero-h1 {
-      font-family: 'Bebas Neue', cursive;
-      font-size: clamp(5rem, 18vw, 16rem);
-      line-height: 0.88;
-      letter-spacing: -0.02em;
-      animation: fadeUp 0.8s 0.1s ease both;
-    }
-
-    .hero-h1 .line1 { color: var(--yellow); display: block; }
-    .hero-h1 .line2 {
-      color: transparent;
-      -webkit-text-stroke: 2px var(--magenta);
-      display: block;
-    }
-
-    .hero-sub {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-      font-weight: 600;
-      color: rgba(245,245,240,0.7);
-      max-width: 600px;
-      margin: 1.5rem auto;
-      line-height: 1.5;
-      animation: fadeUp 0.8s 0.2s ease both;
-    }
-
-    .hero-sub strong { color: var(--orange); }
-
-    .hero-ctas {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      animation: fadeUp 0.8s 0.3s ease both;
-      margin-top: 2rem;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--magenta);
-      color: var(--white);
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.3rem;
-      letter-spacing: 0.1em;
-      padding: 0.75rem 2rem;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s;
-      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
-    }
-
-    .btn-primary:hover {
-      background: var(--orange);
-      color: var(--black);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(255,128,0,0.5);
-    }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: transparent;
-      color: var(--yellow);
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.3rem;
-      letter-spacing: 0.1em;
-      padding: 0.72rem 2rem;
-      text-decoration: none;
-      border: 2px solid var(--yellow);
-      cursor: pointer;
-      transition: all 0.2s;
-      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
-    }
-
-    .btn-secondary:hover {
-      background: var(--yellow);
-      color: var(--black);
-      transform: translateY(-2px);
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 3rem;
-      justify-content: center;
-      margin-top: 4rem;
-      flex-wrap: wrap;
-      animation: fadeUp 0.8s 0.4s ease both;
-    }
-
-    .stat {
-      text-align: center;
-    }
-
-    .stat-num {
-      font-family: 'Black Ops One', cursive;
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      color: var(--green);
-      display: block;
-      text-shadow: 0 0 30px var(--green);
-    }
-
-    .stat-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(245,245,240,0.5);
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ─── MARQUEE ─── */
-    .marquee-wrap {
-      background: var(--magenta);
-      overflow: hidden;
-      padding: 0.6rem 0;
-      border-top: 2px solid var(--yellow);
-      border-bottom: 2px solid var(--yellow);
-    }
-
-    .marquee-track {
-      display: flex;
-      gap: 3rem;
-      white-space: nowrap;
-      animation: marquee 12s linear infinite;
-      width: max-content;
-    }
-
-    .marquee-item {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.4rem;
-      letter-spacing: 0.1em;
-      color: var(--black);
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .marquee-dot { color: var(--yellow); font-size: 1rem; }
-
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    /* ─── SECTION BASE ─── */
-    section {
-      padding: clamp(4rem, 8vw, 8rem) var(--gutter);
-    }
-
-    .section-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    .section-title {
-      font-family: 'Bebas Neue', cursive;
-      font-size: clamp(3rem, 8vw, 7rem);
-      line-height: 0.9;
-      letter-spacing: -0.01em;
-      margin-bottom: 1.5rem;
-    }
-
-    /* ─── ABOUT ─── */
-    #about {
-      background: var(--black);
-      position: relative;
-      overflow: hidden;
-    }
-
-    #about::before {
-      content: 'ABOUT';
-      position: absolute;
-      right: -2rem;
-      top: 50%;
-      transform: translateY(-50%);
-      font-family: 'Bebas Neue', cursive;
-      font-size: clamp(8rem, 20vw, 18rem);
-      color: rgba(221,0,224,0.05);
-      pointer-events: none;
-      letter-spacing: -0.02em;
-      white-space: nowrap;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .about-left .section-label { color: var(--orange); }
-
-    .about-left .section-title { color: var(--yellow); }
-
-    .about-left .section-title span { color: var(--magenta); }
-
-    .about-text {
-      font-size: clamp(1rem, 1.5vw, 1.15rem);
-      line-height: 1.7;
-      color: rgba(245,245,240,0.75);
-      margin-bottom: 1.5rem;
-    }
-
-    .about-highlight {
-      font-family: 'Black Ops One', cursive;
-      font-size: clamp(1.2rem, 2vw, 1.6rem);
-      color: var(--green);
-      border-left: 4px solid var(--green);
-      padding-left: 1rem;
-      margin: 2rem 0;
-      line-height: 1.4;
-    }
-
-    .about-right {
-      position: relative;
-    }
-
-    .about-card {
-      background: #0d0d0d;
-      border: 1px solid rgba(221,0,224,0.3);
-      padding: 2.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .about-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--magenta), var(--orange), var(--yellow));
-    }
-
-    .about-card-title {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 2rem;
-      color: var(--white);
-      margin-bottom: 1.5rem;
-      letter-spacing: 0.05em;
-    }
-
-    .about-pill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .pill {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.3rem 0.8rem;
-      border: 1px solid;
-    }
-
-    .pill-m { border-color: var(--magenta); color: var(--magenta); }
-    .pill-o { border-color: var(--orange); color: var(--orange); }
-    .pill-g { border-color: var(--green); color: var(--green); }
-    .pill-y { border-color: var(--yellow); color: var(--yellow); }
-    .pill-b { border-color: var(--blue); color: #4d4dff; }
-
-    .about-card-stat {
-      font-family: 'Black Ops One', cursive;
-      font-size: 4rem;
-      color: var(--orange);
-      display: block;
-      line-height: 1;
-      text-shadow: 0 0 40px rgba(255,128,0,0.4);
-    }
-
-    .about-card-stat-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(245,245,240,0.4);
-    }
-
-    /* ─── SERVICES ─── */
-    #services {
-      background: #080808;
-      position: relative;
-    }
-
-    .services-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .services-header .section-label { color: var(--blue); color: #4d4dff; }
-    .services-header .section-title { color: var(--white); }
-    .services-header .section-title span { color: var(--magenta); }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5px;
-      max-width: 1200px;
-      margin: 0 auto;
-      background: rgba(255,255,255,0.05);
-    }
-
-    .service-card {
-      background: #080808;
-      padding: 2.5rem 2rem;
-      position: relative;
-      overflow: hidden;
-      transition: background 0.3s;
-      cursor: pointer;
-    }
-
-    .service-card:hover { background: #0f0f0f; }
-
-    .service-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s ease;
-    }
-
-    .service-card:nth-child(1)::after { background: var(--magenta); }
-    .service-card:nth-child(2)::after { background: var(--orange); }
-    .service-card:nth-child(3)::after { background: var(--green); }
-
-    .service-card:hover::after { transform: scaleX(1); }
-
-    .service-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .service-num {
-      font-family: 'Black Ops One', cursive;
-      font-size: 5rem;
-      position: absolute;
-      top: 1rem;
-      right: 1.5rem;
-      line-height: 1;
-      opacity: 0.06;
-      color: var(--white);
-    }
-
-    .service-title {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 2rem;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.75rem;
-    }
-
-    .service-card:nth-child(1) .service-title { color: var(--magenta); }
-    .service-card:nth-child(2) .service-title { color: var(--orange); }
-    .service-card:nth-child(3) .service-title { color: var(--green); }
-
-    .service-desc {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: rgba(245,245,240,0.6);
-      margin-bottom: 1.5rem;
-    }
-
-    .service-link {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: gap 0.2s;
-    }
-
-    .service-card:nth-child(1) .service-link { color: var(--magenta); }
-    .service-card:nth-child(2) .service-link { color: var(--orange); }
-    .service-card:nth-child(3) .service-link { color: var(--green); }
-
-    .service-link:hover { gap: 1rem; }
-
-    /* ─── PRICING ─── */
-    #pricing {
-      background: var(--black);
-    }
-
-    .pricing-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .pricing-header .section-label { color: var(--yellow); }
-    .pricing-header .section-title { color: var(--white); }
-    .pricing-header .section-title span { color: var(--yellow); }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .pricing-card {
-      border: 1px solid rgba(255,255,255,0.08);
-      padding: 2.5rem 2rem;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s, border-color 0.3s;
-    }
-
-    .pricing-card:hover {
-      transform: translateY(-6px);
-    }
-
-    .pricing-card.featured {
-      border-color: var(--magenta);
-      background: linear-gradient(135deg, rgba(221,0,224,0.08), rgba(255,128,0,0.05));
-    }
-
-    .pricing-badge {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      background: var(--magenta);
-      color: var(--white);
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 0.2rem 0.6rem;
-    }
-
-    .pricing-tier {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(245,245,240,0.4);
-      margin-bottom: 0.5rem;
-    }
-
-    .pricing-name {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 2.2rem;
-      letter-spacing: 0.05em;
-      margin-bottom: 1rem;
-    }
-
-    .pricing-card:nth-child(1) .pricing-name { color: var(--green); }
-    .pricing-card:nth-child(2) .pricing-name { color: var(--magenta); }
-    .pricing-card:nth-child(3) .pricing-name { color: var(--yellow); }
-
-    .pricing-price {
-      display: flex;
-      align-items: baseline;
-      gap: 0.25rem;
-      margin-bottom: 2rem;
-    }
-
-    .pricing-currency {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: rgba(245,245,240,0.6);
-    }
-
-    .pricing-amount {
-      font-family: 'Black Ops One', cursive;
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      color: var(--white);
-      line-height: 1;
-    }
-
-    .pricing-period {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      color: rgba(245,245,240,0.4);
-    }
-
-    .pricing-features {
-      list-style: none;
-      margin-bottom: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-    }
-
-    .pricing-features li {
-      font-size: 0.95rem;
-      color: rgba(245,245,240,0.7);
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      line-height: 1.4;
-    }
-
-    .pricing-features li::before {
-      content: '→';
-      flex-shrink: 0;
-    }
-
-    .pricing-card:nth-child(1) .pricing-features li::before { color: var(--green); }
-    .pricing-card:nth-child(2) .pricing-features li::before { color: var(--magenta); }
-    .pricing-card:nth-child(3) .pricing-features li::before { color: var(--yellow); }
-
-    /* ─── TESTIMONIALS ─── */
-    #testimonials {
-      background: #080808;
-      overflow: hidden;
-    }
-
-    .testimonials-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .testimonials-header .section-label { color: var(--green); }
-    .testimonials-header .section-title { color: var(--white); }
-    .testimonials-header .section-title span { color: var(--green); }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .testimonial-card {
-      background: #0d0d0d;
-      border: 1px solid rgba(255,255,255,0.06);
-      padding: 2rem;
-      position: relative;
-      transition: border-color 0.3s;
-    }
-
-    .testimonial-card:hover { border-color: rgba(221,0,224,0.3); }
-
-    .testimonial-quote {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 4rem;
-      color: var(--magenta);
-      line-height: 0.8;
-      opacity: 0.4;
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-
-    .testimonial-text {
-      font-size: 1.05rem;
-      line-height: 1.65;
-      color: rgba(245,245,240,0.8);
-      margin-bottom: 1.5rem;
-    }
-
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .testimonial-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Black Ops One', cursive;
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
-
-    .avatar-m { background: var(--magenta); color: var(--black); }
-    .avatar-o { background: var(--orange); color: var(--black); }
-    .avatar-g { background: var(--green); color: var(--black); }
-
-    .testimonial-name {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.1rem;
-      letter-spacing: 0.05em;
-      display: block;
-    }
-
-    .testimonial-location {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.1em;
-      color: rgba(245,245,240,0.4);
-    }
-
-    .stars {
-      color: var(--yellow);
-      font-size: 0.8rem;
-      margin-bottom: 0.75rem;
-      letter-spacing: 0.1em;
-    }
-
-    /* ─── FAQ ─── */
-    #faq {
-      background: var(--black);
-    }
-
-    .faq-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .faq-header .section-label { color: var(--orange); }
-    .faq-header .section-title { color: var(--white); }
-    .faq-header .section-title span { color: var(--orange); }
-
-    .faq-list {
-      max-width: 800px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-    }
-
-    .faq-item {
-      background: #0a0a0a;
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .faq-question {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.5rem 2rem;
-      cursor: pointer;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.4rem;
-      letter-spacing: 0.05em;
-      color: var(--white);
-      transition: color 0.2s;
-      list-style: none;
-      user-select: none;
-    }
-
-    .faq-question:hover { color: var(--magenta); }
-
-    .faq-question::marker { display: none; }
-
-    .faq-chevron {
-      width: 20px;
-      height: 20px;
-      border: 1px solid rgba(255,255,255,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
-      flex-shrink: 0;
-      transition: transform 0.3s, border-color 0.3s, background 0.3s;
-    }
-
-    details[open] .faq-chevron {
-      transform: rotate(45deg);
-      border-color: var(--magenta);
-      background: var(--magenta);
-    }
-
-    .faq-answer {
-      padding: 0 2rem 1.5rem;
-      font-size: 1rem;
-      line-height: 1.7;
-      color: rgba(245,245,240,0.6);
-      border-top: 1px solid rgba(255,255,255,0.04);
-      padding-top: 1rem;
-    }
-
-    /* ─── GALLERY ─── */
-    #gallery {
-      background: #080808;
-      padding-bottom: 0;
-    }
-
-    .gallery-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .gallery-header .section-label { color: var(--magenta); }
-    .gallery-header .section-title { color: var(--white); }
-    .gallery-header .section-title span { color: var(--magenta); }
-
-    .gallery-mosaic {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: 300px 200px;
-      gap: 2px;
-      max-width: 100%;
-    }
-
-    .gallery-cell {
-      overflow: hidden;
-      position: relative;
-      background: #111;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .gallery-cell:nth-child(1) {
-      grid-column: 1 / 3;
-      grid-row: 1;
-    }
-
-    .gallery-cell:nth-child(2) { grid-column: 3; grid-row: 1; }
-    .gallery-cell:nth-child(3) { grid-column: 4; grid-row: 1; }
-    .gallery-cell:nth-child(4) { grid-column: 1; grid-row: 2; }
-    .gallery-cell:nth-child(5) { grid-column: 2 / 4; grid-row: 2; }
-    .gallery-cell:nth-child(6) { grid-column: 4; grid-row: 2; }
-
-    .gallery-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 0.5rem;
-      transition: transform 0.5s;
-    }
-
-    .gallery-cell:hover .gallery-placeholder { transform: scale(1.05); }
-
-    .gallery-placeholder-icon {
-      font-size: 2.5rem;
-      display: block;
-    }
-
-    .gallery-placeholder-label {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.2rem;
-      letter-spacing: 0.1em;
-      opacity: 0.6;
-    }
-
-    /* Gallery gradient backgrounds */
-    .gallery-cell:nth-child(1) .gallery-placeholder { background: linear-gradient(135deg, #1a001a, #2d002e); }
-    .gallery-cell:nth-child(2) .gallery-placeholder { background: linear-gradient(135deg, #1a0800, #2d1400); }
-    .gallery-cell:nth-child(3) .gallery-placeholder { background: linear-gradient(135deg, #000020, #000040); }
-    .gallery-cell:nth-child(4) .gallery-placeholder { background: linear-gradient(135deg, #001a04, #002d08); }
-    .gallery-cell:nth-child(5) .gallery-placeholder { background: linear-gradient(135deg, #1a1200, #2d2000); }
-    .gallery-cell:nth-child(6) .gallery-placeholder { background: linear-gradient(135deg, #1a001a, #2d0040); }
-
-    /* ─── BLOG ─── */
-    #blog {
-      background: var(--black);
-    }
-
-    .blog-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .blog-header .section-label { color: var(--blue); color: #4d4dff; }
-    .blog-header .section-title { color: var(--white); }
-    .blog-header .section-title span { color: #4d4dff; }
-
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto 3rem;
-    }
-
-    .blog-card {
-      background: #0a0a0a;
-      border: 1px solid rgba(255,255,255,0.06);
-      overflow: hidden;
-      transition: border-color 0.3s, transform 0.3s;
-      text-decoration: none;
-      display: block;
-    }
-
-    .blog-card:hover {
-      border-color: rgba(77,77,255,0.4);
-      transform: translateY(-4px);
-    }
-
-    .blog-card-header {
-      height: 180px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .blog-card:nth-child(1) .blog-card-header { background: linear-gradient(135deg, #0d001a 0%, #1a0028 100%); }
-    .blog-card:nth-child(2) .blog-card-header { background: linear-gradient(135deg, #001a08 0%, #002814 100%); }
-    .blog-card:nth-child(3) .blog-card-header { background: linear-gradient(135deg, #1a0a00 0%, #281800 100%); }
-
-    .blog-card-body { padding: 1.5rem; }
-
-    .blog-tag {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 0.2rem 0.6rem;
-      margin-bottom: 0.75rem;
-      display: inline-block;
-    }
-
-    .blog-card:nth-child(1) .blog-tag { background: rgba(77,77,255,0.15); color: #4d4dff; }
-    .blog-card:nth-child(2) .blog-tag { background: rgba(0,230,38,0.12); color: var(--green); }
-    .blog-card:nth-child(3) .blog-tag { background: rgba(255,128,0,0.12); color: var(--orange); }
-
-    .blog-title {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.6rem;
-      letter-spacing: 0.03em;
-      color: var(--white);
-      margin-bottom: 0.5rem;
-      line-height: 1.1;
-      display: block;
-    }
-
-    .blog-excerpt {
-      font-size: 0.9rem;
-      line-height: 1.6;
-      color: rgba(245,245,240,0.5);
-      margin-bottom: 1rem;
-    }
-
-    .blog-meta {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(245,245,240,0.3);
-    }
-
-    /* ─── BOOKING ─── */
-    #booking {
-      background: #080808;
-    }
-
-    .booking-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .booking-left .section-label { color: var(--green); }
-    .booking-left .section-title { color: var(--white); }
-    .booking-left .section-title span { color: var(--green); }
-
-    .booking-text {
-      font-size: 1.05rem;
-      line-height: 1.7;
-      color: rgba(245,245,240,0.65);
-      margin-bottom: 2rem;
-    }
-
-    .booking-features {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .booking-feature {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      font-size: 1rem;
-      color: rgba(245,245,240,0.7);
-    }
-
-    .booking-feature-icon {
-      width: 36px;
-      height: 36px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      border: 1px solid rgba(0,230,38,0.3);
-    }
-
-    .booking-form {
-      background: #0d0d0d;
-      border: 1px solid rgba(255,255,255,0.08);
-      padding: 2.5rem;
-      position: relative;
-    }
-
-    .booking-form::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--green), var(--blue));
-    }
-
-    .form-title {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.8rem;
-      letter-spacing: 0.05em;
-      color: var(--white);
-      margin-bottom: 1.5rem;
-    }
-
-    .form-group {
-      margin-bottom: 1.2rem;
-    }
-
-    .form-label {
-      display: block;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(245,245,240,0.4);
-      margin-bottom: 0.4rem;
-    }
-
-    .form-input, .form-select, .form-textarea {
-      width: 100%;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 0.75rem 1rem;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1rem;
-      color: var(--white);
-      outline: none;
-      transition: border-color 0.2s;
-      appearance: none;
-    }
-
-    .form-input:focus, .form-select:focus, .form-textarea:focus {
-      border-color: var(--green);
-    }
-
-    .form-select {
-      cursor: pointer;
-    }
-
-    .form-textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-
-    /* ─── CONTACT ─── */
-    #contact {
-      background: var(--black);
-    }
-
-    .contact-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .contact-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .contact-header .section-label { color: var(--yellow); }
-    .contact-header .section-title { color: var(--white); }
-    .contact-header .section-title span { color: var(--yellow); }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-    }
-
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .contact-item {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-    }
-
-    .contact-item-icon {
-      width: 44px;
-      height: 44px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      border: 1px solid rgba(230,199,0,0.3);
-      color: var(--yellow);
-    }
-
-    .contact-item-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(245,245,240,0.3);
-      display: block;
-      margin-bottom: 0.2rem;
-    }
-
-    .contact-item-value {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--white);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    a.contact-item-value:hover { color: var(--yellow); }
-
-    .whatsapp-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      background: #25D366;
-      color: var(--black);
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.4rem;
-      letter-spacing: 0.1em;
-      padding: 0.85rem 2rem;
-      text-decoration: none;
-      transition: all 0.2s;
-      margin-top: 1rem;
-      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
-    }
-
-    .whatsapp-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(37,211,102,0.4);
-    }
-
-    .contact-form {
-      background: #0a0a0a;
-      border: 1px solid rgba(255,255,255,0.06);
-      padding: 2.5rem;
-      position: relative;
-    }
-
-    .contact-form::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--yellow), var(--orange));
-    }
-
-    /* ─── SHOP ─── */
-    #shop {
-      background: #060606;
-    }
-
-    .shop-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .shop-header .section-label { color: var(--magenta); }
-    .shop-header .section-title { color: var(--white); }
-    .shop-header .section-title span { color: var(--magenta); }
-
-    .shop-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .shop-card {
-      background: #0d0d0d;
-      border: 1px solid rgba(255,255,255,0.06);
-      overflow: hidden;
-      transition: transform 0.3s, border-color 0.3s;
-    }
-
-    .shop-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(221,0,224,0.3);
-    }
-
-    .shop-card-img {
-      height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .shop-card:nth-child(1) .shop-card-img { background: linear-gradient(135deg, #1a001a, #2d002e); }
-    .shop-card:nth-child(2) .shop-card-img { background: linear-gradient(135deg, #1a0800, #331400); }
-    .shop-card:nth-child(3) .shop-card-img { background: linear-gradient(135deg, #001a04, #002808); }
-    .shop-card:nth-child(4) .shop-card-img { background: linear-gradient(135deg, #1a1200, #2d2000); }
-
-    .shop-card-body { padding: 1.5rem; }
-
-    .shop-card-name {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.5rem;
-      letter-spacing: 0.05em;
-      color: var(--white);
-      display: block;
-      margin-bottom: 0.3rem;
-    }
-
-    .shop-card-desc {
-      font-size: 0.9rem;
-      color: rgba(245,245,240,0.5);
-      margin-bottom: 1rem;
-    }
-
-    .shop-card-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .shop-price {
-      font-family: 'Black Ops One', cursive;
-      font-size: 1.5rem;
-      color: var(--magenta);
-    }
-
-    .shop-add {
-      background: transparent;
-      border: 1px solid var(--magenta);
-      color: var(--magenta);
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1rem;
-      letter-spacing: 0.1em;
-      padding: 0.4rem 1rem;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .shop-add:hover {
-      background: var(--magenta);
-      color: var(--black);
-    }
-
-    /* ─── FOOTER ─── */
-    footer {
-      background: #030303;
-      border-top: 1px solid rgba(221,0,224,0.2);
-      padding: 4rem var(--gutter) 2rem;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 3rem;
-      max-width: 1200px;
-      margin: 0 auto 4rem;
-    }
-
-    .footer-brand .nav-logo {
-      font-size: 1.6rem;
-      display: inline-block;
-      margin-bottom: 1rem;
-    }
-
-    .footer-desc {
-      font-size: 0.95rem;
-      line-height: 1.7;
-      color: rgba(245,245,240,0.4);
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-col-title {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.2rem;
-      letter-spacing: 0.1em;
-      color: var(--white);
-      margin-bottom: 1.2rem;
-    }
-
-    .footer-links {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
-
-    .footer-links a {
-      font-size: 0.9rem;
-      color: rgba(245,245,240,0.4);
-      text-decoration: none;
-      transition: color 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .footer-links a::before { content: '→'; font-size: 0.7rem; opacity: 0.5; }
-
-    .footer-links a:hover { color: var(--magenta); }
-
-    .footer-bottom {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .footer-copy {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.1em;
-      color: rgba(245,245,240,0.2);
-    }
-
-    .footer-copy a { color: rgba(245,245,240,0.4); text-decoration: none; }
-    .footer-copy a:hover { color: var(--yellow); }
-
-    /* ─── SCROLL TO TOP ─── */
-    .scroll-top {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      width: 44px;
-      height: 44px;
-      background: var(--magenta);
-      color: var(--white);
-      border: none;
-      cursor: pointer;
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.3s, transform 0.3s;
-      transform: translateY(10px);
-      z-index: 100;
-      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
-    }
-
-    .scroll-top.visible { opacity: 1; transform: translateY(0); }
-
-    /* ─── WHATSAPP FLOAT ─── */
-    .wa-float {
-      position: fixed;
-      bottom: 2rem;
-      left: 2rem;
-      z-index: 100;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.5rem;
-    }
-
-    .wa-float-bubble {
-      background: #25D366;
-      color: var(--black);
-      font-family: 'Bebas Neue', cursive;
-      font-size: 0.9rem;
-      letter-spacing: 0.05em;
-      padding: 0.3rem 0.8rem;
-      animation: pulse 2s ease infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.7; }
-    }
-
-    .wa-float-btn {
-      width: 52px;
-      height: 52px;
-      background: #25D366;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      text-decoration: none;
-      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .wa-float-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 8px 30px rgba(37,211,102,0.6);
-    }
-
-    /* ─── REVEAL ANIMATION ─── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 900px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .about-grid, .booking-inner, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .gallery-mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 200px); }
-      .gallery-cell:nth-child(1) { grid-column: 1; grid-row: 1; }
-      .gallery-cell:nth-child(2) { grid-column: 2; grid-row: 1; }
-      .gallery-cell:nth-child(3) { grid-column: 1; grid-row: 2; }
-      .gallery-cell:nth-child(4) { grid-column: 2; grid-row: 2; }
-      .gallery-cell:nth-child(5) { grid-column: 1 / 3; grid-row: 3; }
-      .gallery-cell:nth-child(6) { display: none; }
-    }
-
-    @media (max-width: 600px) {
-      .hero-stats { gap: 1.5rem; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .wa-float { bottom: 1rem; left: 1rem; }
-      .scroll-top { bottom: 1rem; right: 1rem; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Patrawalas — Thailand Jul 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F7F4EF;
+    --card: #FFFFFF;
+    --ink: #1A1714;
+    --ink2: #5C5650;
+    --ink3: #9C968F;
+    --border: #E8E3DB;
+    --border2: #D6CFC5;
+    --gold: #C8973A;
+    --gold-bg: #FBF5EA;
+    --teal: #2A7A6F;
+    --teal-bg: #EBF5F4;
+    --red: #C0392B;
+    --red-bg: #FDECEA;
+    --amber: #B7640A;
+    --amber-bg: #FEF3E2;
+    --blue: #1E5FA8;
+    --blue-bg: #EBF2FB;
+    --green: #1E7A4A;
+    --green-bg: #E8F5EE;
+    --radius: 14px;
+    --radius-sm: 9px;
+  }
+
+  html { font-size: 16px; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    padding: 28px 20px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 0%, rgba(200,151,58,.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-flag { font-size: 28px; margin-bottom: 8px; display: block; }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: #FFF;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .hero-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,.55);
+    margin-bottom: 16px;
+  }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+  .hero-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .03em;
+    padding: 4px 11px;
+    border-radius: 20px;
+    border: 1px solid;
+  }
+  .ht-gold { color: var(--gold); border-color: rgba(200,151,58,.4); background: rgba(200,151,58,.1); }
+  .ht-teal { color: #5BC4B8; border-color: rgba(91,196,184,.35); background: rgba(91,196,184,.08); }
+  .ht-amber { color: #F5A623; border-color: rgba(245,166,35,.35); background: rgba(245,166,35,.08); }
+
+  /* ── SECTION LABEL ── */
+  .sec-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    padding: 20px 16px 8px;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin: 0 12px 10px;
+    overflow: hidden;
+  }
+  .card + .card { }
+
+  /* ── ACCORDION HEADER ── */
+  .acc-hdr {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 13px 14px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: background .15s;
+  }
+  .acc-hdr:active { background: var(--bg); }
+  .day-badge {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    flex-shrink: 0;
+  }
+  .acc-meta { flex: 1; min-width: 0; }
+  .acc-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .acc-sub {
+    font-size: 11.5px;
+    color: var(--ink3);
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .chev {
+    color: var(--ink3);
+    flex-shrink: 0;
+    transition: transform .22s ease;
+    font-size: 18px;
+    line-height: 1;
+  }
+  .chev.open { transform: rotate(180deg); }
+
+  /* ── ACCORDION BODY ── */
+  .acc-body { display: none; border-top: 1px solid var(--border); }
+  .acc-body.open { display: block; }
+
+  /* ── NOTICE BANNERS ── */
+  .banner {
+    display: flex;
+    gap: 10px;
+    padding: 10px 14px;
+    font-size: 12px;
+    line-height: 1.55;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .banner-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+  .b-red { background: var(--red-bg); color: var(--red); }
+  .b-amber { background: var(--amber-bg); color: var(--amber); }
+  .b-teal { background: var(--teal-bg); color: var(--teal); }
+  .b-blue { background: var(--blue-bg); color: var(--blue); }
+  .b-green { background: var(--green-bg); color: var(--green); }
+
+  /* ── TIMELINE ── */
+  .timeline { padding: 14px 14px 16px; }
+  .t-item {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 0 10px;
+    margin-bottom: 14px;
+    align-items: start;
+  }
+  .t-item:last-child { margin-bottom: 0; }
+  .t-time {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--ink3);
+    text-align: right;
+    padding-top: 3px;
+    line-height: 1.4;
+  }
+  .t-dot-col {
+    /* optional — we skip the dot for clean look */
+  }
+  .t-content { }
+  .t-name {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.35;
+    margin-bottom: 3px;
+  }
+  .t-desc {
+    font-size: 12px;
+    color: var(--ink2);
+    line-height: 1.65;
+  }
+  .t-price {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--teal);
+    margin-top: 4px;
+  }
+  .t-star { color: var(--gold); }
+
+  /* ── SUBSECTION DIVIDER ── */
+  .t-sep {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    padding: 6px 14px 5px;
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 4px;
+  }
+
+  /* ── RESTAURANT ROWS ── */
+  .rest-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .rest-row:last-child { border-bottom: none; }
+  .rest-left { flex: 1; min-width: 0; }
+  .rest-name { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .rest-detail { font-size: 11.5px; color: var(--ink2); line-height: 1.55; }
+  .rest-right { flex-shrink: 0; text-align: right; }
+  .rest-price { font-size: 11px; font-weight: 600; color: var(--teal); white-space: nowrap; }
+  .rest-day { font-size: 10px; font-weight: 600; margin-top: 3px; white-space: nowrap; }
+
+  /* ── SHOP CARDS ── */
+  .shop-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 12px 14px;
+  }
+  .shop-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 11px 12px;
+  }
+  .shop-name { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+  .shop-detail { font-size: 11px; color: var(--ink2); line-height: 1.6; }
+  .shop-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 7px; }
+  .stag {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 8px;
+  }
+
+  /* ── BUDGET ── */
+  .bud-section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    padding: 10px 14px 4px;
+    border-top: 1px solid var(--border);
+  }
+  .bud-section-label:first-child { border-top: none; }
+  .bud-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 12.5px;
+    color: var(--ink);
+    padding: 5px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .bud-row:last-of-type { border-bottom: none; }
+  .bud-row.total {
+    font-weight: 700;
+    font-size: 13.5px;
+    background: var(--bg);
+    border-top: 1px solid var(--border2);
+    border-bottom: 1px solid var(--border2);
+    padding: 9px 14px;
+    margin-top: 4px;
+  }
+  .bud-note {
+    font-size: 11px;
+    color: var(--ink3);
+    padding: 4px 14px 8px;
+  }
+  .bud-val { font-weight: 600; color: var(--teal); white-space: nowrap; margin-left: 8px; }
+
+  /* ── ACTION LIST ── */
+  .action-row {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 0 10px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  .action-row:last-child { border-bottom: none; }
+  .action-urgency {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    text-align: right;
+    padding-top: 2px;
+    line-height: 1.4;
+  }
+  .urg-red { color: var(--red); }
+  .urg-amber { color: var(--amber); }
+  .urg-blue { color: var(--blue); }
+  .action-name { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .action-detail { font-size: 11.5px; color: var(--ink2); line-height: 1.55; }
+
+  /* ── INLINE TAG ── */
+  .itag {
+    display: inline-block;
+    font-size: 9.5px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 8px;
+    vertical-align: middle;
+    margin-left: 4px;
+    position: relative;
+    top: -1px;
+  }
+
+  /* ── SCHEDULE NOTE (shopping schedule) ── */
+  .sched-note {
+    padding: 0 14px 14px;
+    font-size: 12px;
+    color: var(--ink2);
+    line-height: 1.8;
+  }
+  .sched-note strong { color: var(--ink); font-weight: 600; }
+
+  /* ── BOTTOM SAFE AREA ── */
+  .bottom-pad { height: 32px; }
+</style>
 </head>
 <body>
 
-<!-- ─── NAV ─── -->
-<nav>
-  <a href="#home" class="nav-logo">BEER<span>BICEPS</span></a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#blog">Blog</a></li>
-    <li><a href="#booking">Booking</a></li>
-    <li><a href="#shop">Shop</a></li>
-    <li><a href="https://wa.me/919619495852" class="nav-cta" target="_blank">WhatsApp Us</a></li>
-  </ul>
-  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#about" onclick="closeMenu()">About</a>
-  <a href="#services" onclick="closeMenu()">Services</a>
-  <a href="#pricing" onclick="closeMenu()">Pricing</a>
-  <a href="#gallery" onclick="closeMenu()">Gallery</a>
-  <a href="#blog" onclick="closeMenu()">Blog</a>
-  <a href="#booking" onclick="closeMenu()">Book Now</a>
-  <a href="#shop" onclick="closeMenu()">Shop</a>
-  <a href="#contact" onclick="closeMenu()">Contact</a>
-</div>
-
-<!-- ─── HERO ─── -->
-<section id="home">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-tag">Mumbai → Worldwide · Est. 2001</div>
-    <h1 class="hero-h1">
-      <span class="line1">BEER</span>
-      <span class="line2">BICEPS</span>
-    </h1>
-    <p class="hero-sub">
-      The world's only program that turns <strong>skinny beer lovers</strong> into<br>
-      massive, arm-swinging machines. No one does this like us. <strong>No one.</strong>
-    </p>
-    <div class="hero-ctas">
-      <a href="#booking" class="btn-primary">💪 Book Your Session</a>
-      <a href="https://wa.me/919619495852" target="_blank" class="btn-secondary">💬 WhatsApp Us</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-num">23+</span>
-        <span class="stat-label">Years Building Arms</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">∞</span>
-        <span class="stat-label">Beer Lovers Transformed</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">0</span>
-        <span class="stat-label">Excuses Tolerated</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">1</span>
-        <span class="stat-label">Mission: Big Arms</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── MARQUEE ─── -->
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <span class="marquee-item">BEER BICEPS <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">BIG ARMS WORLDWIDE <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">NO ONE LIKE US <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">SKINNY TO SWOLE <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">MUMBAI BASED <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">EVERYONE HAS BICEPS <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">BEER BICEPS <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">BIG ARMS WORLDWIDE <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">NO ONE LIKE US <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">SKINNY TO SWOLE <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">MUMBAI BASED <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">EVERYONE HAS BICEPS <span class="marquee-dot">✦</span></span>
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <span class="hero-flag">🇹🇭</span>
+  <div class="hero-title">Patrawalas — Thailand</div>
+  <div class="hero-sub">July 1–7, 2025 · 4 people · Hua Hin + Bangkok</div>
+  <div class="hero-tags">
+    <span class="hero-tag ht-gold">Fully optimised</span>
+    <span class="hero-tag ht-teal">Halal-verified</span>
+    <span class="hero-tag ht-amber">Shopping-heavy</span>
   </div>
 </div>
 
-<!-- ─── ABOUT ─── -->
-<section id="about">
-  <div class="about-grid">
-    <div class="about-left reveal">
-      <div class="section-label">Who We Are</div>
-      <h2 class="section-title">THE ONLY <span>ARM LAB</span> ON EARTH</h2>
-      <p class="about-text">
-        Beer Biceps was born in Mumbai 23 years ago from one radical idea: that beer lovers — the most underserved demographic in fitness — deserve massive arms too. We built a system. We proved it worked. Now the world wants in.
-      </p>
-      <div class="about-highlight">
-        "Skinny beer users get good biceps. That's not a promise — that's a guarantee."
-      </div>
-      <p class="about-text">
-        Our approach combines cutting-edge training science with a deeply personal methodology. We don't believe in excuses, we don't believe in limits, and we absolutely don't believe your arms have to stay small just because you enjoy a cold one.
-      </p>
-      <div class="about-pill-list">
-        <span class="pill pill-m">Science-backed</span>
-        <span class="pill pill-o">Results-first</span>
-        <span class="pill pill-g">Global reach</span>
-        <span class="pill pill-y">Mumbai born</span>
-        <span class="pill pill-b">Beer-friendly</span>
-      </div>
-      <a href="#booking" class="btn-primary">Start Your Journey</a>
+<!-- ═══ ACTION LIST ═══ -->
+<div class="sec-label">✅ Book before you fly</div>
+<div class="card">
+  <div class="acc-hdr" onclick="tog('action')">
+    <div class="day-badge" style="background:var(--red-bg);color:var(--red)">📋</div>
+    <div class="acc-meta">
+      <div class="acc-title">Pre-trip action list</div>
+      <div class="acc-sub">Everything to book before departure</div>
     </div>
-    <div class="about-right reveal">
-      <div class="about-card">
-        <div class="about-card-title">Our Mission</div>
-        <p class="about-text">Everyone has biceps. Our job is to make yours impossible to ignore.</p>
-        <div class="about-pill-list">
-          <span class="pill pill-m">Strength</span>
-          <span class="pill pill-o">Confidence</span>
-          <span class="pill pill-g">Community</span>
-        </div>
-        <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 1.5rem 0;">
-        <span class="about-card-stat">₹2L</span>
-        <span class="about-card-stat-label">Complete Bicep Program — One price. Life-changing results.</span>
-      </div>
+    <span class="chev open" id="c-action">&#8964;</span>
+  </div>
+  <div class="acc-body open" id="action">
+    <div class="action-row">
+      <div class="action-urgency urg-red">URGENT</div>
+      <div><div class="action-name">Rajadamnern Stadium — Club Class ×4</div><div class="action-detail">Buy at lumpinee-rajadamnern.com or Klook. ฿1,900/person = ฿7,600 total. Sunday nights sell out weeks ahead.</div></div>
+    </div>
+    <div class="action-row">
+      <div class="action-urgency urg-red">URGENT</div>
+      <div><div class="action-name">The Local restaurant — Day 7 lunch</div><div class="action-detail">Book via their website or email. Tables for 4, Monday lunch — at least 2 weeks in advance.</div></div>
+    </div>
+    <div class="action-row">
+      <div class="action-urgency urg-amber">SOON</div>
+      <div><div class="action-name">Private van: BKK ↔ Hua Hin</div><div class="action-detail">Day 1 arrival + Day 4 departure. Ask Radisson concierge or book via Thai tour company. 7-seater with luggage space.</div></div>
+    </div>
+    <div class="action-row">
+      <div class="action-urgency urg-amber">SOON</div>
+      <div><div class="action-name">Yokkao Training Centre — Day 7 morning</div><div class="action-detail">Book beginner drop-in at yokkao.com. Mention it's your first session. 2 spots (Moiz + Idris).</div></div>
+    </div>
+    <div class="action-row">
+      <div class="action-urgency urg-amber">SOON</div>
+      <div><div class="action-name">Usman Restaurant — Day 5 dinner</div><div class="action-detail">Call or message their Facebook to reserve for 4, 7pm. Fills up Saturdays.</div></div>
+    </div>
+    <div class="action-row">
+      <div class="action-urgency urg-amber">SOON</div>
+      <div><div class="action-name">Sea Harmony Restaurant — Day 2 dinner</div><div class="action-detail">Call ahead for outdoor/beachfront table for 4. Book 1 week before.</div></div>
+    </div>
+    <div class="action-row">
+      <div class="action-urgency urg-blue">BEFORE GO</div>
+      <div><div class="action-name">Easy Kart — Day 5 afternoon</div><div class="action-detail">Book 4 sessions online at easykart.co.th. Specify time clearly — it's all 4 of you.</div></div>
+    </div>
+    <div class="action-row">
+      <div class="action-urgency urg-blue">BEFORE GO</div>
+      <div><div class="action-name">Asia Herb Association — Day 7 massages</div><div class="action-detail">Book 4 slots (all together). asiaherbassociation.com — mention group of 4.</div></div>
+    </div>
+    <div class="action-row">
+      <div class="action-urgency urg-blue">DAY BEFORE</div>
+      <div><div class="action-name">Day 3 taxi: hotel → Phraya Nakhon + back</div><div class="action-detail">Ask Radisson concierge evening of Day 2. Confirm 7am pickup.</div></div>
+    </div>
+    <div class="action-row">
+      <div class="action-urgency urg-blue">DAY BEFORE</div>
+      <div><div class="action-name">ATV operator — Day 2 afternoon</div><div class="action-detail">Ask hotel concierge Day 1 to arrange. Confirm 3:30pm pickup from hotel.</div></div>
     </div>
   </div>
-</section>
-
-<!-- ─── SERVICES ─── -->
-<section id="services">
-  <div class="services-header reveal">
-    <div class="section-label">What We Offer</div>
-    <h2 class="section-title">SERVICES THAT <span>ACTUALLY WORK</span></h2>
-  </div>
-  <div class="services-grid">
-    <div class="service-card reveal">
-      <span class="service-num">01</span>
-      <span class="service-icon">💪</span>
-      <div class="service-title">Premium Bicep Program</div>
-      <p class="service-desc">
-        Our flagship offering. A fully personalised arm-building program built around your lifestyle — including your beer intake. Science. Structure. Size. Delivered worldwide.
-      </p>
-      <div class="about-pill-list" style="margin-bottom: 1rem;">
-        <span class="pill pill-m">Custom Plan</span>
-        <span class="pill pill-o">Online + In-Person</span>
-      </div>
-      <a href="#booking" class="service-link">Book Now →</a>
-    </div>
-    <div class="service-card reveal">
-      <span class="service-num">02</span>
-      <span class="service-icon">🍺</span>
-      <div class="service-title">Beer-Compatible Training</div>
-      <p class="service-desc">
-        Most fitness programs tell you to quit beer. We say no. Our proprietary methodology works with your body chemistry to build serious mass without sacrificing your social life.
-      </p>
-      <div class="about-pill-list" style="margin-bottom: 1rem;">
-        <span class="pill pill-o">Lifestyle-first</span>
-        <span class="pill pill-g">No guilt</span>
-      </div>
-      <a href="#booking" class="service-link">Learn More →</a>
-    </div>
-    <div class="service-card reveal">
-      <span class="service-num">03</span>
-      <span class="service-icon">🌍</span>
-      <div class="service-title">Global Online Coaching</div>
-      <p class="service-desc">
-        Can't make it to Mumbai? No problem. Our online coaching program reaches every corner of the planet. Same results, same commitment, same massive arms — delivered to your screen.
-      </p>
-      <div class="about-pill-list" style="margin-bottom: 1rem;">
-        <span class="pill pill-g">Worldwide</span>
-        <span class="pill pill-y">24/7 Support</span>
-      </div>
-      <a href="#booking" class="service-link">Sign Up →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ─── PRICING ─── -->
-<section id="pricing">
-  <div class="pricing-header reveal">
-    <div class="section-label">Transparent Pricing</div>
-    <h2 class="section-title">INVEST IN YOUR <span>ARMS</span></h2>
-    <p style="font-size: 1.1rem; color: rgba(245,245,240,0.5); max-width: 500px; margin: 1rem auto 0;">One program. Three ways to get there. Pick your path to massive.</p>
-  </div>
-  <div class="pricing-grid">
-    <div class="pricing-card reveal">
-      <div class="pricing-tier">Starter</div>
-      <div class="pricing-name">Skinny Starter</div>
-      <div class="pricing-price">
-        <span class="pricing-currency">₹</span>
-        <span class="pricing-amount">75,000</span>
-      </div>
-      <ul class="pricing-features">
-        <li>12-week foundational program</li>
-        <li>Weekly check-ins via WhatsApp</li>
-        <li>Nutrition guide included</li>
-        <li>Beer compatibility assessment</li>
-        <li>Access to online community</li>
-      </ul>
-      <a href="#booking" class="btn-secondary" style="width: 100%; justify-content: center;">Get Started</a>
-    </div>
-    <div class="pricing-card featured reveal">
-      <div class="pricing-badge">Most Popular</div>
-      <div class="pricing-tier">Best Value</div>
-      <div class="pricing-name">Bicep Beast</div>
-      <div class="pricing-price">
-        <span class="pricing-currency">₹</span>
-        <span class="pricing-amount">2,00,000</span>
-      </div>
-      <ul class="pricing-features">
-        <li>Full 6-month transformation program</li>
-        <li>Daily coaching & accountability</li>
-        <li>Custom meal plan (beer-friendly)</li>
-        <li>Bi-weekly video calls with Shahyan</li>
-        <li>Lifetime access to program materials</li>
-        <li>VIP community + priority support</li>
-      </ul>
-      <a href="#booking" class="btn-primary" style="width: 100%; justify-content: center;">Book This Plan</a>
-    </div>
-    <div class="pricing-card reveal">
-      <div class="pricing-tier">Elite</div>
-      <div class="pricing-name">The Full Arsenal</div>
-      <div class="pricing-price">
-        <span class="pricing-currency">₹</span>
-        <span class="pricing-amount">4,50,000</span>
-      </div>
-      <ul class="pricing-features">
-        <li>12-month elite program</li>
-        <li>In-person training (Mumbai)</li>
-        <li>Fully bespoke plan — zero templates</li>
-        <li>Unlimited 1-on-1 access to Shahyan</li>
-        <li>Photoshoot at end of program</li>
-        <li>Lifetime coaching guarantee</li>
-      </ul>
-      <a href="#booking" class="btn-secondary" style="width: 100%; justify-content: center;">Enquire Now</a>
-    </div>
-  </div>
-</section>
-
-<!-- ─── TESTIMONIALS ─── -->
-<section id="testimonials">
-  <div class="testimonials-header reveal">
-    <div class="section-label">Real Results</div>
-    <h2 class="section-title">THEY WERE SKINNY. <span>NOT ANYMORE.</span></h2>
-  </div>
-  <div class="testimonials-grid">
-    <div class="testimonial-card reveal">
-      <span class="testimonial-quote">"</span>
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-text">
-        I was 62 kg and drinking four Kingfishers a night. Six months later I'm 74 kg and my arms are genuinely scary. No one believes the before photos are real.
-      </p>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar avatar-m">R</div>
-        <div>
-          <span class="testimonial-name">Rahul M.</span>
-          <span class="testimonial-location">📍 Pune · Bicep Beast Program</span>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial-card reveal">
-      <span class="testimonial-quote">"</span>
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-text">
-        I've tried every fitness program on the internet. Beer Biceps is the only one that didn't tell me to stop drinking. The arms? They speak for themselves. 43 cm.
-      </p>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar avatar-o">J</div>
-        <div>
-          <span class="testimonial-name">James K.</span>
-          <span class="testimonial-location">📍 London · Global Online Coaching</span>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial-card reveal">
-      <span class="testimonial-quote">"</span>
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-text">
-        Shahyan doesn't just coach you — he rewires you. Flew in from Dubai for the in-person block. Worth every rupee. My sleeves don't fit anymore and I couldn't be happier.
-      </p>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar avatar-g">A</div>
-        <div>
-          <span class="testimonial-name">Aarav S.</span>
-          <span class="testimonial-location">📍 Dubai · Full Arsenal Program</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── FAQ ─── -->
-<section id="faq">
-  <div class="faq-header reveal">
-    <div class="section-label">Got Questions?</div>
-    <h2 class="section-title">WE'VE HEARD <span>EVERYTHING</span></h2>
-  </div>
-  <div class="faq-list">
-    <details class="faq-item reveal">
-      <summary class="faq-question">
-        Do I actually have to stop drinking beer?
-        <div class="faq-chevron">+</div>
-      </summary>
-      <div class="faq-answer">
-        Absolutely not. Beer is in the name for a reason. Our program is designed specifically for people who drink beer. We work with your lifestyle, not against it. We'll calibrate your plan around your intake.
-      </div>
-    </details>
-    <details class="faq-item reveal">
-      <summary class="faq-question">
-        How quickly will I see results?
-        <div class="faq-chevron">+</div>
-      </summary>
-      <div class="faq-answer">
-        Most clients notice visible arm changes within 6–8 weeks. By month 3, you'll be fielding comments from everyone around you. Exact timeline depends on your starting point and consistency.
-      </div>
-    </details>
-    <details class="faq-item reveal">
-      <summary class="faq-question">
-        Can I join from outside India?
-        <div class="faq-chevron">+</div>
-      </summary>
-      <div class="faq-answer">
-        Yes — we have clients in over 30 countries. Our online coaching program is fully remote and built for global clients. Timezone? Not an issue. We make it work.
-      </div>
-    </details>
-    <details class="faq-item reveal">
-      <summary class="faq-question">
-        What does the ₹2,00,000 program include?
-        <div class="faq-chevron">+</div>
-      </summary>
-      <div class="faq-answer">
-        The Bicep Beast plan includes 6 months of daily coaching, a fully custom training plan, beer-compatible nutrition guide, bi-weekly video calls with Shahyan, access to our VIP community, and lifetime access to all program materials. It's everything you need.
-      </div>
-    </details>
-    <details class="faq-item reveal">
-      <summary class="faq-question">
-        Do I need a gym membership?
-        <div class="faq-chevron">+</div>
-      </summary>
-      <div class="faq-answer">
-        A gym helps, but it's not mandatory. We can programme around home setups, hotel gyms, or outdoor training. We work with what you have and make it count.
-      </div>
-    </details>
-    <details class="faq-item reveal">
-      <summary class="faq-question">
-        How do I pay and get started?
-        <div class="faq-chevron">+</div>
-      </summary>
-      <div class="faq-answer">
-        Simply fill out the booking form below, or message us directly on WhatsApp at +91 96194 95852. We'll have a quick intro call, assess your situation, and get you started within 48 hours.
-      </div>
-    </details>
-  </div>
-</section>
-
-<!-- ─── GALLERY ─── -->
-<section id="gallery" style="padding-bottom: 0;">
-  <div class="gallery-header reveal">
-    <div class="section-label">Visual Proof</div>
-    <h2 class="section-title">THE <span>RESULTS</span> SPEAK</h2>
-  </div>
-  <div class="gallery-mosaic">
-    <div class="gallery-cell">
-      <div class="gallery-placeholder">
-        <span class="gallery-placeholder-icon">💪</span>
-        <span class="gallery-placeholder-label">Client Transformation</span>
-      </div>
-    </div>
-    <div class="gallery-cell">
-      <div class="gallery-placeholder">
-        <span class="gallery-placeholder-icon">🍺</span>
-        <span class="gallery-placeholder-label">Beer & Gains</span>
-      </div>
-    </div>
-    <div class="gallery-cell">
-      <div class="gallery-placeholder">
-        <span class="gallery-placeholder-icon">🏋️</span>
-        <span class="gallery-placeholder-label">Training Sessions</span>
-      </div>
-    </div>
-    <div class="gallery-cell">
-      <div class="gallery-placeholder">
-        <span class="gallery-placeholder-icon">🌍</span>
-        <span class="gallery-placeholder-label">Global Community</span>
-      </div>
-    </div>
-    <div class="gallery-cell">
-      <div class="gallery-placeholder">
-        <span class="gallery-placeholder-icon">📸</span>
-        <span class="gallery-placeholder-label">Before & After</span>
-      </div>
-    </div>
-    <div class="gallery-cell">
-      <div class="gallery-placeholder">
-        <span class="gallery-placeholder-icon">🏆</span>
-        <span class="gallery-placeholder-label">Success Stories</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── BLOG ─── -->
-<section id="blog">
-  <div class="blog-header reveal">
-    <div class="section-label">Knowledge Base</div>
-    <h2 class="section-title">THE BEER BICEPS <span>BLOG</span></h2>
-  </div>
-  <div class="blog-grid">
-    <a href="#" class="blog-card reveal">
-      <div class="blog-card-header">🍺💪</div>
-      <div class="blog-card-body">
-        <span class="blog-tag">Nutrition</span>
-        <span class="blog-title">How Beer Actually Affects Muscle Growth (The Truth)</span>
-        <p class="blog-excerpt">We spent 3 years studying this. The answer will surprise you — and it's not what the fitness industry wants you to believe.</p>
-        <span class="blog-meta">12 min read · June 2026</span>
-      </div>
-    </a>
-    <a href="#" class="blog-card reveal">
-      <div class="blog-card-header">🏋️📈</div>
-      <div class="blog-card-body">
-        <span class="blog-tag">Training</span>
-        <span class="blog-title">The 5 Bicep Exercises That Changed Everything For Our Clients</span>
-        <p class="blog-excerpt">No exotic equipment. No gym required. These five movements are responsible for more arm growth across our client base than anything else combined.</p>
-        <span class="blog-meta">8 min read · May 2026</span>
-      </div>
-    </a>
-    <a href="#" class="blog-card reveal">
-      <div class="blog-card-header">🌍✈️</div>
-      <div class="blog-card-body">
-        <span class="blog-tag">Community</span>
-        <span class="blog-title">From Pune to Dubai to London: Our Global Client Stories</span>
-        <p class="blog-excerpt">Three clients. Three continents. One mission. How Beer Biceps became a worldwide movement without a single paid ad.</p>
-        <span class="blog-meta">15 min read · April 2026</span>
-      </div>
-    </a>
-  </div>
-  <div style="text-align: center;">
-    <a href="#" class="btn-secondary">View All Posts →</a>
-  </div>
-</section>
-
-<!-- ─── BOOKING ─── -->
-<section id="booking">
-  <div class="booking-inner">
-    <div class="booking-left reveal">
-      <div class="section-label">Get Started</div>
-      <h2 class="section-title">BOOK YOUR <span>SESSION</span></h2>
-      <p class="booking-text">
-        Ready to stop being skinny? Fill out the form and we'll be in touch within 24 hours to get your personalised program underway. Beer optional (but encouraged).
-      </p>
-      <div class="booking-features">
-        <div class="booking-feature">
-          <div class="booking-feature-icon">⚡</div>
-          <span>Response within 24 hours</span>
-        </div>
-        <div class="booking-feature">
-          <div class="booking-feature-icon">🌍</div>
-          <span>Available worldwide — any timezone</span>
-        </div>
-        <div class="booking-feature">
-          <div class="booking-feature-icon">💬</div>
-          <span>WhatsApp-first communication</span>
-        </div>
-        <div class="booking-feature">
-          <div class="booking-feature-icon">🎯</div>
-          <span>Customised to your exact situation</span>
-        </div>
-      </div>
-      <a href="https://wa.me/919619495852" target="_blank" class="whatsapp-btn" style="margin-top: 2rem;">
-        💬 Message on WhatsApp
-      </a>
-    </div>
-    <div class="booking-form reveal">
-      <div class="form-title">Request Your Free Consult</div>
-      <div class="form-group">
-        <label class="form-label">Your Name</label>
-        <input type="text" class="form-input" placeholder="Raj Sharma" />
-      </div>
-      <div class="form-group">
-        <label class="form-label">Email</label>
-        <input type="email" class="form-input" placeholder="raj@example.com" />
-      </div>
-      <div class="form-group">
-        <label class="form-label">WhatsApp Number</label>
-        <input type="tel" class="form-input" placeholder="+91 98765 43210" />
-      </div>
-      <div class="form-group">
-        <label class="form-label">Program Interest</label>
-        <select class="form-select">
-          <option value="" disabled selected>Select a program</option>
-          <option>Skinny Starter — ₹75,000</option>
-          <option>Bicep Beast — ₹2,00,000</option>
-          <option>The Full Arsenal — ₹4,50,000</option>
-          <option>Not sure yet</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Location / City</label>
-        <input type="text" class="form-input" placeholder="Mumbai / Dubai / London..." />
-      </div>
-      <div class="form-group">
-        <label class="form-label">Your Goal (Optional)</label>
-        <textarea class="form-textarea" placeholder="e.g. 'I want 16-inch arms by December'"></textarea>
-      </div>
-      <button class="btn-primary" style="width: 100%; justify-content: center;" onclick="handleBooking()">
-        💪 Submit Request
-      </button>
-    </div>
-  </div>
-</section>
-
-<!-- ─── SHOP ─── -->
-<section id="shop">
-  <div class="shop-header reveal">
-    <div class="section-label">Merch & More</div>
-    <h2 class="section-title">THE BEER BICEPS <span>SHOP</span></h2>
-  </div>
-  <div class="shop-grid">
-    <div class="shop-card reveal">
-      <div class="shop-card-img">🎽</div>
-      <div class="shop-card-body">
-        <span class="shop-card-name">Beast Mode Tee</span>
-        <p class="shop-card-desc">Oversized, heavyweight cotton. Wear it to the gym. Wear it to the bar. We don't judge.</p>
-        <div class="shop-card-footer">
-          <span class="shop-price">₹1,499</span>
-          <button class="shop-add">Add →</button>
-        </div>
-      </div>
-    </div>
-    <div class="shop-card reveal">
-      <div class="shop-card-img">📘</div>
-      <div class="shop-card-body">
-        <span class="shop-card-name">Bicep Bible — PDF</span>
-        <p class="shop-card-desc">78-page deep dive into our methodology. Instant download. Start reading tonight.</p>
-        <div class="shop-card-footer">
-          <span class="shop-price">₹999</span>
-          <button class="shop-add">Add →</button>
-        </div>
-      </div>
-    </div>
-    <div class="shop-card reveal">
-      <div class="shop-card-img">🍺</div>
-      <div class="shop-card-body">
-        <span class="shop-card-name">Beer Biceps Shaker</span>
-        <p class="shop-card-desc">750ml. For protein shakes. And maybe beer. Stainless steel. Lifetime warranty.</p>
-        <div class="shop-card-footer">
-          <span class="shop-price">₹2,499</span>
-          <button class="shop-add">Add →</button>
-        </div>
-      </div>
-    </div>
-    <div class="shop-card reveal">
-      <div class="shop-card-img">🎓</div>
-      <div class="shop-card-body">
-        <span class="shop-card-name">12-Week Starter Course</span>
-        <p class="shop-card-desc">Self-paced video course. 60+ lessons. The same foundation our premium clients build on.</p>
-        <div class="shop-card-footer">
-          <span class="shop-price">₹9,999</span>
-          <button class="shop-add">Add →</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── CONTACT ─── -->
-<section id="contact">
-  <div class="contact-inner">
-    <div class="contact-header reveal">
-      <div class="section-label">Say Hello</div>
-      <h2 class="section-title">LET'S <span>TALK ARMS</span></h2>
-    </div>
-    <div class="contact-grid">
-      <div class="contact-info reveal">
-        <div class="contact-item">
-          <div class="contact-item-icon">📍</div>
-          <div>
-            <span class="contact-item-label">Location</span>
-            <span class="contact-item-value">Mumbai, India · Worldwide Service</span>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">📧</div>
-          <div>
-            <span class="contact-item-label">Email</span>
-            <a href="mailto:shahyan@beerbiceps.com" class="contact-item-value">shahyan@beerbiceps.com</a>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">📞</div>
-          <div>
-            <span class="contact-item-label">Phone</span>
-            <a href="tel:+919619495852" class="contact-item-value">+91 96194 95852</a>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">⏰</div>
-          <div>
-            <span class="contact-item-label">Response Time</span>
-            <span class="contact-item-value">Within 24 hours</span>
-          </div>
-        </div>
-        <a href="https://wa.me/919619495852" target="_blank" class="whatsapp-btn">
-          💬 Chat on WhatsApp
-        </a>
-      </div>
-      <div class="contact-form reveal">
-        <div class="form-title">Drop Us a Message</div>
-        <div class="form-group">
-          <label class="form-label">Name</label>
-          <input type="text" class="form-input" placeholder="Your name" />
-        </div>
-        <div class="form-group">
-          <label class="form-label">Email</label>
-          <input type="email" class="form-input" placeholder="your@email.com" />
-        </div>
-        <div class="form-group">
-          <label class="form-label">Subject</label>
-          <input type="text" class="form-input" placeholder="I want big arms..." />
-        </div>
-        <div class="form-group">
-          <label class="form-label">Message</label>
-          <textarea class="form-textarea" rows="4" placeholder="Tell us everything..."></textarea>
-        </div>
-        <button class="btn-primary" style="width: 100%; justify-content: center;" onclick="handleContact()">
-          Send Message →
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── FOOTER ─── -->
-<footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <a href="#home" class="nav-logo">BEER<span>BICEPS</span></a>
-      <p class="footer-desc">
-        The world's only fitness program built specifically for beer lovers who want massive arms. Mumbai-based. Worldwide results.
-      </p>
-      <p class="footer-desc" style="font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em;">
-        shahyan@beerbiceps.com<br>
-        +91 96194 95852
-      </p>
-    </div>
-    <div>
-      <div class="footer-col-title">Program</div>
-      <ul class="footer-links">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#booking">Book a Session</a></li>
-        <li><a href="#shop">Shop</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title">Company</div>
-      <ul class="footer-links">
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#blog">Blog</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title">Support</div>
-      <ul class="footer-links">
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="https://wa.me/919619495852" target="_blank">WhatsApp</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span class="footer-copy">
-      © 2026 Beer Biceps. All rights reserved. Mumbai, India. · Website by <a href="https://northstarweb.co" target="_blank">Northstar Web</a>
-    </span>
-    <span class="footer-copy">
-      No arms were harmed in the making of this website.
-    </span>
-  </div>
-</footer>
-
-<!-- ─── FLOAT BUTTONS ─── -->
-<div class="wa-float">
-  <span class="wa-float-bubble">Chat with us</span>
-  <a href="https://wa.me/919619495852" target="_blank" class="wa-float-btn" aria-label="WhatsApp">💬</a>
 </div>
 
-<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<!-- ═══ SHOPPING GUIDE ═══ -->
+<div class="sec-label">🛍 Shopping guide</div>
+<div class="card">
+  <div class="acc-hdr" onclick="tog('shop')">
+    <div class="day-badge" style="background:var(--amber-bg);color:var(--amber)">🛍</div>
+    <div class="acc-meta">
+      <div class="acc-title">Complete Bangkok Shopping Guide</div>
+      <div class="acc-sub">Where to go, what to buy, floor-by-floor</div>
+    </div>
+    <span class="chev" id="c-shop">&#8964;</span>
+  </div>
+  <div class="acc-body" id="shop">
+    <div class="banner b-blue">
+      <span class="banner-icon">💡</span>
+      <span><strong>Golden rule:</strong> Always bargain. Start at 50–60% of asking price. Buying multiple items gets you lower per-unit prices everywhere. Bring cash — most stalls don't take cards. ATMs at every mall entrance.</span>
+    </div>
+    <div class="shop-grid">
+      <div class="shop-card">
+        <div class="shop-name">MBK Center</div>
+        <div class="shop-detail">8 floors, 2,000+ stalls. Designer bags, watches, sneakers (floors 1–3). Electronics floor 4. Food court floor 6 with halal options. Ask vendors for "back room" stock. Negotiate hard — 65% off asking is normal.</div>
+        <div class="shop-tags">
+          <span class="stag" style="background:var(--red-bg);color:var(--red)">Dupes HQ</span>
+          <span class="stag" style="background:var(--green-bg);color:var(--green)">Halal food</span>
+        </div>
+      </div>
+      <div class="shop-card">
+        <div class="shop-name">Platinum Fashion Mall</div>
+        <div class="shop-detail">6 floors, 1,300+ shops. Wholesale model — more you buy, cheaper per item. Best for quality clothes, bags, shoes. AC and organised. 10-min walk from Ratchathewi BTS. Bring ฿3,000–5,000/person.</div>
+        <div class="shop-tags">
+          <span class="stag" style="background:var(--blue-bg);color:var(--blue)">Quality fashion</span>
+          <span class="stag" style="background:var(--amber-bg);color:var(--amber)">Wholesale</span>
+        </div>
+      </div>
+      <div class="shop-card">
+        <div class="shop-name">Chatuchak Market</div>
+        <div class="shop-detail">Sat–Sun 9am–6pm. 15,000+ stalls, 27 sections. Sec 2–4: jewellery. Sec 5–6: clothing. Sec 22–26: home decor + gifts. Saman Islam stall: legendary halal khao mok gai.</div>
+        <div class="shop-tags">
+          <span class="stag" style="background:var(--green-bg);color:var(--green)">Unique finds</span>
+          <span class="stag" style="background:var(--red-bg);color:var(--red)">Sat 5 Jul ✅</span>
+        </div>
+      </div>
+      <div class="shop-card">
+        <div class="shop-name">Iconsiam — Sooksiam</div>
+        <div class="shop-detail">Premium riverfront mall. Sooksiam (ground floor) = indoor floating market, quality regional Thai crafts and food from all 77 provinces. Great for authentic gifts, silk, ceramics. AC, clean, easy on the feet.</div>
+        <div class="shop-tags">
+          <span class="stag" style="background:var(--blue-bg);color:var(--blue)">Upmarket</span>
+          <span class="stag" style="background:var(--teal-bg);color:var(--teal)">Great for all</span>
+        </div>
+      </div>
+      <div class="shop-card">
+        <div class="shop-name">Siam Square + Centre</div>
+        <div class="shop-detail">Local Thai streetwear — Greyhound, Carnival, Boyy. Siam Square outdoor alleys have younger local brands. Good for statement pieces that aren't generic tourist fare.</div>
+        <div class="shop-tags">
+          <span class="stag" style="background:var(--amber-bg);color:var(--amber)">Local designer</span>
+        </div>
+      </div>
+      <div class="shop-card">
+        <div class="shop-name">Jodd Fairs (Night)</div>
+        <div class="shop-detail">Night market on Ratchadapisek. Best for food + atmosphere rather than bulk buying. Halal food stalls throughout. Very photogenic. Go for the vibe.</div>
+        <div class="shop-tags">
+          <span class="stag" style="background:var(--green-bg);color:var(--green)">Night vibes</span>
+          <span class="stag" style="background:var(--green-bg);color:var(--green)">Halal ✅</span>
+        </div>
+      </div>
+    </div>
+    <div class="sched-note">
+      <strong>Day-by-day shopping plan:</strong><br>
+      Day 4 (Fri): Siam Centre + Siam Square → Jodd Fairs night<br>
+      Day 5 (Sat): Chatuchak 9am–2pm → Easy Kart → Usman dinner<br>
+      Day 6 (Sun): Iconsiam + Sooksiam → Platinum option<br>
+      Day 7 (Mon): Final sweep at MBK or Platinum before airport
+    </div>
+  </div>
+</div>
+
+<!-- ═══ RESTAURANT GUIDE ═══ -->
+<div class="sec-label">🍽 Restaurant guide</div>
+<div class="card">
+  <div class="acc-hdr" onclick="tog('rest')">
+    <div class="day-badge" style="background:var(--red-bg);color:var(--red)">🍽</div>
+    <div class="acc-meta">
+      <div class="acc-title">Full Restaurant Selection</div>
+      <div class="acc-sub">All halal-verified or chicken/beef-safe</div>
+    </div>
+    <span class="chev" id="c-rest">&#8964;</span>
+  </div>
+  <div class="acc-body" id="rest">
+    <div class="banner b-red">
+      <span class="banner-icon">⚠️</span>
+      <span><strong>The Rocks (Cape Nidhra) removed.</strong> Has pork and wine-heavy dishes throughout the menu. Replaced with Sea Harmony — top-rated halal beachfront seafood in Hua Hin.</span>
+    </div>
+    <div class="t-sep">Hua Hin</div>
+    <div class="rest-row">
+      <div class="rest-left">
+        <div class="rest-name">Ginger Fire Restaurant <span class="itag" style="background:var(--teal-bg);color:var(--teal)">Day 1 dinner</span></div>
+        <div class="rest-detail">Thai fusion, popular with tourists and locals. Arrive before 5:30pm or queue. Good pad Thai, curries, satay. Halal.</div>
+      </div>
+      <div class="rest-right"><div class="rest-price">฿200–350</div><div class="rest-day" style="color:var(--ink3)">/person</div></div>
+    </div>
+    <div class="rest-row">
+      <div class="rest-left">
+        <div class="rest-name">Hua Hin Night Market <span class="itag" style="background:var(--blue-bg);color:var(--blue)">Day 1 evening</span></div>
+        <div class="rest-detail">Dechanuchit Rd. Open every night. Graze across stalls — fresh seafood, rotis, coconut ice cream. No coupons needed.</div>
+      </div>
+      <div class="rest-right"><div class="rest-price">฿100–200</div><div class="rest-day" style="color:var(--ink3)">/person</div></div>
+    </div>
+    <div class="rest-row">
+      <div class="rest-left">
+        <div class="rest-name">Wilaiwan Kitchen <span class="itag" style="background:var(--teal-bg);color:var(--teal)">Day 2 lunch</span></div>
+        <div class="rest-detail">Most popular halal Thai in Hua Hin. Famous pad Thai and massaman. Go at 1:30pm to beat the rush. Cash preferred, no reservations.</div>
+      </div>
+      <div class="rest-right"><div class="rest-price">฿150–250</div><div class="rest-day" style="color:var(--ink3)">/person</div></div>
+    </div>
+    <div class="rest-row">
+      <div class="rest-left">
+        <div class="rest-name">Sea Harmony Restaurant ⭐ <span class="itag" style="background:var(--red-bg);color:var(--red)">Day 2 dinner</span></div>
+        <div class="rest-detail">Top-rated halal seafood restaurant with beachfront tables and sunset views. Fresh grilled fish, tom yum, prawn dishes. Book outdoor seating in advance. This is your standout Hua Hin dinner.</div>
+      </div>
+      <div class="rest-right"><div class="rest-price">฿350–500</div><div class="rest-day" style="color:var(--ink3)">/person</div></div>
+    </div>
+    <div class="rest-row">
+      <div class="rest-left">
+        <div class="rest-name">Kin Keng Halal Restaurant <span class="itag" style="background:var(--teal-bg);color:var(--teal)">Day 3 lunch</span></div>
+        <div class="rest-detail">Local halal crab + seafood, big portions, very affordable. Ask driver to stop here on the return from Phraya Nakhon.</div>
+      </div>
+      <div class="rest-right"><div class="rest-price">฿200–300</div><div class="rest-day" style="color:var(--ink3)">/person</div></div>
+    </div>
+    <div class="rest-row">
+      <div class="rest-left">
+        <div class="rest-name">Tamarind Market <span class="itag" style="background:var(--teal-bg);color:var(--teal)">Day 3 dinner</span></div>
+        <div class="rest-detail">Open Thu–Sun. More food variety than Cicada, local crowd, shaded. Last Hua Hin night — relax and graze across stalls.</div>
+      </div>
+      <div class="rest-right"><div class="rest-price">฿200–300</div><div class="rest-day" style="color:var(--ink3)">/person</div></div>
+    </div>
+    <div class="t-sep">Bangkok</div>
+    <div class="rest-row">
+      <div class="rest-left">
+        <div class="rest-name">Yana Restaurant (MBK 5F) <span class="itag" style="background:var(--teal-bg);color:var(--teal)">Day 4 lunch</span></div>
+        <div class="rest-detail">Halal Thai + international, family-friendly, wide menu. Good first Bangkok meal after the road trip.</div>
+      </div>
+      <div class="rest-right"><div class="rest-price">฿150–250</div><div class="rest-day" style="color:var(--ink3)">/person</div></div>
+    </div>
+    <div class="rest-row">
+      <div class="rest-left">
+        <div class="rest-name">Jodd Fairs Night Market <span class="itag" style="background:var(--teal-bg);color:var(--teal)">Day 4 dinner</span></div>
+        <div class="rest-detail">Halal stalls throughout. Street food paradise, atmospheric. Best night market in Bangkok right now.</div>
+      </div>
+      <div class="rest-right"><div class="rest-price">฿200–400</div><div class="rest-day" style="color:var(--ink3)">/person</div></div>
+    </div>
+    <div class="rest-row">
+      <div class="rest-left">
+        <div class="rest-name">Saman Islam (Chatuchak) <span class="itag" style="background:var(--amber-bg);color:var(--amber)">Day 5 lunch</span></div>
+        <div class="rest-detail">Legendary halal stall inside Chatuchak. Famous khao mok gai (Thai chicken biryani) — considered best in Bangkok. Arrive at noon or it sells out.</div>
+      </div>
+      <div class="rest-right"><div class="rest-price">฿80–150</div><div class="rest-day" style="color:var(--ink3)">/person</div></div>
+    </div>
+    <div class="rest-row">
+      <div class="rest-left">
+        <div class="rest-name">Usman Thai Muslim Food ⭐ <span class="itag" style="background:var(--red-bg);color:var(--red)">Day 5 dinner</span></div>
+        <div class="rest-detail">Michelin Bib Gourmand halal Thai on Sukhumvit Soi 22. Must-order: massaman curry, deep-fried seabass, tom yum, mango sticky rice. Book ahead.</div>
+      </div>
+      <div class="rest-right"><div class="rest-price">฿250–400</div><div class="rest-day" style="color:var(--ink3)">/person</div></div>
+    </div>
+    <div class="rest-row">
+      <div class="rest-left">
+        <div class="rest-name">Sooksiam Food Court (Iconsiam) <span class="itag" style="background:var(--teal-bg);color:var(--teal)">Day 6 lunch</span></div>
+        <div class="rest-detail">Indoor floating market concept — regional Thai food from all 77 provinces. Halal options clearly marked. Best value lunch in a premium setting in Bangkok.</div>
+      </div>
+      <div class="rest-right"><div class="rest-price">฿200–350</div><div class="rest-day" style="color:var(--ink3)">/person</div></div>
+    </div>
+    <div class="rest-row">
+      <div class="rest-left">
+        <div class="rest-name">Soi Arab street food <span class="itag" style="background:var(--teal-bg);color:var(--teal)">Day 6 late dinner</span></div>
+        <div class="rest-detail">Nana Soi 3/1. Shawarma, kebabs, halal fried rice, fresh juice. Open late after Muay Thai. No fuss, no booking needed.</div>
+      </div>
+      <div class="rest-right"><div class="rest-price">฿150–250</div><div class="rest-day" style="color:var(--ink3)">/person</div></div>
+    </div>
+    <div class="rest-row">
+      <div class="rest-left">
+        <div class="rest-name">The Local by Oamthong ⭐ <span class="itag" style="background:var(--red-bg);color:var(--red)">Day 7 splurge lunch</span></div>
+        <div class="rest-detail">Heritage Thai fine dining. Menu is predominantly chicken, beef, and seafood — confirm specific dishes when booking and request no pork. Must-order: miang kham, massaman, steamed sea bass in lime broth, coconut pudding. Book 2 weeks ahead — this is the trip's big lunch.</div>
+      </div>
+      <div class="rest-right"><div class="rest-price">฿500–700</div><div class="rest-day" style="color:var(--ink3)">/person</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ DAY DIVIDER: HUA HIN ═══ -->
+<div class="sec-label">🏖 Hua Hin — Days 1, 2, 3</div>
+
+<!-- DAY 1 -->
+<div class="card">
+  <div class="acc-hdr" onclick="tog('d1')">
+    <div class="day-badge" style="background:var(--blue-bg);color:var(--blue)">D1</div>
+    <div class="acc-meta">
+      <div class="acc-title">Arrival + Night Market</div>
+      <div class="acc-sub">Tue 1 Jul · Bangkok → Hua Hin</div>
+    </div>
+    <span class="chev" id="c-d1">&#8964;</span>
+  </div>
+  <div class="acc-body" id="d1">
+    <div class="banner b-amber">
+      <span class="banner-icon">ℹ️</span>
+      <span>Cicada Market is Fri–Sun only — closed on a Tuesday. Swapped for Hua Hin Night Market on Dechanuchit Rd, which is open every night and has equally good street food.</span>
+    </div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-time">Land<br>11am</div>
+        <div class="t-content">
+          <div class="t-name">Suvarnabhumi Airport</div>
+          <div class="t-desc">Clear immigration + baggage — budget 45–60 min. Pre-arranged private van (7-seater) picks you up. Do not take a metered taxi for this distance.</div>
+          <div class="t-price">฿2,500–3,000 total van (split 4 = ~฿700/person)</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">~1pm</div>
+        <div class="t-content">
+          <div class="t-name">Roadside lunch stop near Cha-Am</div>
+          <div class="t-desc">Ask the driver to stop. Alternatively eat at the airport before departure — saves time once you reach Hua Hin.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">3pm</div>
+        <div class="t-content">
+          <div class="t-name">Check in — Radisson Blu Hua Hin</div>
+          <div class="t-desc">Drop bags and freshen up. First look at the pool and beach — take it easy, you've been travelling all day.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">5pm</div>
+        <div class="t-content">
+          <div class="t-name">Dinner — Ginger Fire Restaurant</div>
+          <div class="t-desc">Arrive before 5:30pm to avoid the queue. Light dinner — pad Thai, green curry, satay chicken. Don't over-order.</div>
+          <div class="t-price">฿200–350/person</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">7pm</div>
+        <div class="t-content">
+          <div class="t-name">Hua Hin Night Market — Dechanuchit Road</div>
+          <div class="t-desc">Tuktuk from hotel (~฿40 each way). Walk the stalls, try coconut ice cream, fresh fruit shakes, grilled seafood skewers. Great intro to Thai street food. 1–1.5 hrs is perfect.</div>
+          <div class="t-price">฿100–200/person grazing</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">9pm</div>
+        <div class="t-content">
+          <div class="t-name">Back to hotel — early night</div>
+          <div class="t-desc">Big beach + activity day tomorrow. In bed by 10pm.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 2 -->
+<div class="card">
+  <div class="acc-hdr" onclick="tog('d2')">
+    <div class="day-badge" style="background:var(--red-bg);color:var(--red)">D2</div>
+    <div class="acc-meta">
+      <div class="acc-title">Watersports + ATV + Sunset Dinner</div>
+      <div class="acc-sub">Wed 2 Jul · Full adrenaline day</div>
+    </div>
+    <span class="chev" id="c-d2">&#8964;</span>
+  </div>
+  <div class="acc-body" id="d2">
+    <div class="banner b-amber">
+      <span class="banner-icon">🌧</span>
+      <span>July is rainy season. Parasailing and banana boat operators cancel if seas are rough. Check conditions the evening before via hotel and have a plan B (spa day or shopping in town). Don't pre-pay watersports online.</span>
+    </div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-time">7am</div>
+        <div class="t-content">
+          <div class="t-name">Breakfast at hotel</div>
+          <div class="t-desc">Eat light — no heavy food before watersports. Radisson buffet if included, or fruit and bread.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">9am</div>
+        <div class="t-content">
+          <div class="t-name">Walk/tuktuk to Hua Hin Beach</div>
+          <div class="t-desc">5–10 min from Radisson. All watersport vendors cluster near the main beach access. Negotiate as a group of 4 — package deal is standard.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">9:30am</div>
+        <div class="t-content">
+          <div class="t-name">Jet Ski</div>
+          <div class="t-desc">30-min sessions. Agree on price before getting on — ฿600–800/30 min is standard. Everyone can watch from the beach with coconuts between turns.</div>
+          <div class="t-price">฿600–800/ski</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">10:30am</div>
+        <div class="t-content">
+          <div class="t-name">Parasailing</div>
+          <div class="t-desc">~10 min flight per person. Tandem available. It's surprisingly peaceful once you're up. Check the rig before going up.</div>
+          <div class="t-price">฿600–800/person</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">11:15am</div>
+        <div class="t-content">
+          <div class="t-name">Banana Boat — all 4 together 🎉</div>
+          <div class="t-desc">Funniest activity of the trip as a group. 15–20 min. Everyone falls off — it's part of the deal.</div>
+          <div class="t-price">฿200–300/person</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">12:15pm</div>
+        <div class="t-content">
+          <div class="t-name">Hotel — shower and change</div>
+          <div class="t-desc">1 hour to clean up and rest.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">1:30pm</div>
+        <div class="t-content">
+          <div class="t-name">Lunch — Wilaiwan Kitchen</div>
+          <div class="t-desc">Most popular halal Thai in Hua Hin. Go at 1:30pm sharp to beat the 2pm rush. Famous pad Thai and massaman curry. Cash preferred, no reservations.</div>
+          <div class="t-price">฿150–250/person</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">3:15pm</div>
+        <div class="t-content">
+          <div class="t-name">Pool + spa time at Radisson</div>
+          <div class="t-desc">Tuktuk back to hotel. Relax at the pool or book a hotel spa massage (~฿400–600/hr). Well-earned afternoon off.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">3:30pm</div>
+        <div class="t-content">
+          <div class="t-name">Moiz + Idris → ATV Riding</div>
+          <div class="t-desc">Book the night before via hotel concierge — Hua Hin Adventure Tour or similar. 1-hr off-road session. Pickup from hotel available. Helmets on at all times.</div>
+          <div class="t-price">฿700–1,000/person</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">5:30pm</div>
+        <div class="t-content">
+          <div class="t-name">All 4 — beach walk for sunset 🌅</div>
+          <div class="t-desc">Hua Hin is west-facing — the sunsets are spectacular. Get there by 6pm. Grab fresh coconuts from a vendor (฿60–80). Just sit and take it in. One of the best moments of the trip.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">7:30pm</div>
+        <div class="t-content">
+          <div class="t-name">Dinner — Sea Harmony Restaurant ⭐</div>
+          <div class="t-desc">Top-rated halal beachfront seafood. Fresh grilled fish, tom yum with fresh seafood, prawn dishes. Book outdoor/beach-facing table in advance. The standout Hua Hin dinner.</div>
+          <div class="t-price">฿350–500/person</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">9:30pm</div>
+        <div class="t-content">
+          <div class="t-name">Back to hotel — early night</div>
+          <div class="t-desc">7am start tomorrow. Sleep.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 3 -->
+<div class="card">
+  <div class="acc-hdr" onclick="tog('d3')">
+    <div class="day-badge" style="background:var(--green-bg);color:var(--green)">D3</div>
+    <div class="acc-meta">
+      <div class="acc-title">Phraya Nakhon Cave + Tamarind Market</div>
+      <div class="acc-sub">Thu 3 Jul · Nature + last Hua Hin night</div>
+    </div>
+    <span class="chev" id="c-d3">&#8964;</span>
+  </div>
+  <div class="acc-body" id="d3">
+    <div class="banner b-green">
+      <span class="banner-icon">✅</span>
+      <span>Tamarind Market opens Thu–Sun from 5pm — you're good. Cicada is closed Thursdays, but Tamarind has more food variety anyway.</span>
+    </div>
+    <div class="banner b-amber">
+      <span class="banner-icon">☀️</span>
+      <span>The sunbeam inside Phraya Nakhon Cave hits the royal pavilion at 10–11:30am. This is the entire point of going. Your 7am departure hits the cave at exactly 10am. Do not sleep in.</span>
+    </div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-time">6:30am</div>
+        <div class="t-content">
+          <div class="t-name">Light breakfast at hotel</div>
+          <div class="t-desc">Eat light — there's a hike ahead. Book private car the evening before via hotel concierge.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">7am</div>
+        <div class="t-content">
+          <div class="t-name">Depart for Khao Sam Roi Yot National Park</div>
+          <div class="t-desc">~1 hr drive. Private car only — parking and navigation is difficult. Not worth self-driving.</div>
+          <div class="t-price">฿1,500–2,000 return car (split 4 = ~฿450/person)</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">8am</div>
+        <div class="t-content">
+          <div class="t-name">Ban Bang Pu — park tickets + longtail boat</div>
+          <div class="t-desc">Buy foreigner entry tickets. Longtail boat to Laem Sala Beach (10–15 min). All 4 fit in one boat. The cave is not reachable by car — the boat is mandatory.</div>
+          <div class="t-price">฿300/adult entry · ฿100/person each way (boat)</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">8:30am</div>
+        <div class="t-content">
+          <div class="t-name">Hike up to Phraya Nakhon Cave</div>
+          <div class="t-desc">30–45 min uphill jungle trail. Moderately steep — take it at a comfortable pace, there are plenty of shade spots to rest. Wear closed shoes. Bring 1.5L water each. Steps are cut into the rock — watch your footing.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">10am</div>
+        <div class="t-content">
+          <div class="t-name">Phraya Nakhon Cave + Kuha Karuhas Pavilion <span class="t-star">⭐</span></div>
+          <div class="t-desc">The sunbeam hits the royal pavilion right now. Spend 45–60 min inside. Two connected chambers, completely surreal. One of the most memorable things you'll see on the entire trip. Photograph everything.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">11:30am</div>
+        <div class="t-content">
+          <div class="t-name">Hike down + boat back</div>
+          <div class="t-desc">Easier going down — about 25 min. Boat back to the car.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">12:30pm</div>
+        <div class="t-content">
+          <div class="t-name">Lunch — Kin Keng Halal Restaurant</div>
+          <div class="t-desc">Ask the driver to stop here on the way back. Famous halal crab and seafood. Big portions, great value. Order stir-fried crab and tom yum.</div>
+          <div class="t-price">฿200–300/person</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">2pm</div>
+        <div class="t-content">
+          <div class="t-name">Hotel — afternoon rest + pool</div>
+          <div class="t-desc">3 hours to recover. Pool, nap, and start packing for Bangkok tomorrow. Bags ready tonight.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">5pm</div>
+        <div class="t-content">
+          <div class="t-name">Tamarind Market (open Thu from 5pm)</div>
+          <div class="t-desc">Tuktuk 10 min from hotel. More food stalls than Cicada, very local crowd, shaded by tamarind trees. Graze for dinner — tom yum, grilled meats, mango sticky rice. Last Hua Hin night, keep it relaxed.</div>
+          <div class="t-price">฿200–300/person for full dinner</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">8pm</div>
+        <div class="t-content">
+          <div class="t-name">Hotel — pack, early night</div>
+          <div class="t-desc">8am departure to Bangkok. Everything packed tonight so morning is smooth.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ DAY DIVIDER: BANGKOK ═══ -->
+<div class="sec-label">🏙 Bangkok — Days 4, 5, 6, 7</div>
+
+<!-- DAY 4 -->
+<div class="card">
+  <div class="acc-hdr" onclick="tog('d4')">
+    <div class="day-badge" style="background:var(--amber-bg);color:var(--amber)">D4</div>
+    <div class="acc-meta">
+      <div class="acc-title">Bangkok Arrival + MBK + Jodd Fairs</div>
+      <div class="acc-sub">Fri 4 Jul · City mode begins</div>
+    </div>
+    <span class="chev" id="c-d4">&#8964;</span>
+  </div>
+  <div class="acc-body" id="d4">
+    <div class="banner b-amber">
+      <span class="banner-icon">🚦</span>
+      <span>Friday Bangkok traffic is brutal — factor an extra 45 min on the drive. Don't plan anything before 2pm on arrival. Book the van the night before and depart Hua Hin at 8am sharp.</span>
+    </div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-time">8am</div>
+        <div class="t-content">
+          <div class="t-name">Checkout + van to Bangkok</div>
+          <div class="t-desc">3 hrs + traffic. Pre-booked private 7-seater. Load bags the night before if hotel allows.</div>
+          <div class="t-price">฿2,500–3,000 van total</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">12pm</div>
+        <div class="t-content">
+          <div class="t-name">Check in — Holiday Inn Express Bangkok</div>
+          <div class="t-desc">Ask for early check-in if available. Drop bags and freshen up.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">1pm</div>
+        <div class="t-content">
+          <div class="t-name">Lunch — Yana Restaurant (MBK 5F)</div>
+          <div class="t-desc">Halal Thai + international, wide menu, great for the whole family after a long drive. You're already at MBK — do a quick browse after lunch to get a feel for prices before committing.</div>
+          <div class="t-price">฿150–250/person</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">2:30pm</div>
+        <div class="t-content">
+          <div class="t-name">MBK Center — floors 1–3 browse + buy</div>
+          <div class="t-desc">Bags, accessories, cosmetics on floors 1–2. Sneakers, watches, streetwear on floor 3. Ask vendors to show "back room" stock for better quality. Start offers at 55–60% of asking. Compare 3–4 stalls before buying.</div>
+          <div class="t-price">฿1,500–3,000/person depending on how deep you go</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">5pm</div>
+        <div class="t-content">
+          <div class="t-name">Hotel rest</div>
+          <div class="t-desc">Drop shopping and bags. 1.5 hrs to rest and get ready for the evening.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">6:30pm</div>
+        <div class="t-content">
+          <div class="t-name">Siam Square + Siam Centre</div>
+          <div class="t-desc">BTS to Siam (~฿30). Local Thai streetwear — Greyhound, Carnival, Boyy. Siam Square outdoor alleys for younger local brands. 1 hour is enough — try things on, buy selectively.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">8pm</div>
+        <div class="t-content">
+          <div class="t-name">Jodd Fairs Night Market</div>
+          <div class="t-desc">Grab from Siam (~฿100). Halal stalls throughout — grilled meats, seafood, Thai desserts. Great vibe and very photogenic. 1.5–2 hrs.</div>
+          <div class="t-price">฿250–400/person for dinner</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">10:30pm</div>
+        <div class="t-content">
+          <div class="t-name">Grab back to hotel</div>
+          <div class="t-desc">~฿100–150.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 5 -->
+<div class="card">
+  <div class="acc-hdr" onclick="tog('d5')">
+    <div class="day-badge" style="background:var(--amber-bg);color:var(--amber)">D5</div>
+    <div class="acc-meta">
+      <div class="acc-title">Chatuchak + Go-Karts (all 4) + Usman</div>
+      <div class="acc-sub">Sat 5 Jul · Shopping + racing day</div>
+    </div>
+    <span class="chev" id="c-d5">&#8964;</span>
+  </div>
+  <div class="acc-body" id="d5">
+    <div class="banner b-green">
+      <span class="banner-icon">✅</span>
+      <span>Saturday — Chatuchak is fully open 9am–6pm. Best shopping day of the trip. Get there early before the heat and crowds kick in.</span>
+    </div>
+    <div class="banner b-blue">
+      <span class="banner-icon">🏎</span>
+      <span>Easy Kart is the afternoon activity for all 4 — book 4 sessions online in advance at easykart.co.th. Specify the time clearly when booking.</span>
+    </div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-time">7:30am</div>
+        <div class="t-content">
+          <div class="t-name">Breakfast at hotel — fill up</div>
+          <div class="t-desc">Chatuchak is a marathon. Eat properly before you go. Bring a bag, not a suitcase.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">9am</div>
+        <div class="t-content">
+          <div class="t-name">BTS Mo Chit → Chatuchak Market</div>
+          <div class="t-desc">Get there at 9am — before the heat and crowds. Pick up the section map at the entrance. Sections 22–26 for home decor, crafts, and gifts. Sections 5–6 for clothing and streetwear. Sections 2–4 for jewellery and accessories. Saman Islam stall for lunch — ask locals for directions inside.</div>
+          <div class="t-price">BTS ฿40–50/person</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">12pm</div>
+        <div class="t-content">
+          <div class="t-name">Lunch — Saman Islam (inside Chatuchak)</div>
+          <div class="t-desc">Legendary halal stall. Khao mok gai (Thai chicken biryani) is their signature — widely considered the best in Bangkok. Go at noon before it sells out.</div>
+          <div class="t-price">฿80–150/person</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">1:30pm</div>
+        <div class="t-content">
+          <div class="t-name">Final Chatuchak sweep — exit by 2pm</div>
+          <div class="t-desc">It gets genuinely hot and exhausting by the afternoon. Don't overstay. Cash only — bring ฿2,000–4,000/person if you plan to buy seriously.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">2:30pm</div>
+        <div class="t-content">
+          <div class="t-name">Easy Kart — all 4 together 🏎</div>
+          <div class="t-desc">Grab to Easy Kart (~฿100). Indoor circuit with full safety gear. 10–15 min per session each. Book 2 sessions if you can — the first run is always a warmup.</div>
+          <div class="t-price">฿350–500/session per person</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">5pm</div>
+        <div class="t-content">
+          <div class="t-name">Regroup at hotel</div>
+          <div class="t-desc">Everyone drops their shopping and freshens up before dinner.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">7pm</div>
+        <div class="t-content">
+          <div class="t-name">Dinner — Usman Thai Muslim Food ⭐</div>
+          <div class="t-desc">Michelin Bib Gourmand halal Thai. Sukhumvit Soi 22. Must-order: massaman curry, deep-fried seabass, tom yum, mango sticky rice. Authentic and excellent — this is one of the best meals of the trip. Book ahead.</div>
+          <div class="t-price">฿250–400/person</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 6 -->
+<div class="card">
+  <div class="acc-hdr" onclick="tog('d6')">
+    <div class="day-badge" style="background:var(--amber-bg);color:var(--amber)">D6</div>
+    <div class="acc-meta">
+      <div class="acc-title">Iconsiam + Rajadamnern Muay Thai</div>
+      <div class="acc-sub">Sun 6 Jul · Culture + fight night</div>
+    </div>
+    <span class="chev" id="c-d6">&#8964;</span>
+  </div>
+  <div class="acc-body" id="d6">
+    <div class="banner b-green">
+      <span class="banner-icon">🥊</span>
+      <span>Rajadamnern fights every night — Sunday show 6–9pm, 8 bouts. Buy tickets NOW at rajadamnern.com. Club Class ฿1,900/person is the sweet spot. Don't wait — it sells out well in advance.</span>
+    </div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-time">9:30am</div>
+        <div class="t-content">
+          <div class="t-name">Late breakfast at hotel</div>
+          <div class="t-desc">Earned rest. Big day yesterday. No rush this morning.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">12pm</div>
+        <div class="t-content">
+          <div class="t-name">Grab to Iconsiam</div>
+          <div class="t-desc">฿80–120 by Grab, or BTS + Chao Phraya ferry (more scenic). One of Bangkok's most stunning malls — riverfront, massive interior.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">12:30pm</div>
+        <div class="t-content">
+          <div class="t-name">Lunch — Sooksiam Food Court (ground floor)</div>
+          <div class="t-desc">Indoor floating market concept — regional Thai food from all 77 provinces. Halal options clearly marked. Mango sticky rice, khao mok, southern Thai curries. Brilliant atmosphere.</div>
+          <div class="t-price">฿200–350/person</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">2pm</div>
+        <div class="t-content">
+          <div class="t-name">Iconsiam explore + shopping</div>
+          <div class="t-desc">Riverside lounge, Thai crafts and silk at Sooksiam for gifts. Upper floors have Apple, Uniqlo, and local brands. Don't go too hard — one more shopping session on Day 7.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">4:30pm</div>
+        <div class="t-content">
+          <div class="t-name">Back to hotel — freshen up</div>
+          <div class="t-desc">Grab back. Change for fight night.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">5:30pm</div>
+        <div class="t-content">
+          <div class="t-name">Grab to Rajadamnern Stadium</div>
+          <div class="t-desc">~฿100. Arrive early — doors open 1 hr before fights. Get in your seats and soak in the atmosphere. The pre-fight wai kru rituals are part of the experience.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">6pm</div>
+        <div class="t-content">
+          <div class="t-name">Rajadamnern Muay Thai — 8 bouts, 3 hrs ⭐</div>
+          <div class="t-desc">Best Muay Thai venue in Bangkok. Immersive dome projection inside, electric crowd, local betting atmosphere. One of the great sporting experiences in Asia. Club Class seats are comfortable and well-positioned — brilliant from every row.</div>
+          <div class="t-price">Club Class ฿1,900/person · Ringside ฿2,500/person</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">9:15pm</div>
+        <div class="t-content">
+          <div class="t-name">Late dinner — Soi Arab, Nana</div>
+          <div class="t-desc">Grab to Nana (~฿80). Soi 3/1 is Bangkok's "Arab Street" — shawarma, kebabs, halal fried rice, fresh juice. Open late, no booking needed.</div>
+          <div class="t-price">฿150–250/person</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 7 -->
+<div class="card">
+  <div class="acc-hdr" onclick="tog('d7')">
+    <div class="day-badge" style="background:var(--red-bg);color:var(--red)">D7</div>
+    <div class="acc-meta">
+      <div class="acc-title">Muay Thai + Massages + The Local + Fly</div>
+      <div class="acc-sub">Mon 7 Jul · Last day — 11:45pm flight</div>
+    </div>
+    <span class="chev" id="c-d7">&#8964;</span>
+  </div>
+  <div class="acc-body" id="d7">
+    <div class="banner b-blue">
+      <span class="banner-icon">✈️</span>
+      <span>11:45pm flight — leave for airport by 8:30pm. You have the full day from 8am. Don't waste it sitting in the hotel.</span>
+    </div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-time">7:30am</div>
+        <div class="t-content">
+          <div class="t-name">Breakfast at hotel</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">9am</div>
+        <div class="t-content">
+          <div class="t-name">Moiz + Idris → Yokkao Training Centre (Muay Thai)</div>
+          <div class="t-desc">Book beginner drop-in before the trip at yokkao.com. 2-hr session — combinations, pad work, light sparring. A proper Muay Thai gym, not a tourist show. Bring hand wraps (buy at the gym or bring your own). Shoes off, respect the space.</div>
+          <div class="t-price">฿600–1,000/person drop-in</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">9am</div>
+        <div class="t-content">
+          <div class="t-name">Parents — relax at hotel</div>
+          <div class="t-desc">Sleep in, have a second breakfast, enjoy the pool. A slow morning before the group reunites for massages.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">11:30am</div>
+        <div class="t-content">
+          <div class="t-name">All 4 — massages at Asia Herb Association</div>
+          <div class="t-desc">Book 4 slots in advance (asiaherbassociation.com). 1.5–2 hr traditional Thai massage. Sukhumvit area, consistently rated the best value in Bangkok. A proper treat for everyone before the trip ends.</div>
+          <div class="t-price">฿350–450/hr</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">1:30pm</div>
+        <div class="t-content">
+          <div class="t-name">Lunch — The Local by Oamthong Thai Cuisine ⭐</div>
+          <div class="t-desc">Heritage Thai fine dining — tablecloths, beautiful presentation, recipes passed down for generations. Order from chicken, beef, and seafood dishes (confirm no pork when booking). Must-order: miang kham, massaman, steamed sea bass in lime broth, coconut pudding dessert. Book 2 weeks out — this is the trip's special send-off lunch.</div>
+          <div class="t-price">฿500–700/person</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">3:30pm</div>
+        <div class="t-content">
+          <div class="t-name">Final shopping — Platinum Fashion Mall or MBK</div>
+          <div class="t-desc">Platinum for clothing, bags, and last-minute bulk buys. MBK if there's anything you missed on Day 4. Set a firm budget and a hard 5pm exit — you need to pack.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">5pm</div>
+        <div class="t-content">
+          <div class="t-name">Hotel — pack everything</div>
+          <div class="t-desc">2 hrs. Weigh bags against airline limits. Group all receipts. Take a photo of everyone's passports as backup. Check in online if your airline allows.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">7pm</div>
+        <div class="t-content">
+          <div class="t-name">Light dinner — hotel or nearby halal spot</div>
+          <div class="t-desc">Nothing stressful. Hotel restaurant or something easy and close. Save energy for the airport.</div>
+          <div class="t-price">฿150–200/person</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">8:30pm</div>
+        <div class="t-content">
+          <div class="t-name">Pre-booked Grab to Suvarnabhumi Airport</div>
+          <div class="t-desc">Book via Grab app the morning of (฿250–350). Worth it with luggage — BTS + Airport Rail Link is miserable with bags.</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">11:45pm</div>
+        <div class="t-content">
+          <div class="t-name">Fly home ✈️ — with the best memories</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ BUDGET ═══ -->
+<div class="sec-label">฿ Budget</div>
+<div class="card">
+  <div class="acc-hdr" onclick="tog('bud')">
+    <div class="day-badge" style="background:var(--teal-bg);color:var(--teal)">฿</div>
+    <div class="acc-meta">
+      <div class="acc-title">Estimated spend per person</div>
+      <div class="acc-sub">Activities + food + transport — excl. hotels and flights</div>
+    </div>
+    <span class="chev" id="c-bud">&#8964;</span>
+  </div>
+  <div class="acc-body" id="bud">
+    <div class="bud-section-label">Hua Hin</div>
+    <div class="bud-row"><span>Airport → Hua Hin van (split 4)</span><span class="bud-val">฿700</span></div>
+    <div class="bud-row"><span>Phraya Nakhon (car + park + boat)</span><span class="bud-val">฿900–1,000</span></div>
+    <div class="bud-row"><span>Jet ski + parasailing + banana boat</span><span class="bud-val">฿1,500–2,000</span></div>
+    <div class="bud-row"><span>ATV 1hr (Moiz + Idris)</span><span class="bud-val">฿700–1,000</span></div>
+    <div class="bud-row"><span>Food — all 3 days (6 meals each)</span><span class="bud-val">฿1,800–2,500</span></div>
+    <div class="bud-section-label">Bangkok</div>
+    <div class="bud-row"><span>Hua Hin → Bangkok van (split 4)</span><span class="bud-val">฿700</span></div>
+    <div class="bud-row"><span>BTS + Grab across 4 days</span><span class="bud-val">฿600–900</span></div>
+    <div class="bud-row"><span>Rajadamnern Club Class ×4</span><span class="bud-val">฿1,900</span></div>
+    <div class="bud-row"><span>Easy Kart — all 4 (2 sessions each)</span><span class="bud-val">฿700–1,000</span></div>
+    <div class="bud-row"><span>Yokkao drop-in ×2 (Moiz + Idris)</span><span class="bud-val">฿600–1,000</span></div>
+    <div class="bud-row"><span>Massages (all 4, multiple sessions)</span><span class="bud-val">฿1,400–2,000</span></div>
+    <div class="bud-row"><span>Food — all 4 days (8 meals each)</span><span class="bud-val">฿3,500–5,000</span></div>
+    <div class="bud-section-label">Shopping (variable)</div>
+    <div class="bud-row"><span>MBK + Platinum + Chatuchak</span><span class="bud-val">฿3,000–8,000</span></div>
+    <div class="bud-row total"><span>Total per person (excl. shopping)</span><span class="bud-val">฿13,900–19,800</span></div>
+    <div class="bud-note">~₹33,500–47,500/person · excl. flights + hotel + shopping</div>
+    <div class="bud-row total"><span>With shopping (mid-range buyer)</span><span class="bud-val">฿16,900–27,800</span></div>
+    <div class="bud-note">~₹40,500–67,000/person all-in (excl. flights + hotel)</div>
+  </div>
+</div>
+
+<div class="bottom-pad"></div>
 
 <script>
-  // ─── MOBILE MENU ───
-  function toggleMenu() {
-    document.getElementById('mobileMenu').classList.toggle('open');
-  }
-  function closeMenu() {
-    document.getElementById('mobileMenu').classList.remove('open');
-  }
-
-  // ─── SCROLL TOP BUTTON ───
-  const scrollTopBtn = document.getElementById('scrollTop');
-  window.addEventListener('scroll', () => {
-    scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
-  });
-
-  // ─── REVEAL ON SCROLL ───
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-  reveals.forEach(el => observer.observe(el));
-
-  // ─── FORM HANDLING ───
-  function handleBooking() {
-    const btn = event.target;
-    btn.textContent = '✅ Request Sent!';
-    btn.style.background = 'var(--green)';
-    btn.style.color = 'var(--black)';
-    setTimeout(() => {
-      btn.textContent = '💪 Submit Request';
-      btn.style.background = '';
-      btn.style.color = '';
-    }, 3000);
-  }
-
-  function handleContact() {
-    const btn = event.target;
-    btn.textContent = '✅ Message Sent!';
-    btn.style.background = 'var(--green)';
-    btn.style.color = 'var(--black)';
-    setTimeout(() => {
-      btn.textContent = 'Send Message →';
-      btn.style.background = '';
-      btn.style.color = '';
-    }, 3000);
-  }
-
-  // ─── SMOOTH ACTIVE NAV ───
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 120) current = s.id;
-    });
-    navLinks.forEach(a => {
-      a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--magenta)' : '';
-    });
-  });
+function tog(id) {
+  const b = document.getElementById(id);
+  const c = document.getElementById('c-' + id);
+  if (!b) return;
+  const open = b.classList.contains('open');
+  b.classList.toggle('open', !open);
+  c.classList.toggle('open', !open);
+}
+// Open action list by default
+document.addEventListener('DOMContentLoaded', function() {
+  // Already open in HTML — nothing needed
+});
 </script>
 </body>
 </html>
