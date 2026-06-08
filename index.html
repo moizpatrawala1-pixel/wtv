@@ -3,747 +3,725 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Patrawalas — Thailand Jul 2025</title>
+<title>Patrawalas — Thailand · Jul 2025</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0D1A1C;
+  --bg2:#0A1416;
+  --card:#121F22;
+  --card2:#162428;
+  --ink:#EAD9BC;
+  --ink2:#A89A80;
+  --ink3:#665E4E;
+  --border:rgba(234,217,188,0.07);
+  --border2:rgba(234,217,188,0.13);
+  --coral:#FF6B47;
+  --coral-soft:rgba(255,107,71,0.1);
+  --coral-mid:rgba(255,107,71,0.2);
+  --sea:#4ECBB4;
+  --sea-soft:rgba(78,203,180,0.1);
+  --sea-mid:rgba(78,203,180,0.2);
+  --sand:#D4A853;
+  --sand-soft:rgba(212,168,83,0.1);
+  --sand-mid:rgba(212,168,83,0.2);
+  --sky:#5B9FD4;
+  --sky-soft:rgba(91,159,212,0.1);
+  --sky-mid:rgba(91,159,212,0.2);
+  --leaf:#5DBD7A;
+  --leaf-soft:rgba(93,189,122,0.1);
+  --leaf-mid:rgba(93,189,122,0.2);
+  --r:14px;--rsm:9px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:rgba(78,203,180,.25);border-radius:2px}
 
-  :root {
-    --bg:       #0E0C09;
-    --bg2:      #151208;
-    --card:     #1A1610;
-    --card2:    #201B13;
-    --ink:      #F0EAE0;
-    --ink2:     #B8AFA2;
-    --ink3:     #7A7168;
-    --border:   rgba(255,255,255,0.07);
-    --border2:  rgba(255,255,255,0.12);
-    --gold:     #C9973A;
-    --gold-dim: rgba(201,151,58,0.15);
-    --gold-soft:rgba(201,151,58,0.08);
-    --teal:     #4AADA4;
-    --teal-dim: rgba(74,173,164,0.14);
-    --red:      #D4614A;
-    --red-dim:  rgba(212,97,74,0.14);
-    --amber:    #C47B2B;
-    --amber-dim:rgba(196,123,43,0.14);
-    --blue:     #5B8FCC;
-    --blue-dim: rgba(91,143,204,0.14);
-    --green:    #5BA87A;
-    --green-dim:rgba(91,168,122,0.14);
-    --r:        14px;
-    --rsm:      9px;
-  }
+/* ── HERO ── */
+.hero{
+  position:relative;padding:52px 20px 44px;overflow:hidden;
+  background:#080F11;min-height:100svh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+}
+.hero-sky{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 90% 55% at 75% -10%,rgba(78,203,180,.16),transparent 55%),
+    radial-gradient(ellipse 60% 50% at 10% 105%,rgba(255,107,71,.13),transparent 55%),
+    radial-gradient(ellipse 50% 40% at 45% 45%,rgba(212,168,83,.05),transparent 65%);
+}
+/* wave SVG bottom */
+.hero-wave{position:absolute;bottom:-2px;left:0;right:0;pointer-events:none;line-height:0}
+.hero-wave svg{width:100%;height:auto;display:block}
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--ink);
-    -webkit-font-smoothing: antialiased;
-    min-height: 100vh;
-  }
+/* stars grid */
+.hero-stars{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:
+    radial-gradient(1px 1px at 20% 18%,rgba(255,255,255,.5),transparent),
+    radial-gradient(1px 1px at 60% 8%,rgba(255,255,255,.4),transparent),
+    radial-gradient(1.5px 1.5px at 80% 25%,rgba(255,255,255,.6),transparent),
+    radial-gradient(1px 1px at 40% 40%,rgba(255,255,255,.3),transparent),
+    radial-gradient(1px 1px at 15% 55%,rgba(255,255,255,.35),transparent),
+    radial-gradient(1.5px 1.5px at 92% 12%,rgba(255,255,255,.55),transparent),
+    radial-gradient(1px 1px at 55% 35%,rgba(255,255,255,.3),transparent),
+    radial-gradient(1px 1px at 30% 70%,rgba(255,255,255,.25),transparent),
+    radial-gradient(1px 1px at 72% 55%,rgba(255,255,255,.4),transparent),
+    radial-gradient(1.5px 1.5px at 5% 30%,rgba(255,255,255,.5),transparent);
+}
 
-  /* ── HERO ── */
-  .hero {
-    position: relative;
-    padding: 48px 20px 36px;
-    overflow: hidden;
-    background: #0A0804;
-  }
-  .hero-grain {
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-  }
-  .hero-glow {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse at 80% 0%, rgba(201,151,58,.18) 0%, transparent 60%),
-      radial-gradient(ellipse at 10% 100%, rgba(74,173,164,.1) 0%, transparent 55%);
-    pointer-events: none;
-  }
-  .hero-inner { position: relative; z-index: 1; }
+.hero-inner{position:relative;z-index:2}
+.hero-kicker{
+  font-size:9px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--sea);margin-bottom:18px;opacity:.8;
+  display:flex;align-items:center;gap:10px;
+}
+.hero-kicker::before{content:'';width:24px;height:1px;background:var(--sea);opacity:.5}
 
-  .hero-eyebrow {
-    font-size: 9.5px;
-    font-weight: 600;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 14px;
-    opacity: 0.85;
-  }
-  .hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 52px;
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1.0;
-    margin-bottom: 4px;
-    letter-spacing: -0.01em;
-  }
-  .hero-title em {
-    font-style: italic;
-    font-weight: 400;
-    color: rgba(240,234,224,0.4);
-  }
-  .hero-sub {
-    font-size: 12px;
-    color: var(--ink3);
-    margin-bottom: 24px;
-    line-height: 1.6;
-    font-weight: 300;
-    letter-spacing: 0.02em;
-  }
-  .hero-pills { display: flex; flex-wrap: wrap; gap: 6px; }
-  .pill {
-    font-size: 9.5px;
-    font-weight: 600;
-    letter-spacing: .06em;
-    padding: 5px 13px;
-    border-radius: 20px;
-    border: 1px solid;
-    text-transform: uppercase;
-  }
-  .pill-gold  { color: var(--gold); border-color: rgba(201,151,58,.3); background: var(--gold-soft); }
-  .pill-teal  { color: var(--teal); border-color: rgba(74,173,164,.25); background: var(--teal-dim); }
-  .pill-dim   { color: var(--ink3); border-color: var(--border2); background: rgba(255,255,255,.03); }
+.hero-title{
+  font-family:'Fraunces',serif;font-weight:600;
+  font-size:clamp(58px,16vw,88px);line-height:.9;
+  letter-spacing:-.025em;color:var(--ink);margin-bottom:10px;
+}
+.hero-title em{
+  display:block;font-style:italic;font-weight:300;
+  color:rgba(234,217,188,.28);font-size:.82em;
+}
 
-  /* ── CHANGE LOG ── */
-  .changelog {
-    margin: 0 12px 8px;
-    border: 1px solid rgba(201,151,58,.2);
-    border-radius: var(--r);
-    background: rgba(201,151,58,.05);
-    overflow: hidden;
-  }
-  .changelog-hdr {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 11px 14px;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .changelog-title { font-size: 12px; font-weight: 600; color: var(--gold); }
-  .changelog-sub { font-size: 11px; color: var(--ink3); margin-top: 1px; }
-  .changelog-body { display: none; border-top: 1px solid rgba(201,151,58,.15); }
-  .changelog-body.open { display: block; }
-  .cl-item {
-    display: flex;
-    gap: 10px;
-    padding: 9px 14px;
-    border-bottom: 1px solid var(--border);
-    font-size: 11.5px;
-    color: var(--ink2);
-    line-height: 1.5;
-    align-items: flex-start;
-  }
-  .cl-item:last-child { border-bottom: none; }
-  .cl-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    margin-top: 5px;
-  }
-  .cl-dot.gold { background: var(--gold); }
-  .cl-dot.teal { background: var(--teal); }
-  .cl-dot.red  { background: var(--red); }
+.hero-sub{
+  font-size:12px;color:var(--ink3);margin-bottom:32px;
+  line-height:1.75;font-weight:300;letter-spacing:.04em;max-width:320px;
+}
 
-  /* ── SECTION LABEL ── */
-  .sec {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    color: var(--ink3);
-    padding: 24px 16px 8px;
-  }
+.hero-pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:40px}
+.pill{
+  font-size:9px;font-weight:700;letter-spacing:.07em;
+  padding:5px 13px;border-radius:20px;border:1px solid;text-transform:uppercase;
+}
+.p-sea  {color:var(--sea);border-color:rgba(78,203,180,.3);background:var(--sea-soft)}
+.p-sand {color:var(--sand);border-color:rgba(212,168,83,.3);background:var(--sand-soft)}
+.p-coral{color:var(--coral);border-color:rgba(255,107,71,.3);background:var(--coral-soft)}
+.p-dim  {color:var(--ink3);border-color:var(--border2);background:rgba(255,255,255,.03)}
 
-  /* ── CARD ── */
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--r);
-    margin: 0 12px 8px;
-    overflow: hidden;
-  }
+/* hero stats row */
+.hero-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:18px 0;gap:0;
+}
+.hstat{padding:0 12px 0 0;border-right:1px solid var(--border)}
+.hstat:last-child{border-right:none;padding-left:12px;padding-right:0}
+.hstat:not(:first-child){padding-left:12px}
+.hs-val{
+  font-family:'Fraunces',serif;font-size:22px;font-style:italic;
+  color:var(--sea);line-height:1;margin-bottom:3px;
+}
+.hs-lbl{font-size:9px;color:var(--ink3);font-weight:400;letter-spacing:.04em;text-transform:uppercase}
 
-  /* ── ACCORDION HEADER ── */
-  .hdr {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    padding: 14px 14px;
-    cursor: pointer;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    transition: background .15s;
-  }
-  .hdr:active { background: var(--card2); }
+/* ── SECTION LABEL ── */
+.sec-label{
+  font-size:8.5px;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ink3);
+  padding:28px 16px 9px;
+  display:flex;align-items:center;gap:8px;
+}
+.sec-label::before{content:'';width:16px;height:1px;background:var(--ink3);opacity:.4}
 
-  .badge {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: .03em;
-  }
+/* ── CARD ── */
+.card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r);margin:0 12px 8px;overflow:hidden;
+}
 
-  .meta { flex: 1; min-width: 0; }
-  .meta-t {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1.3;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .meta-s {
-    font-size: 11px;
-    color: var(--ink3);
-    margin-top: 2px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-weight: 300;
-  }
-  .chev {
-    color: var(--ink3);
-    flex-shrink: 0;
-    font-size: 18px;
-    line-height: 1;
-    transition: transform .22s ease;
-    opacity: 0.6;
-  }
-  .chev.open { transform: rotate(180deg); }
+/* left accent bar */
+.card.accent-coral{border-left:2px solid var(--coral)}
+.card.accent-sea{border-left:2px solid var(--sea)}
+.card.accent-sand{border-left:2px solid var(--sand)}
+.card.accent-sky{border-left:2px solid var(--sky)}
+.card.accent-leaf{border-left:2px solid var(--leaf)}
 
-  /* ── BODY ── */
-  .body { display: none; border-top: 1px solid var(--border); }
-  .body.open { display: block; }
+/* ── ACCORDION HEADER ── */
+.hdr{
+  display:flex;align-items:center;gap:12px;padding:14px 14px;
+  cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;
+  transition:background .15s;
+}
+.hdr:active{background:var(--card2)}
+.badge{
+  width:42px;height:42px;border-radius:11px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:18px;
+}
+.meta{flex:1;min-width:0}
+.meta-t{
+  font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.3;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.meta-s{
+  font-size:10.5px;color:var(--ink3);margin-top:2px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:300;
+}
+.chev{
+  color:var(--ink3);flex-shrink:0;font-size:16px;
+  transition:transform .22s ease;opacity:.5;
+}
+.chev.open{transform:rotate(180deg)}
 
-  /* ── TIMELINE ── */
-  .tl { padding: 14px 14px 18px; }
-  .ti {
-    display: grid;
-    grid-template-columns: 46px 1fr;
-    column-gap: 12px;
-    margin-bottom: 20px;
-    align-items: start;
-  }
-  .ti:last-child { margin-bottom: 0; }
-  .tt {
-    font-size: 9.5px;
-    font-weight: 600;
-    color: var(--ink3);
-    text-align: right;
-    padding-top: 3px;
-    line-height: 1.4;
-    letter-spacing: .02em;
-  }
-  .tn {
-    font-size: 13.5px;
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1.35;
-    margin-bottom: 4px;
-  }
-  .td {
-    font-size: 12px;
-    color: var(--ink2);
-    line-height: 1.75;
-    font-weight: 300;
-  }
-  .tp {
-    display: inline-block;
-    font-size: 10.5px;
-    font-weight: 600;
-    color: var(--teal);
-    margin-top: 5px;
-    letter-spacing: .01em;
-  }
-  .gold-star { color: var(--gold); }
+/* ── BODY ── */
+.body{display:none;border-top:1px solid var(--border)}
+.body.open{display:block}
 
-  /* ── MINI DIVIDER ── */
-  .tsep {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: .16em;
-    text-transform: uppercase;
-    color: var(--ink3);
-    padding: 8px 14px 6px;
-    background: var(--bg2);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    margin: 4px 0 6px;
-  }
+/* ── TIMELINE ── */
+.tl{padding:14px 14px 20px}
+.ti{
+  display:grid;grid-template-columns:44px 1fr;
+  column-gap:13px;margin-bottom:20px;align-items:start;
+}
+.ti:last-child{margin-bottom:0}
+.tt{
+  font-size:9.5px;font-weight:600;color:var(--ink3);
+  text-align:right;padding-top:3px;line-height:1.5;letter-spacing:.02em;
+}
+.tn{font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.35;margin-bottom:5px}
+.tn .star{color:var(--coral)}
+.td{font-size:12px;color:var(--ink2);line-height:1.85;font-weight:300}
+.tp{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:10.5px;font-weight:600;color:var(--sea);
+  margin-top:6px;
+  background:var(--sea-soft);border:1px solid rgba(78,203,180,.18);
+  padding:3px 9px;border-radius:6px;
+}
 
-  /* ── NOTE STRIP ── */
-  .note {
-    display: flex;
-    gap: 10px;
-    padding: 11px 14px;
-    font-size: 11.5px;
-    line-height: 1.65;
-    border-bottom: 1px solid var(--border);
-    align-items: flex-start;
-    color: var(--ink2);
-    background: var(--bg2);
-    font-weight: 300;
-  }
-  .note-icon { flex-shrink: 0; font-size: 13px; margin-top: 2px; }
-  .note strong { color: var(--ink); font-weight: 600; }
+/* ── SEPARATORS ── */
+.tsep{
+  font-size:8.5px;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ink3);
+  padding:8px 14px 7px;
+  background:var(--bg2);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  margin:4px 0 6px;
+  display:flex;align-items:center;gap:8px;
+}
+.tsep::before{content:'';width:12px;height:1px;background:var(--ink3);opacity:.4}
 
-  /* ── UPGRADE NOTE ── */
-  .upgrade-note {
-    display: flex;
-    gap: 10px;
-    padding: 10px 14px;
-    font-size: 11.5px;
-    line-height: 1.6;
-    border-bottom: 1px solid rgba(201,151,58,.15);
-    align-items: flex-start;
-    color: rgba(201,151,58,.9);
-    background: rgba(201,151,58,.06);
-    font-weight: 400;
-  }
+/* ── BANNERS ── */
+.banner{
+  display:flex;gap:10px;padding:11px 14px;
+  font-size:11.5px;line-height:1.7;
+  border-bottom:1px solid var(--border);
+  align-items:flex-start;font-weight:300;
+}
+.banner-icon{flex-shrink:0;font-size:13px;margin-top:2px}
+.banner strong{font-weight:600}
 
-  /* ── RESTAURANT ROWS ── */
-  .rr {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 11px 14px;
-    border-bottom: 1px solid var(--border);
-  }
-  .rr:last-child { border-bottom: none; }
-  .rl { flex: 1; min-width: 0; }
-  .rn { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
-  .rd { font-size: 11.5px; color: var(--ink2); line-height: 1.6; font-weight: 300; }
-  .rv { flex-shrink: 0; text-align: right; }
-  .rprice { font-size: 11px; font-weight: 700; color: var(--teal); white-space: nowrap; }
-  .rday { font-size: 10px; color: var(--ink3); margin-top: 2px; white-space: nowrap; }
+.b-info  {color:var(--ink2);background:var(--card2)}
+.b-warn  {color:rgba(255,107,71,.85);background:var(--coral-soft);border-bottom-color:rgba(255,107,71,.18)}
+.b-tip   {color:rgba(78,203,180,.85);background:var(--sea-soft);border-bottom-color:rgba(78,203,180,.18)}
+.b-gold  {color:rgba(212,168,83,.9);background:var(--sand-soft);border-bottom-color:rgba(212,168,83,.18)}
 
-  /* ── INLINE TAG ── */
-  .itag {
-    display: inline-block;
-    font-size: 9px;
-    font-weight: 700;
-    padding: 2px 7px;
-    border-radius: 6px;
-    vertical-align: middle;
-    margin-left: 5px;
-    position: relative;
-    top: -1px;
-    letter-spacing: .03em;
-    text-transform: uppercase;
-  }
+/* ── RESTAURANT ROWS ── */
+.rr{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:10px;
+  padding:12px 14px;border-bottom:1px solid var(--border);
+}
+.rr:last-child{border-bottom:none}
+.rl{flex:1;min-width:0}
+.rn{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.rd{font-size:12px;color:var(--ink2);line-height:1.75;font-weight:300}
+.rv{flex-shrink:0;text-align:right}
+.rprice{font-size:11px;font-weight:700;color:var(--sea);white-space:nowrap}
+.rprice.over{color:var(--coral)}
+.rday{font-size:10px;color:var(--ink3);margin-top:2px;white-space:nowrap}
+.rtag{
+  display:inline-block;font-size:8.5px;font-weight:700;
+  padding:2px 8px;border-radius:6px;vertical-align:middle;
+  margin-left:6px;position:relative;top:-1px;letter-spacing:.03em;text-transform:uppercase;
+}
+.rtag-sea   {color:var(--sea);background:var(--sea-soft);border:1px solid rgba(78,203,180,.2)}
+.rtag-coral {color:var(--coral);background:var(--coral-soft);border:1px solid rgba(255,107,71,.2)}
+.rtag-sand  {color:var(--sand);background:var(--sand-soft);border:1px solid rgba(212,168,83,.2)}
 
-  /* ── SHOP GRID ── */
-  .sg {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 9px;
-    padding: 12px 14px;
-  }
-  .sc {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: var(--rsm);
-    padding: 11px 12px;
-  }
-  .sn { font-size: 12.5px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
-  .sd { font-size: 11px; color: var(--ink2); line-height: 1.65; font-weight: 300; }
-  .st-row { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 7px; }
-  .stag {
-    font-size: 9px;
-    font-weight: 700;
-    padding: 2px 7px;
-    border-radius: 6px;
-    text-transform: uppercase;
-    letter-spacing: .03em;
-  }
+/* ── SHOPPING GRID ── */
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 14px}
+.sc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rsm);padding:11px 12px}
+.sn{font-size:12.5px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.sd{font-size:11px;color:var(--ink2);line-height:1.72;font-weight:300}
+.st-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px}
+.stag{font-size:8.5px;font-weight:700;padding:2px 7px;border-radius:6px;text-transform:uppercase;letter-spacing:.03em}
+.sched{padding:0 14px 14px;font-size:12px;color:var(--ink2);line-height:1.95;font-weight:300}
+.sched strong{color:var(--ink);font-weight:600}
 
-  /* ── SCHED NOTE ── */
-  .sched {
-    padding: 0 14px 14px;
-    font-size: 12px;
-    color: var(--ink2);
-    line-height: 1.9;
-    font-weight: 300;
-  }
-  .sched strong { color: var(--ink); font-weight: 600; }
+/* ── TIPS GRID ── */
+.tips-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 14px}
+.tip-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rsm);padding:12px 12px}
+.tip-icon{font-size:18px;margin-bottom:6px;display:block}
+.tip-t{font-size:12px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.tip-b{font-size:11px;color:var(--ink2);line-height:1.68;font-weight:300}
 
-  /* ── BUDGET ── */
-  .blabel {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    color: var(--ink3);
-    padding: 10px 14px 4px;
-    border-top: 1px solid var(--border);
-  }
-  .blabel:first-child { border-top: none; }
-  .brow {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    font-size: 12.5px;
-    color: var(--ink2);
-    padding: 5px 14px;
-    border-bottom: 1px solid var(--border);
-    gap: 8px;
-    font-weight: 300;
-  }
-  .brow:last-of-type { border-bottom: none; }
-  .brow.total {
-    font-weight: 700;
-    font-size: 13px;
-    background: var(--bg2);
-    border-top: 1px solid var(--border2);
-    border-bottom: 1px solid var(--border2);
-    padding: 10px 14px;
-    margin-top: 6px;
-    color: var(--ink);
-  }
-  .bval { font-weight: 700; color: var(--teal); white-space: nowrap; flex-shrink: 0; }
-  .bnote { font-size: 11px; color: var(--ink3); padding: 3px 14px 8px; font-weight: 300; }
+/* ── MOMENTS ── */
+.moments{padding:12px 14px 16px;display:flex;flex-direction:column;gap:9px}
+.moment{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--rsm);padding:13px 13px;
+  display:flex;gap:14px;align-items:flex-start;
+}
+.m-num{
+  font-family:'Fraunces',serif;font-size:28px;font-weight:600;
+  color:var(--coral);line-height:1;flex-shrink:0;opacity:.6;
+  width:26px;text-align:center;font-style:italic;
+}
+.m-title{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.m-body{font-size:11.5px;color:var(--ink2);line-height:1.72;font-weight:300}
 
-  /* ── ACTION ROWS ── */
-  .ar {
-    display: grid;
-    grid-template-columns: 52px 1fr;
-    column-gap: 10px;
-    padding: 11px 14px;
-    border-bottom: 1px solid var(--border);
-    align-items: start;
-  }
-  .ar:last-child { border-bottom: none; }
-  .au {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: .05em;
-    text-transform: uppercase;
-    text-align: right;
-    padding-top: 2px;
-    line-height: 1.45;
-  }
-  .u-red   { color: var(--red); }
-  .u-amber { color: var(--amber); }
-  .u-blue  { color: var(--blue); }
-  .an { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
-  .ad { font-size: 11.5px; color: var(--ink2); line-height: 1.6; font-weight: 300; }
+/* ── ACTION LIST ── */
+.ar{
+  display:grid;grid-template-columns:50px 1fr;
+  column-gap:10px;padding:12px 14px;
+  border-bottom:1px solid var(--border);align-items:start;
+}
+.ar:last-child{border-bottom:none}
+.au{
+  font-size:8.5px;font-weight:700;letter-spacing:.05em;
+  text-transform:uppercase;text-align:right;padding-top:2px;line-height:1.5;
+}
+.u-red  {color:var(--coral)}
+.u-sand {color:var(--sand)}
+.u-sky  {color:var(--sky)}
+.an{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.ad{font-size:11.5px;color:var(--ink2);line-height:1.7;font-weight:300}
 
-  .bottom-pad { height: 48px; }
+/* ── BUDGET ── */
+.blabel{
+  font-size:8.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink3);padding:10px 14px 5px;
+  border-top:1px solid var(--border);
+}
+.blabel:first-child{border-top:none}
+.brow{
+  display:flex;justify-content:space-between;align-items:baseline;
+  font-size:12.5px;color:var(--ink2);padding:5px 14px;
+  border-bottom:1px solid var(--border);gap:8px;font-weight:300;
+}
+.brow.total{
+  font-weight:700;font-size:13px;color:var(--ink);
+  background:var(--bg2);
+  border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);
+  padding:11px 14px;margin-top:6px;
+}
+.bval{font-weight:700;color:var(--sea);white-space:nowrap;flex-shrink:0}
+.bval.saved{color:var(--leaf)}
+.bnote{font-size:11px;color:var(--ink3);padding:3px 14px 8px;font-weight:300}
 
-  /* scrollbar */
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+/* ── DAY CHAPTER NUMBERS ── */
+.day-chapter{
+  position:relative;
+  padding:8px 12px 0;
+  margin:0 12px;
+  overflow:hidden;
+}
+.day-chapter-n{
+  font-family:'Fraunces',serif;
+  font-size:clamp(80px,22vw,120px);
+  font-style:italic;font-weight:300;
+  color:rgba(78,203,180,.045);
+  line-height:1;letter-spacing:-.03em;
+  user-select:none;pointer-events:none;
+  position:absolute;right:-4px;top:-12px;
+}
+
+/* ── DAY HEADER CARD ── */
+.day-hdr{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 14px;cursor:pointer;
+  user-select:none;-webkit-tap-highlight-color:transparent;
+  transition:background .15s;
+}
+.day-hdr:active{background:var(--card2)}
+.day-badge{
+  flex-shrink:0;width:44px;height:44px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Fraunces',serif;font-size:15px;font-style:italic;font-weight:600;
+}
+
+/* ── BOTTOM PAD ── */
+.bottom-pad{height:60px}
+
+/* ── PROGRESS BAR ── */
+.prog-bar{
+  position:fixed;top:0;left:0;z-index:999;
+  height:2px;background:var(--coral);width:0;
+  transition:width .1s ease;
+}
 </style>
 </head>
 <body>
 
+<div class="prog-bar" id="prog"></div>
+
 <!-- ══ HERO ══ -->
 <div class="hero">
-  <div class="hero-grain"></div>
-  <div class="hero-glow"></div>
+  <div class="hero-sky"></div>
+  <div class="hero-stars"></div>
+
+  <!-- wave bottom -->
+  <div class="hero-wave">
+    <svg viewBox="0 0 400 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,20 C50,38 100,5 150,20 C200,35 250,5 300,20 C340,32 370,14 400,20 L400,40 L0,40 Z" fill="#0D1A1C"/>
+    </svg>
+  </div>
+
   <div class="hero-inner">
-    <div class="hero-eyebrow">July 1–7, 2025 · 4 people</div>
-    <div class="hero-title">Patrawalas<br><em>Thailand</em></div>
-    <div class="hero-sub">Hua Hin · Bangkok · A trip worth remembering.</div>
+    <div class="hero-kicker">July 1–7, 2025 · 4 people · v4 Optimised</div>
+
+    <div class="hero-title">
+      Patrawalas<br>
+      <em>Thailand</em>
+    </div>
+
+    <div class="hero-sub">Hua Hin · Bangkok · Seven days your family will never stop talking about.</div>
+
     <div class="hero-pills">
-      <span class="pill pill-gold">Fully optimised v2</span>
-      <span class="pill pill-teal">Chicken &amp; beef verified</span>
-      <span class="pill pill-dim">7 days</span>
+      <span class="pill p-sea">Budget-optimised</span>
+      <span class="pill p-sand">Halal verified</span>
+      <span class="pill p-dim">7 days</span>
+      <span class="pill p-coral">⚠ 2 flags inside</span>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hstat">
+        <div class="hs-val">7</div>
+        <div class="hs-lbl">Days</div>
+      </div>
+      <div class="hstat">
+        <div class="hs-val">4</div>
+        <div class="hs-lbl">People</div>
+      </div>
+      <div class="hstat">
+        <div class="hs-val">฿625</div>
+        <div class="hs-lbl">Max/meal</div>
+      </div>
+      <div class="hstat">
+        <div class="hs-val">∞</div>
+        <div class="hs-lbl">Memories</div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- ══ WHAT CHANGED ══ -->
-<div class="sec">✦ What's new in this version</div>
-<div class="changelog">
-  <div class="changelog-hdr" onclick="tog('cl')">
-    <div style="font-size:18px">✦</div>
-    <div style="flex:1">
-      <div class="changelog-title">6 upgrades from v1</div>
-      <div class="changelog-sub">Restaurants, Day 7 reorder, Rocks added</div>
+<!-- ══ MOMENTS ══ -->
+<div class="sec-label">✦ Moments that will define this trip</div>
+<div class="card accent-coral">
+  <div class="hdr" onclick="tog('moments')">
+    <div class="badge" style="background:var(--coral-soft)">✦</div>
+    <div class="meta">
+      <div class="meta-t">7 memories your family keeps forever</div>
+      <div class="meta-s">What this trip is really about</div>
     </div>
-    <span class="chev open" id="c-cl">&#8964;</span>
+    <span class="chev open" id="c-moments">&#8964;</span>
   </div>
-  <div class="changelog-body open" id="cl">
-    <div class="cl-item"><div class="cl-dot gold"></div><div><strong>Day 2 dinner upgraded</strong> — Sea Harmony replaced by Rocks Restaurant at Cape Nidhra. Rated 4.9/5 on TripAdvisor (#14 of 708 in Hua Hin). Beachfront fine dining with grilled seafood, chicken, seabass, and stunning pool-to-sea views. A significant step up.</div></div>
-    <div class="cl-item"><div class="cl-dot gold"></div><div><strong>Rocks added Day 3 sunset</strong> — On the Rocks Bar at Cape Nidhra fits perfectly after Tamarind Market as a sundowner, or can replace the market entirely for the last Hua Hin evening if you prefer a sit-down experience.</div></div>
-    <div class="cl-item"><div class="cl-dot red"></div><div><strong>The Local removed</strong> — confirmed not halal certified and pork is integral to many key dishes. Replaced with a superior option.</div></div>
-    <div class="cl-item"><div class="cl-dot gold"></div><div><strong>Day 7 sendoff → Nusara</strong> — Asia's #6 Best Restaurant 2025, Michelin-starred. Thai Wagyu, heritage curries, rooftop view over Wat Pho. Dinner-only, so Day 7 is restructured around a 7pm booking. The best meal of the trip.</div></div>
-    <div class="cl-item"><div class="cl-dot teal"></div><div><strong>Day 7 reordered as requested</strong> — Muay Thai moved to 10:30am, followed by lunch, then massages in the afternoon before a relaxed evening at Nusara.</div></div>
-    <div class="cl-item"><div class="cl-dot teal"></div><div><strong>Day 7 lunch upgraded</strong> — replacing The Local with Baan Glom Gig, a beautiful riverside garden restaurant in old Bangkok. Heritage Thai food, outdoor setting, chicken and seafood focus, no pork required dishes clearly listed.</div></div>
+  <div class="body open" id="moments">
+    <div class="moments">
+      <div class="moment"><div class="m-num">1</div><div><div class="m-title">The sunbeam at Phraya Nakhon Cave — Day 3</div><div class="m-body">A 19th-century royal pavilion inside a jungle cave, lit by a single shaft of natural light. You hike to earn it. That's what makes it land. Everyone goes quiet when they see it.</div></div></div>
+      <div class="moment"><div class="m-num">2</div><div><div class="m-title">Rocks Restaurant at sunset — Day 2</div><div class="m-body">The best restaurant in Hua Hin, on the beach, at dusk. Grilled seabass, salt breeze, the pool glowing beside you. This is the dinner everyone still talks about on the flight home.</div></div></div>
+      <div class="moment"><div class="m-num">3</div><div><div class="m-title">Moiz and Idris doing Muay Thai — Day 7</div><div class="m-body">Two sessions at one of the world's most iconic gyms, trainers who've cornered champions. Walking out tired and proud. A story that gets better every time it's told.</div></div></div>
+      <div class="moment"><div class="m-num">4</div><div><div class="m-title">Rajadamnern fight night — Day 6</div><div class="m-body">The oldest Muay Thai venue in Thailand. Wai kru ceremonies, the crowd, the bell. Three hours inside something ancient and alive. Club Class — comfortable and right in the energy.</div></div></div>
+      <div class="moment"><div class="m-num">5</div><div><div class="m-title">Jirakaan — the sendoff dinner — Day 7</div><div class="m-body">Ancient Rattanakosin-era royal Thai recipes in a colonial house on Sukhumvit 51. Tender smoked Wagyu brisket, tom yum that earns its name, and centuries of history in every dish. All four of you, together, on the last night. Book it.</div></div></div>
+      <div class="moment"><div class="m-num">6</div><div><div class="m-title">Banana boat — all 4 — Day 2</div><div class="m-body">The funniest 15 minutes of the trip. Everyone falls off. That's the whole point. No photo does it justice. You just have to be there.</div></div></div>
+      <div class="moment"><div class="m-num">7</div><div><div class="m-title">The massages — Day 7</div><div class="m-body">Asia Herb Association, 2 hours, private rooms, herbal ball and traditional Thai massage. After Muay Thai and a week of walking, this is the moment the trip exhales. You walk out completely new.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FLAGS ══ -->
+<div class="sec-label">⚠ Read before you book anything</div>
+<div class="card accent-coral">
+  <div class="hdr" onclick="tog('flags')">
+    <div class="badge" style="background:var(--coral-soft)">⚠</div>
+    <div class="meta">
+      <div class="meta-t">2 important updates</div>
+      <div class="meta-s">Jodd Fairs moved · Nusara removed</div>
+    </div>
+    <span class="chev open" id="c-flags">&#8964;</span>
+  </div>
+  <div class="body open" id="flags">
+    <div class="banner b-warn">
+      <span class="banner-icon">⚠</span>
+      <div><strong>Jodd Fairs Rama 9 permanently closed (Jan 2025).</strong> The new location is Jodd Fairs Ratchada — next to Big C on Ratchadapisek Road, 3 minutes from MRT Thailand Cultural Centre Exit 4. All the same stalls, better layout. Update your Grab destination.</div>
+    </div>
+    <div class="banner b-gold" style="border-bottom:none">
+      <span class="banner-icon">✦</span>
+      <div><strong>Nusara removed. Jirakaan added for Day 7.</strong> Nusara is ฿3,590/person — a communal table with strangers, nowhere near budget. Jirakaan is a 100% halal fine dining restaurant serving Rattanakosin royal Thai recipes in a colonial villa. À la carte, 4 people eat extraordinarily well for ฿1,800–2,400 total. Book via their Facebook or call ahead for a table of 4. Sukhumvit Soi 51.</div>
+    </div>
   </div>
 </div>
 
 <!-- ══ BOOK NOW ══ -->
-<div class="sec">✅ Book before you fly</div>
-<div class="card">
+<div class="sec-label">✅ Book in this order — before you fly</div>
+<div class="card accent-coral">
   <div class="hdr" onclick="tog('action')">
-    <div class="badge" style="background:var(--red-dim);color:var(--red)">📋</div>
+    <div class="badge" style="background:var(--coral-soft)">📋</div>
     <div class="meta">
       <div class="meta-t">Pre-trip action list</div>
-      <div class="meta-s">Everything to book before departure</div>
+      <div class="meta-s">Priority order — don't skip any of these</div>
     </div>
     <span class="chev open" id="c-action">&#8964;</span>
   </div>
   <div class="body open" id="action">
     <div class="ar">
-      <div class="au u-red">URGENT</div>
-      <div><div class="an">Rajadamnern Stadium — Club Class ×4</div><div class="ad">Book at rajadamnern.com or Klook. ฿1,900/person = ฿7,600 total. Sunday nights sell out weeks in advance.</div></div>
+      <div class="au u-red">TODAY</div>
+      <div><div class="an">Rajadamnern Stadium — Club Class ×4</div><div class="ad">rajadamnern.com or Klook. ฿1,900/person = ฿7,600 total. Sunday nights sell out weeks in advance. Do this first.</div></div>
     </div>
     <div class="ar">
-      <div class="au u-red">URGENT</div>
-      <div><div class="an">Nusara — Day 7 dinner (7pm, table of 4)</div><div class="ad">Email nusarabkk@gmail.com or call +66 97 293 5549. Book immediately — this is #6 on Asia's 50 Best and fills up weeks in advance. Mention chicken/beef preference and ask to avoid pork dishes.</div></div>
+      <div class="au u-red">TODAY</div>
+      <div><div class="an">Rocks Restaurant, Cape Nidhra — Day 2 dinner, 7:30pm</div><div class="ad">Book via capenidhra.com or call directly. Request outdoor/beachfront table for 4. Fills up at least 2 weeks out.</div></div>
     </div>
     <div class="ar">
-      <div class="au u-red">URGENT</div>
-      <div><div class="an">Rocks Restaurant — Day 2 dinner (7:30pm)</div><div class="ad">Book via capenidhra.com or call Cape Nidhra Hotel. Request outdoor/beachfront table for 4. At least 1–2 weeks out.</div></div>
+      <div class="au u-red">TODAY</div>
+      <div><div class="an">Jirakaan — Day 7 dinner, 7pm, table of 4</div><div class="ad">Message via Facebook (@Jirakaan) or call. Sukhumvit Soi 51. À la carte — 4 people eat for ฿1,800–2,400 total. Tell them it's a family sendoff dinner. Book ahead — small restaurant, fills on weeknights.</div></div>
     </div>
     <div class="ar">
-      <div class="au u-amber">SOON</div>
-      <div><div class="an">Private van: BKK ↔ Hua Hin (both ways)</div><div class="ad">Day 1 arrival + Day 4 departure. Ask Radisson concierge or book via a Thai tour operator. 7-seater with luggage space.</div></div>
+      <div class="au u-sand">SOON</div>
+      <div><div class="an">Private van: Airport → Hua Hin (Day 1) + Hua Hin → Bangkok (Day 4)</div><div class="ad">7-seater with luggage space. Ask Radisson Hua Hin concierge or book via Thai tour operator. ฿2,500–3,000 each way total (not per person).</div></div>
     </div>
     <div class="ar">
-      <div class="au u-amber">SOON</div>
-      <div><div class="an">Yokkao Training Centre — Day 7, 10:30am</div><div class="ad">Book 2 beginner drop-ins at yokkao.com. Mention first session. Located Sukhumvit Soi 16, Asoke.</div></div>
+      <div class="au u-sand">SOON</div>
+      <div><div class="an">Yokkao Training Centre — Day 7, 10:30am (Moiz + Idris)</div><div class="ad">yokkao.com, Sukhumvit Soi 16. Book both as beginner drop-ins. 2-hour session each. ฿600–1,000/person.</div></div>
     </div>
     <div class="ar">
-      <div class="au u-amber">SOON</div>
-      <div><div class="an">Usman Restaurant — Day 5 dinner</div><div class="ad">Call or message via Facebook. Reserve for 4, 7pm Saturday. Fills up fast.</div></div>
+      <div class="au u-sand">SOON</div>
+      <div><div class="an">Usman Restaurant — Day 5 dinner, 7pm</div><div class="ad">Call or message via Facebook. Saturday nights fill fast — book at least a week ahead.</div></div>
     </div>
     <div class="ar">
-      <div class="au u-blue">BEFORE GO</div>
-      <div><div class="an">Easy Kart — Day 5 afternoon, all 4</div><div class="ad">Book 4 sessions at easykart.co.th. Specify the time slot clearly.</div></div>
+      <div class="au u-sky">BEFORE GO</div>
+      <div><div class="an">Asia Herb Association (Benchasiri branch) — Day 7, 2:30pm ×4</div><div class="ad">asiaherbassociation.com. Benchasiri (Sukhumvit 24) is the top-rated outlet. 2hr herbal ball + Thai massage, all 4 together in adjacent rooms.</div></div>
     </div>
     <div class="ar">
-      <div class="au u-blue">BEFORE GO</div>
-      <div><div class="an">Asia Herb Association — Day 7 afternoon, all 4</div><div class="ad">Book 4 slots at asiaherbassociation.com. Benchasiri branch (Sukhumvit 24) is the highest rated. 2-hr herbal ball + Thai massage package recommended.</div></div>
+      <div class="au u-sky">BEFORE GO</div>
+      <div><div class="an">Easy Kart — Day 5 afternoon, all 4, 2 sessions each</div><div class="ad">easykart.co.th. Book your time slot. 2 sessions is the right call — first run is always a warmup.</div></div>
     </div>
     <div class="ar">
-      <div class="au u-blue">DAY BEFORE</div>
-      <div><div class="an">Private car — Day 3, hotel to Phraya Nakhon</div><div class="ad">Ask Radisson concierge on Day 2 evening. Confirm 7:30am pickup.</div></div>
+      <div class="au u-sky">DAY BEFORE</div>
+      <div><div class="an">Private car — Day 3, hotel to Phraya Nakhon</div><div class="ad">Ask Radisson concierge on Day 2 evening. Confirm 7:30am pickup. Do not skip — the parking and access roads are a genuine headache without a private driver.</div></div>
     </div>
   </div>
 </div>
 
-<!-- ══ SHOPPING GUIDE ══ -->
-<div class="sec">🛍 Shopping guide</div>
-<div class="card">
-  <div class="hdr" onclick="tog('shop')">
-    <div class="badge" style="background:var(--amber-dim);color:var(--amber)">🛍</div>
+<!-- ══ TIPS ══ -->
+<div class="sec-label">💡 Things most tourists don't know</div>
+<div class="card accent-sea">
+  <div class="hdr" onclick="tog('tips')">
+    <div class="badge" style="background:var(--sea-soft)">💡</div>
     <div class="meta">
-      <div class="meta-t">Complete Bangkok Shopping Guide</div>
-      <div class="meta-s">Where to go, what to buy, floor-by-floor</div>
+      <div class="meta-t">Insider tips that make a difference</div>
+      <div class="meta-s">Save money, avoid mistakes, feel local</div>
     </div>
-    <span class="chev" id="c-shop">&#8964;</span>
+    <span class="chev" id="c-tips">&#8964;</span>
   </div>
-  <div class="body" id="shop">
-    <div class="note">
-      <span class="note-icon">💡</span>
-      <span><strong>Golden rule:</strong> Always bargain. Start at 50–60% of asking price. Buying multiple items gets you lower per-unit prices. Bring cash — most stalls don't take cards. ATMs at every mall entrance.</span>
-    </div>
-    <div class="sg">
-      <div class="sc">
-        <div class="sn">MBK Center</div>
-        <div class="sd">8 floors, 2,000+ stalls. Designer bags, watches, sneakers (floors 1–3). Electronics floor 4. Food court floor 6. Ask for "back room" stock. Negotiate to 65% off asking.</div>
-        <div class="st-row">
-          <span class="stag" style="background:var(--red-dim);color:var(--red)">Dupes HQ</span>
-          <span class="stag" style="background:var(--green-dim);color:var(--green)">Food court</span>
-        </div>
-      </div>
-      <div class="sc">
-        <div class="sn">Platinum Fashion Mall</div>
-        <div class="sd">6 floors, 1,300+ shops. Wholesale pricing — more you buy, cheaper per item. Best for quality clothes, bags, shoes. AC and organised. 10-min walk from Ratchathewi BTS.</div>
-        <div class="st-row">
-          <span class="stag" style="background:var(--blue-dim);color:var(--blue)">Quality fashion</span>
-          <span class="stag" style="background:var(--amber-dim);color:var(--amber)">Wholesale</span>
-        </div>
-      </div>
-      <div class="sc">
-        <div class="sn">Chatuchak Market</div>
-        <div class="sd">Sat–Sun only, 9am–6pm. 15,000+ stalls. Sec 22–26: home decor + gifts. Sec 5–6: clothing. Sec 2–4: jewellery. Saman Islam stall: legendary khao mok gai for lunch.</div>
-        <div class="st-row">
-          <span class="stag" style="background:var(--green-dim);color:var(--green)">Unique finds</span>
-          <span class="stag" style="background:var(--red-dim);color:var(--red)">Sat 5 Jul only</span>
-        </div>
-      </div>
-      <div class="sc">
-        <div class="sn">Iconsiam — Sooksiam</div>
-        <div class="sd">Premium riverfront mall. Sooksiam (ground floor) = indoor floating market with quality crafts and food from all 77 Thai provinces. Great gifts. Easy on the feet.</div>
-        <div class="st-row">
-          <span class="stag" style="background:var(--blue-dim);color:var(--blue)">Upmarket gifts</span>
-          <span class="stag" style="background:var(--teal-dim);color:var(--teal)">Great for all</span>
-        </div>
-      </div>
-      <div class="sc">
-        <div class="sn">Jodd Fairs</div>
-        <div class="sd">Night market on Ratchadapisek. Best for food and atmosphere — streetwear and accessories stalls too. Very photogenic. Great first Bangkok evening.</div>
-        <div class="st-row">
-          <span class="stag" style="background:var(--green-dim);color:var(--green)">Night vibes</span>
-          <span class="stag" style="background:var(--green-dim);color:var(--green)">Chicken ✅</span>
-        </div>
-      </div>
-      <div class="sc">
-        <div class="sn">Siam Square</div>
-        <div class="sd">Local Thai streetwear — Greyhound, Carnival, Boyy. Good for curated statement pieces. Combine with Jodd Fairs on Day 4 for an evening browse.</div>
-        <div class="st-row">
-          <span class="stag" style="background:var(--amber-dim);color:var(--amber)">Local designer</span>
-        </div>
-      </div>
-    </div>
-    <div class="sched">
-      <strong>Day-by-day shopping plan</strong><br>
-      Day 4 (Fri): MBK arrival browse → Jodd Fairs evening<br>
-      Day 5 (Sat): Chatuchak 9am–2pm → Easy Kart → Usman dinner<br>
-      Day 6 (Sun): Iconsiam + Sooksiam → Rajadamnern night<br>
-      Day 7 (Mon): Relaxed morning, Yokkao → lunch → massages → Nusara
+  <div class="body" id="tips">
+    <div class="tips-grid">
+      <div class="tip-card"><span class="tip-icon">💵</span><div class="tip-t">Cash is king</div><div class="tip-b">Withdraw from ATMs at mall entrances — lower fees than standalone ATMs. Markets and street food are cash only. Carry ฿1,000–2,000 per person per day.</div></div>
+      <div class="tip-card"><span class="tip-icon">📱</span><div class="tip-t">Grab app</div><div class="tip-b">Set up before you land. Add a payment method in India — much easier than in Thailand. The only reliable way to get around Bangkok without stress.</div></div>
+      <div class="tip-card"><span class="tip-icon">🌧</span><div class="tip-t">July rain strategy</div><div class="tip-b">Rain comes in sharp afternoon bursts, not all day. Morning activities first, shelter mid-afternoon at pool or mall. Small waterproof bag is worth packing.</div></div>
+      <div class="tip-card"><span class="tip-icon">🛍</span><div class="tip-t">Bargaining rule</div><div class="tip-b">Start at 50% of asking price. Buy multiple items from one stall. Never buy from the first stall — compare 3 before committing to anything.</div></div>
+      <div class="tip-card"><span class="tip-icon">🍽</span><div class="tip-t">Ordering safely</div><div class="tip-b">"Mai sai moo" = no pork in Thai. Learn it — you'll use it at least 5 times. Always ask for chicken or beef versions when in doubt.</div></div>
+      <div class="tip-card"><span class="tip-icon">👗</span><div class="tip-t">Temple dress code</div><div class="tip-b">Phraya Nakhon Cave is sacred — shoulders and knees covered. Sarongs available at entrance for ฿20–30. Don't get caught out after hiking 40 minutes up.</div></div>
+      <div class="tip-card"><span class="tip-icon">🌡</span><div class="tip-t">Beat the heat</div><div class="tip-b">July is hot and humid. Coconut water from street vendors (~฿60) is better than bottled water and is absolutely everywhere. Don't underestimate the sun.</div></div>
+      <div class="tip-card"><span class="tip-icon">🛺</span><div class="tip-t">Tuktuk in Hua Hin</div><div class="tip-b">฿40–60 for short trips is fair. Agree price before getting in — always. In Bangkok, Grab wins on price and convenience every single time.</div></div>
     </div>
   </div>
 </div>
 
 <!-- ══ RESTAURANTS ══ -->
-<div class="sec">🍽 Restaurants</div>
-<div class="card">
+<div class="sec-label">🍽 Full restaurant guide — every meal</div>
+<div class="card accent-sand">
   <div class="hdr" onclick="tog('rest')">
-    <div class="badge" style="background:var(--red-dim);color:var(--red)">🍽</div>
+    <div class="badge" style="background:var(--sand-soft)">🍽</div>
     <div class="meta">
-      <div class="meta-t">Full Restaurant Guide</div>
-      <div class="meta-s">Chicken &amp; beef safe throughout · day-by-day</div>
+      <div class="meta-t">All meals, all 7 days</div>
+      <div class="meta-s">฿2,500 total ceiling · Halal verified throughout</div>
     </div>
     <span class="chev" id="c-rest">&#8964;</span>
   </div>
   <div class="body" id="rest">
-    <div class="note">
-      <span class="note-icon">🥩</span>
-      <span><strong>Ordering rule:</strong> At every restaurant, order from chicken, beef, and seafood sections. Avoid anything labelled pork or with pork in the description. All picks below have strong chicken/beef/seafood options confirmed.</span>
+    <div class="banner b-info">
+      <span class="banner-icon">🥩</span>
+      <div><strong>Budget rule:</strong> ฿2,500 total for 4 = ฿625/person max per meal. Every pick below fits that ceiling. Rocks Restaurant (Day 2 dinner) is the one deliberate exception at ~฿600–800/person — it's the standout meal of the trip and worth the stretch. Everything else is well within budget.</div>
     </div>
-    <div class="tsep">Hua Hin</div>
+    <div class="tsep">Hua Hin — Days 1, 2, 3</div>
     <div class="rr">
       <div class="rl">
-        <div class="rn">Ginger Fire Restaurant <span class="itag" style="background:var(--teal-dim);color:var(--teal)">Day 1 dinner</span></div>
-        <div class="rd">Thai fusion, popular with tourists and locals. Arrive before 5:30pm to avoid a queue. Pad Thai, curries, satay. Halal certified.</div>
+        <div class="rn">Ginger Fire Restaurant <span class="rtag rtag-sea">Day 1 Dinner</span></div>
+        <div class="rd">Halal certified. Arrive before 5:30pm to beat the queue. Pad Thai, green curry chicken, satay. Relaxed, delicious, exactly right for a travel-day dinner. Cash preferred.</div>
       </div>
-      <div class="rv"><div class="rprice">฿200–350</div><div class="rday">/person</div></div>
-    </div>
-    <div class="rr">
-      <div class="rl">
-        <div class="rn">Hua Hin Night Market <span class="itag" style="background:var(--blue-dim);color:var(--blue)">Day 1 evening</span></div>
-        <div class="rd">Dechanuchit Rd. Open every night. Fresh seafood, rotis, coconut ice cream. Graze and wander — a perfect soft landing into Thai street food.</div>
-      </div>
-      <div class="rv"><div class="rprice">฿100–200</div><div class="rday">/person</div></div>
+      <div class="rv"><div class="rprice">฿800–1,400</div><div class="rday">total for 4</div></div>
     </div>
     <div class="rr">
       <div class="rl">
-        <div class="rn">Wilaiwan Kitchen <span class="itag" style="background:var(--teal-dim);color:var(--teal)">Day 2 lunch</span></div>
-        <div class="rd">Most popular halal Thai in Hua Hin. Famous pad Thai and massaman curry. Go at 1:30pm to beat the rush. Cash preferred, no reservations.</div>
+        <div class="rn">Hua Hin Night Market <span class="rtag rtag-sea">Day 1 Evening</span></div>
+        <div class="rd">Dechanuchit Rd. Every night. Coconut ice cream, grilled seafood skewers, rotis, fruit shakes. Your soft landing into Thailand. Graze and wander for an hour. No agenda.</div>
       </div>
-      <div class="rv"><div class="rprice">฿150–250</div><div class="rday">/person</div></div>
+      <div class="rv"><div class="rprice">฿400–800</div><div class="rday">total for 4</div></div>
     </div>
     <div class="rr">
       <div class="rl">
-        <div class="rn">Rocks Restaurant, Cape Nidhra <span class="gold-star">⭐</span> <span class="itag" style="background:var(--red-dim);color:var(--red)">Day 2 dinner</span></div>
-        <div class="rd">Rated 4.9/5 on TripAdvisor — #14 of 708 restaurants in Hua Hin. Stunning pool-to-beach setting at Cape Nidhra Hotel. International and Thai fine dining: grilled seabass, chicken with mashed potato, tuna, Caesar salad with prawns. Exceptional service, complimentary macarons, and a level of polish you won't find elsewhere in Hua Hin. This is the upgrade. Book an outdoor table. Avoid pork dishes — the chicken and seafood menu is extensive and outstanding.</div>
+        <div class="rn">Wilaiwan Kitchen <span class="rtag rtag-sea">Day 2 Lunch</span></div>
+        <div class="rd">Most beloved halal Thai in Hua Hin. Famous pad Thai and massaman curry. Go at 1:30pm to miss the rush. Cash preferred, no reservations. Small, busy, worth it every time.</div>
       </div>
-      <div class="rv"><div class="rprice">฿500–800</div><div class="rday">/person</div></div>
+      <div class="rv"><div class="rprice">฿600–1,000</div><div class="rday">total for 4</div></div>
     </div>
     <div class="rr">
       <div class="rl">
-        <div class="rn">Kin Keng Restaurant <span class="itag" style="background:var(--teal-dim);color:var(--teal)">Day 3 lunch</span></div>
-        <div class="rd">Local crab and seafood on the return from Phraya Nakhon. Big portions, very affordable. Order the stir-fried crab and tom yum.</div>
+        <div class="rn">Rocks Restaurant, Cape Nidhra ⭐ <span class="rtag rtag-coral">Day 2 Dinner</span></div>
+        <div class="rd">The best restaurant in Hua Hin. Beachfront outdoor table, pool glowing beside you, salt breeze, impeccable service. Order the grilled seabass, chicken with mashed potato, tiger prawn Caesar salad. Complimentary macarons at the end. This is the trip's standout dinner — the one deliberate budget stretch. Dress up a little. Book in advance.</div>
       </div>
-      <div class="rv"><div class="rprice">฿200–300</div><div class="rday">/person</div></div>
+      <div class="rv"><div class="rprice over">฿2,000–3,200</div><div class="rday">total for 4 ⭐</div></div>
     </div>
     <div class="rr">
       <div class="rl">
-        <div class="rn">Tamarind Market <span class="itag" style="background:var(--teal-dim);color:var(--teal)">Day 3 dinner</span></div>
-        <div class="rd">Open Thu–Sun. Local crowd, shaded by tamarind trees. Your last Hua Hin night — graze across the stalls, keep it relaxed and unhurried.</div>
+        <div class="rn">Kin Keng Restaurant <span class="rtag rtag-sea">Day 3 Lunch</span></div>
+        <div class="rd">Stop here on the return from Phraya Nakhon. Crab and seafood, big portions, very affordable. Stir-fried crab and tom yum — perfect recovery fuel after the hike. Ask your driver.</div>
       </div>
-      <div class="rv"><div class="rprice">฿200–300</div><div class="rday">/person</div></div>
-    </div>
-    <div class="tsep">Bangkok</div>
-    <div class="rr">
-      <div class="rl">
-        <div class="rn">Yana Restaurant (MBK 5F) <span class="itag" style="background:var(--teal-dim);color:var(--teal)">Day 4 lunch</span></div>
-        <div class="rd">Halal Thai and international, family-friendly, wide menu. Good first Bangkok meal after the road journey. Order green curry chicken or tom yum.</div>
-      </div>
-      <div class="rv"><div class="rprice">฿150–250</div><div class="rday">/person</div></div>
+      <div class="rv"><div class="rprice">฿800–1,200</div><div class="rday">total for 4</div></div>
     </div>
     <div class="rr">
       <div class="rl">
-        <div class="rn">Jodd Fairs Night Market <span class="itag" style="background:var(--teal-dim);color:var(--teal)">Day 4 dinner</span></div>
-        <div class="rd">Bangkok's best night market right now. Grilled chicken skewers, seafood, Thai desserts. Budget-friendly and atmospheric. Wander, eat, take it all in.</div>
+        <div class="rn">Tamarind Market <span class="rtag rtag-sea">Day 3 Dinner</span></div>
+        <div class="rd">Thu–Sun only. Local crowd under tamarind trees, zero tourist pressure. Grilled chicken, tom yum, mango sticky rice across multiple stalls. Your last Hua Hin evening — graze slowly, no rush.</div>
       </div>
-      <div class="rv"><div class="rprice">฿200–400</div><div class="rday">/person</div></div>
+      <div class="rv"><div class="rprice">฿800–1,200</div><div class="rday">total for 4</div></div>
+    </div>
+    <div class="tsep">Bangkok — Days 4, 5, 6, 7</div>
+    <div class="rr">
+      <div class="rl">
+        <div class="rn">Yana Restaurant (MBK 5F) <span class="rtag rtag-sea">Day 4 Lunch</span></div>
+        <div class="rd">Halal Thai and international. Wide menu, family-friendly. Good first Bangkok meal after the long van ride. Green curry chicken, tom yum, pad Thai — reliable and fast.</div>
+      </div>
+      <div class="rv"><div class="rprice">฿600–1,000</div><div class="rday">total for 4</div></div>
     </div>
     <div class="rr">
       <div class="rl">
-        <div class="rn">Saman Islam, Chatuchak <span class="itag" style="background:var(--amber-dim);color:var(--amber)">Day 5 lunch</span></div>
-        <div class="rd">Legendary halal stall inside the market. Khao mok gai (Thai chicken biryani) widely considered the best in Bangkok. Arrive at noon before it runs out.</div>
+        <div class="rn">Jodd Fairs Ratchada ⭐ <span class="rtag rtag-coral">Day 4 Dinner</span></div>
+        <div class="rd">⚠ New address: Ratchadapisek Rd, MRT Thailand Cultural Centre Exit 4. Bangkok's best night market. Grilled beef and chicken skewers, garlic prawns, Thai crepes, mango sticky rice. Your first real Bangkok evening. Stay 2 hours, try everything.</div>
       </div>
-      <div class="rv"><div class="rprice">฿80–150</div><div class="rday">/person</div></div>
+      <div class="rv"><div class="rprice">฿1,000–1,600</div><div class="rday">total for 4</div></div>
     </div>
     <div class="rr">
       <div class="rl">
-        <div class="rn">Usman Thai Muslim Food <span class="gold-star">⭐</span> <span class="itag" style="background:var(--red-dim);color:var(--red)">Day 5 dinner</span></div>
-        <div class="rd">Michelin Bib Gourmand, Sukhumvit Soi 22. Must-order: massaman curry, deep-fried seabass, tom yum, mango sticky rice. Fully halal. Book ahead — fills up Saturday nights.</div>
+        <div class="rn">Saman Islam, Chatuchak <span class="rtag rtag-sand">Day 5 Lunch</span></div>
+        <div class="rd">Legendary halal stall inside the market. Khao mok gai (Thai chicken biryani) — widely considered the best in Bangkok. Arrive at noon before it runs out. Eat in the shade, rest your feet.</div>
       </div>
-      <div class="rv"><div class="rprice">฿250–400</div><div class="rday">/person</div></div>
+      <div class="rv"><div class="rprice">฿320–600</div><div class="rday">total for 4</div></div>
     </div>
     <div class="rr">
       <div class="rl">
-        <div class="rn">Sooksiam Food Court, Iconsiam <span class="itag" style="background:var(--teal-dim);color:var(--teal)">Day 6 lunch</span></div>
-        <div class="rd">Indoor floating market — Thai food from all 77 provinces. Brilliant atmosphere, best-value lunch in a premium setting in Bangkok. Order from visible halal stalls.</div>
+        <div class="rn">Usman Thai Muslim Food ⭐ <span class="rtag rtag-coral">Day 5 Dinner</span></div>
+        <div class="rd">Michelin Bib Gourmand. Fully halal. Sukhumvit Soi 22. Must-order: massaman curry, deep-fried seabass, tom yum, mango sticky rice. The massaman is the best version of this dish you will eat anywhere. Book ahead — fills up Saturday nights.</div>
       </div>
-      <div class="rv"><div class="rprice">฿200–350</div><div class="rday">/person</div></div>
+      <div class="rv"><div class="rprice">฿1,000–1,600</div><div class="rday">total for 4</div></div>
     </div>
     <div class="rr">
       <div class="rl">
-        <div class="rn">Soi Arab street food <span class="itag" style="background:var(--teal-dim);color:var(--teal)">Day 6 late dinner</span></div>
-        <div class="rd">Nana Soi 3/1. Shawarma, kebabs, chicken fried rice, fresh juice. Open late after Muay Thai. No booking needed.</div>
+        <div class="rn">Sooksiam Food Court, Iconsiam <span class="rtag rtag-sea">Day 6 Lunch</span></div>
+        <div class="rd">Indoor floating market — Thai food from all 77 provinces. Great atmosphere for the price. Mango sticky rice, khao mok, southern curries. Order from stalls with visible chicken/seafood.</div>
       </div>
-      <div class="rv"><div class="rprice">฿150–250</div><div class="rday">/person</div></div>
+      <div class="rv"><div class="rprice">฿800–1,400</div><div class="rday">total for 4</div></div>
     </div>
     <div class="rr">
       <div class="rl">
-        <div class="rn">Baan Glom Gig <span class="itag" style="background:var(--teal-dim);color:var(--teal)">Day 7 lunch</span></div>
-        <div class="rd">Beautiful riverside garden restaurant in the Chao Phraya old town area. Shaded outdoor tables under trees, relaxed heritage Thai setting. Order chicken with holy basil, grilled river fish, tom kha. A calm, memorable lunch to bookend the trip before the evening's main event. Book ahead.</div>
+        <div class="rn">Soi Arab — Nana Soi 3/1 <span class="rtag rtag-sea">Day 6 Late Dinner</span></div>
+        <div class="rd">After Rajadamnern. Shawarma, kebabs, chicken fried rice, fresh mango juice. Open late, no booking needed. Wind down after the fights with something simple and satisfying.</div>
       </div>
-      <div class="rv"><div class="rprice">฿300–500</div><div class="rday">/person</div></div>
+      <div class="rv"><div class="rprice">฿600–1,000</div><div class="rday">total for 4</div></div>
     </div>
     <div class="rr">
       <div class="rl">
-        <div class="rn">Nusara <span class="gold-star">⭐⭐</span> <span class="itag" style="background:var(--red-dim);color:var(--red)">Day 7 dinner 7pm</span></div>
-        <div class="rd">Asia's #6 Best Restaurant 2025, Michelin-starred. Rooftop overlooking Wat Pho. Heritage Thai fine dining — Thai Wagyu stir-fry with holy basil, seasonal fish in torch ginger, regional relishes and curries from the Rama V era. A 12-course journey through the best Thai cuisine has ever been. The trip's final, unforgettable meal. Book months ahead. Mention chicken/beef/seafood preference when booking — menu naturally features these prominently.</div>
+        <div class="rn">Phayathai Kitchen <span class="rtag rtag-sea">Day 7 Lunch</span></div>
+        <div class="rd">Halal Thai near Ratchathewi, 100+ dishes from ฿60. Order green curry chicken, khao pad (fried rice), and tom kha. Comfortable, air-conditioned, unhurried. Good pre-massage lunch that won't leave you too full. Soi Phetchaburi 7.</div>
       </div>
-      <div class="rv"><div class="rprice">฿2,500–3,500</div><div class="rday">/person</div></div>
+      <div class="rv"><div class="rprice">฿400–800</div><div class="rday">total for 4</div></div>
+    </div>
+    <div class="rr">
+      <div class="rl">
+        <div class="rn">Jirakaan Restaurant ⭐ <span class="rtag rtag-coral">Day 7 Dinner 7pm</span></div>
+        <div class="rd">100% halal fine dining. Sukhumvit Soi 51. Rattanakosin-era royal Thai recipes — smoked Australian Wagyu brisket that melts, tom yum that earns its name, centuries-old heirloom dishes served in a colonial villa. À la carte: order 4–5 shared dishes comfortably for ฿1,800–2,400 total for 4. Reserve a table for 4 via Facebook or phone. Smart casual. Stay as long as you like — this is the last dinner of the trip.</div>
+      </div>
+      <div class="rv"><div class="rprice">฿1,800–2,400</div><div class="rday">total for 4 ⭐</div></div>
     </div>
   </div>
 </div>
 
-<!-- ══ HUA HIN DAYS ══ -->
-<div class="sec">🏖 Hua Hin — Days 1, 2, 3</div>
+<!-- ══ SHOPPING ══ -->
+<div class="sec-label">🛍 Shopping guide</div>
+<div class="card accent-sand">
+  <div class="hdr" onclick="tog('shop')">
+    <div class="badge" style="background:var(--sand-soft)">🛍</div>
+    <div class="meta">
+      <div class="meta-t">Bangkok Shopping Guide</div>
+      <div class="meta-s">Where to go, what to buy, when to go</div>
+    </div>
+    <span class="chev" id="c-shop">&#8964;</span>
+  </div>
+  <div class="body" id="shop">
+    <div class="banner b-info">
+      <span class="banner-icon">💡</span>
+      <div><strong>Golden rule:</strong> Start at 50% of asking price. Buying multiple from one stall always gets you a lower rate. Cash only at most stalls. Never buy from the first stall — compare 3 before committing.</div>
+    </div>
+    <div class="sg">
+      <div class="sc">
+        <div class="sn">MBK Center</div>
+        <div class="sd">8 floors, 2,000+ stalls. Bags, watches, sneakers (floors 1–3). Electronics floor 4. Ask for "back room" stock. Negotiate hard — 65% off asking price is achievable.</div>
+        <div class="st-row"><span class="stag" style="background:var(--coral-soft);color:var(--coral)">Dupes HQ</span><span class="stag" style="background:var(--sea-soft);color:var(--sea)">Days 4 &amp; 7</span></div>
+      </div>
+      <div class="sc">
+        <div class="sn">Platinum Fashion</div>
+        <div class="sd">6 floors, 1,300+ shops. Wholesale pricing — more you buy, cheaper per item. Best quality clothes, bags, shoes. 10 min from Ratchathewi BTS.</div>
+        <div class="st-row"><span class="stag" style="background:var(--sky-soft);color:var(--sky)">Quality fashion</span><span class="stag" style="background:var(--sand-soft);color:var(--sand)">Wholesale</span></div>
+      </div>
+      <div class="sc">
+        <div class="sn">Chatuchak Market</div>
+        <div class="sd">Sat–Sun only, 9am–6pm. 15,000+ stalls. Sec 22–26: home decor. Sec 5–6: clothing. Sec 2–4: jewellery. Go early — exit by 2pm before the heat.</div>
+        <div class="st-row"><span class="stag" style="background:var(--leaf-soft);color:var(--leaf)">Unique finds</span><span class="stag" style="background:var(--coral-soft);color:var(--coral)">Sat 5 Jul only</span></div>
+      </div>
+      <div class="sc">
+        <div class="sn">Iconsiam Sooksiam</div>
+        <div class="sd">Premium riverfront mall. Ground floor = indoor floating market with crafts from all 77 Thai provinces. Best gifts to bring home. Stunning space.</div>
+        <div class="st-row"><span class="stag" style="background:var(--sky-soft);color:var(--sky)">Best gifts</span><span class="stag" style="background:var(--sea-soft);color:var(--sea)">Day 6</span></div>
+      </div>
+      <div class="sc">
+        <div class="sn">Jodd Fairs Ratchada</div>
+        <div class="sd">⚠ New location — next to Big C, Ratchadapisek Rd. MRT Thailand Cultural Centre Exit 4. 700+ stalls. Great for food and atmosphere on Day 4 evening.</div>
+        <div class="st-row"><span class="stag" style="background:var(--leaf-soft);color:var(--leaf)">Night vibes</span><span class="stag" style="background:var(--coral-soft);color:var(--coral)">New address</span></div>
+      </div>
+      <div class="sc">
+        <div class="sn">Siam Square</div>
+        <div class="sd">Local Thai streetwear — Greyhound, Carnival, Boyy. Curated statement pieces. Easy to combine with Jodd Fairs on Day 4 in the same evening.</div>
+        <div class="st-row"><span class="stag" style="background:var(--sand-soft);color:var(--sand)">Local designer</span></div>
+      </div>
+    </div>
+    <div class="sched">
+      <strong>Shopping by day</strong><br>
+      Day 4 (Fri) — MBK browse → Jodd Fairs Ratchada evening<br>
+      Day 5 (Sat) — Chatuchak 9am–2pm → Easy Kart → Usman dinner<br>
+      Day 6 (Sun) — Iconsiam + Sooksiam → Rajadamnern fight night<br>
+      Day 7 (Mon) — Quick MBK or Platinum sweep after massages, before Jirakaan
+    </div>
+  </div>
+</div>
+
+<!-- ══ HUA HIN SECTION HEADER ══ -->
+<div class="sec-label">🏖 Hua Hin — Days 1, 2, 3</div>
 
 <!-- DAY 1 -->
-<div class="card">
-  <div class="hdr" onclick="tog('d1')">
-    <div class="badge" style="background:var(--blue-dim);color:var(--blue)">D1</div>
+<div class="day-chapter"><div class="day-chapter-n">01</div></div>
+<div class="card accent-sky">
+  <div class="day-hdr" onclick="tog('d1')">
+    <div class="day-badge" style="background:var(--sky-soft);color:var(--sky)">D1</div>
     <div class="meta">
       <div class="meta-t">Arrival — First Impressions</div>
       <div class="meta-s">Tue 1 Jul · Bangkok → Hua Hin</div>
@@ -752,165 +730,53 @@
   </div>
   <div class="body" id="d1">
     <div class="tl">
-      <div class="ti">
-        <div class="tt">Land<br>11am</div>
-        <div class="tc">
-          <div class="tn">Suvarnabhumi Airport — clear and collect</div>
-          <div class="td">Budget 45–60 min through immigration and baggage. Your pre-booked 7-seater meets you outside arrivals. Don't take a metered taxi — it's too far and too expensive.</div>
-          <div class="tp">฿2,500–3,000 total van ÷ 4</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">~1pm</div>
-        <div class="tc">
-          <div class="tn">Roadside lunch near Cha-Am</div>
-          <div class="td">Ask the driver to stop at a roadside spot on the highway. Stretch your legs and eat something simple. Alternatively eat at the airport before boarding.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">3pm</div>
-        <div class="tc">
-          <div class="tn">Check in — Radisson Blu Hua Hin</div>
-          <div class="td">Drop bags, freshen up. Walk down to the beach just to see it — first look at the Gulf of Thailand. Nothing scheduled, just settle in.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">5pm</div>
-        <div class="tc">
-          <div class="tn">Dinner — Ginger Fire Restaurant</div>
-          <div class="td">Arrive before 5:30pm to skip the queue. Keep it light — pad Thai, green curry, satay. You've been travelling all day. Halal certified.</div>
-          <div class="tp">฿200–350/person</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">7pm</div>
-        <div class="tc">
-          <div class="tn">Hua Hin Night Market — Dechanuchit Road</div>
-          <div class="td">Tuktuk from hotel (~฿40 each way). Walk the stalls at your own pace — coconut ice cream, fresh fruit shakes, grilled seafood skewers. The perfect soft landing into Thai street food. An hour is plenty.</div>
-          <div class="tp">฿100–200/person grazing</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">9pm</div>
-        <div class="tc">
-          <div class="tn">Back to hotel — early night</div>
-          <div class="td">Big beach day tomorrow. In bed by 10pm.</div>
-        </div>
-      </div>
+      <div class="ti"><div class="tt">Land<br>~11am</div><div><div class="tn">Suvarnabhumi Airport</div><div class="td">Budget 45–60 min through immigration and baggage. Pre-booked 7-seater meets you outside arrivals Hall 8. Don't take a metered taxi to Hua Hin — too far, too expensive, too stressful.</div><div class="tp">฿700/person van (÷4)</div></div></div>
+      <div class="ti"><div class="tt">~1pm</div><div><div class="tn">Roadside lunch near Cha-Am</div><div class="td">Ask your driver to stop — they always know a good spot. Stretch your legs. Simple Thai food, very cheap. Alternatively eat at the airport if you land with time to spare.</div></div></div>
+      <div class="ti"><div class="tt">3pm</div><div><div class="tn">Check in — Radisson Blu Hua Hin</div><div class="td">Drop bags. Walk five minutes to the beach just to see the Gulf of Thailand for the first time. No plans. Settle in. The trip has started.</div></div></div>
+      <div class="ti"><div class="tt">5pm</div><div><div class="tn">Dinner — Ginger Fire Restaurant</div><div class="td">Arrive before 5:30pm to skip the queue. Halal certified. Keep it light — you've been travelling all day. Pad Thai, green curry, satay. Easy, delicious, done.</div><div class="tp">฿800–1,400 total</div></div></div>
+      <div class="ti"><div class="tt">7pm</div><div><div class="tn">Hua Hin Night Market — Dechanuchit Road</div><div class="td">Tuktuk from hotel (~฿40 each way). Coconut ice cream, fresh fruit shakes, grilled seafood skewers. Your soft landing into Thailand. One hour, no agenda, just wander. Don't overthink it.</div><div class="tp">฿400–800 total grazing</div></div></div>
+      <div class="ti"><div class="tt">9pm</div><div><div class="tn">Back to hotel — early night</div><div class="td">Big beach day tomorrow. In bed by 10pm. Don't push it on Day 1.</div></div></div>
     </div>
   </div>
 </div>
 
 <!-- DAY 2 -->
-<div class="card">
-  <div class="hdr" onclick="tog('d2')">
-    <div class="badge" style="background:var(--red-dim);color:var(--red)">D2</div>
+<div class="day-chapter"><div class="day-chapter-n">02</div></div>
+<div class="card accent-coral">
+  <div class="day-hdr" onclick="tog('d2')">
+    <div class="day-badge" style="background:var(--coral-soft);color:var(--coral)">D2</div>
     <div class="meta">
       <div class="meta-t">Beach Day + Rocks Restaurant</div>
-      <div class="meta-s">Wed 2 Jul · Watersports, sunset, fine dining</div>
+      <div class="meta-s">Wed 2 Jul · Watersports, sunset, the best dinner in Hua Hin</div>
     </div>
     <span class="chev" id="c-d2">&#8964;</span>
   </div>
   <div class="body" id="d2">
-    <div class="note">
-      <span class="note-icon">🌧</span>
-      <span>July is rainy season. If seas are rough, operators will cancel parasailing and banana boat — check conditions the evening before via hotel. Plan B: hotel spa + shopping in town. Don't pre-pay watersports online.</span>
-    </div>
-    <div class="upgrade-note">
-      <span>✦</span>
-      <span>Dinner upgraded to Rocks Restaurant at Cape Nidhra — rated 4.9/5 (#14 of 708 in Hua Hin). A substantial step up from the original pick. Outdoor beachfront table, grilled seabass, chicken dishes, complimentary macarons. Book in advance.</span>
+    <div class="banner b-info">
+      <span class="banner-icon">🌧</span>
+      <div>July is rainy season. If seas are rough, operators will cancel — check conditions the evening before. Don't pre-pay watersports online. Plan B: hotel pool + Rocks for lunch instead.</div>
     </div>
     <div class="tl">
-      <div class="ti">
-        <div class="tt">7am</div>
-        <div class="tc">
-          <div class="tn">Breakfast at hotel</div>
-          <div class="td">Eat light — nothing heavy before time on the water.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">9am</div>
-        <div class="tc">
-          <div class="tn">Walk to Hua Hin Beach — watersports</div>
-          <div class="td">5–10 min from the Radisson. All vendors cluster near the main beach access. Negotiate as a group of 4 — package deals are standard and expected.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">9:30am</div>
-        <div class="tc">
-          <div class="tn">Jet Ski</div>
-          <div class="td">30-min sessions. Agree on the price before getting on. ฿600–800/30 min is the going rate. Everyone can rotate.</div>
-          <div class="tp">฿600–800/ski</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">10:30am</div>
-        <div class="tc">
-          <div class="tn">Parasailing</div>
-          <div class="td">~10 min per person, tandem available. Peaceful once you're up — a completely different perspective on the coastline. Check the rig before going up.</div>
-          <div class="tp">฿600–800/person</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">11:15am</div>
-        <div class="tc">
-          <div class="tn">Banana Boat — all 4 🎉</div>
-          <div class="td">The funniest 15 minutes of the trip. Everyone falls off. That's exactly the point.</div>
-          <div class="tp">฿200–300/person</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">12pm</div>
-        <div class="tc">
-          <div class="tn">Hotel — shower, change, rest</div>
-          <div class="td">A proper 1.5-hour break. The beach sun is intense — drink water and cool down before lunch.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">1:30pm</div>
-        <div class="tc">
-          <div class="tn">Lunch — Wilaiwan Kitchen</div>
-          <div class="td">Most popular halal Thai in Hua Hin. Go at 1:30pm to beat the rush. Famous pad Thai and massaman curry. Cash preferred, no reservations needed.</div>
-          <div class="tp">฿150–250/person</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">3pm</div>
-        <div class="tc">
-          <div class="tn">Long afternoon at Radisson pool</div>
-          <div class="td">Three hours of nothing. Swim, nap, order a fresh juice from the pool bar. This is what the Radisson is for.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">6pm</div>
-        <div class="tc">
-          <div class="tn">Beach walk — sunset 🌅</div>
-          <div class="td">Hua Hin is west-facing and the sunsets are genuinely spectacular. Walk down to the water, grab fresh coconuts from a vendor (฿60–80 each). Sit, watch, and be somewhere together.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">7:30pm</div>
-        <div class="tc">
-          <div class="tn">Dinner — Rocks Restaurant, Cape Nidhra <span class="gold-star">⭐</span></div>
-          <div class="td">The best restaurant in Hua Hin. Poolside-to-beach outdoor table, impeccable service, international and Thai fine dining. Order the grilled seabass, chicken with mashed potato, Caesar salad with prawns, and whatever fish is fresh that day. Avoid pork — the rest of the menu is exceptional. Complimentary macarons at the end. Dress up a little — this one deserves it.</div>
-          <div class="tp">฿500–800/person</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">10pm</div>
-        <div class="tc">
-          <div class="tn">Back to hotel</div>
-          <div class="td">7am start tomorrow. Don't stay out late.</div>
-        </div>
-      </div>
+      <div class="ti"><div class="tt">7am</div><div><div class="tn">Breakfast at hotel</div><div class="td">Eat light — nothing heavy before time on the water.</div></div></div>
+      <div class="ti"><div class="tt">9am</div><div><div class="tn">Hua Hin Beach — watersports</div><div class="td">5–10 min walk from the Radisson. All vendors cluster near the main beach access. Negotiate as a group of 4 — package deals are standard. Agree on price first, pay after.</div></div></div>
+      <div class="ti"><div class="tt">9:30am</div><div><div class="tn">Jet Ski — shared rotation</div><div class="td">One ski, 30-min session, all 4 rotate through. Not individual sessions — one booking saves ~฿1,200. Check the ski before getting on.</div><div class="tp">฿600–800 total (shared)</div></div></div>
+      <div class="ti"><div class="tt">10:15am</div><div><div class="tn">Parasailing — all 4</div><div class="td">~10 min per person, tandem available. It's remarkably peaceful once you're up. Check the harness before takeoff.</div><div class="tp">฿600–800/person</div></div></div>
+      <div class="ti"><div class="tt">11:15am</div><div><div class="tn">Banana Boat — all 4 together 🎉</div><div class="td">The funniest 15 minutes of the trip. Everyone falls off. That's the whole point. A story that gets retold forever.</div><div class="tp">฿200–300/person</div></div></div>
+      <div class="ti"><div class="tt">12pm</div><div><div class="tn">Hotel — shower, change, rest properly</div><div class="td">A real 1.5-hour recovery. Drink water, cool down, actually rest before lunch. The beach sun is intense.</div></div></div>
+      <div class="ti"><div class="tt">1:30pm</div><div><div class="tn">Lunch — Wilaiwan Kitchen</div><div class="td">Most popular halal Thai in Hua Hin. Go at 1:30pm to miss the main rush. Pad Thai, massaman curry — simple, excellent, cheap. Cash only. No reservations.</div><div class="tp">฿600–1,000 total</div></div></div>
+      <div class="ti"><div class="tt">3pm</div><div><div class="tn">Afternoon at Radisson pool</div><div class="td">Three hours of absolutely nothing. This is what the Radisson is for. Swim, nap, order a fresh juice from the pool bar.</div></div></div>
+      <div class="ti"><div class="tt">6pm</div><div><div class="tn">Sunset walk on the beach 🌅</div><div class="td">Hua Hin is west-facing — the sunsets are spectacular. Fresh coconuts from a vendor (฿60–80 each). Sit together and watch. One of the quiet, real moments of the trip.</div></div></div>
+      <div class="ti"><div class="tt">7:30pm</div><div><div class="tn">Dinner — Rocks Restaurant, Cape Nidhra ⭐</div><div class="td">The best restaurant in Hua Hin. Beachfront outdoor table, pool lit up beside you, salt breeze, impeccable service. Order the grilled seabass, chicken with mashed potato, tiger prawn Caesar. Complimentary macarons at the end. Dress up slightly — this one deserves it. This is the deliberate budget exception and it's absolutely worth it.</div><div class="tp">฿2,000–3,200 total (budget exception ⭐)</div></div></div>
+      <div class="ti"><div class="tt">10pm</div><div><div class="tn">Back to hotel — book the Day 3 car tonight</div><div class="td">Ask Radisson concierge before bed. Confirm 7:30am pickup for tomorrow. Do it now so the morning is clean.</div></div></div>
     </div>
   </div>
 </div>
 
 <!-- DAY 3 -->
-<div class="card">
-  <div class="hdr" onclick="tog('d3')">
-    <div class="badge" style="background:var(--green-dim);color:var(--green)">D3</div>
+<div class="day-chapter"><div class="day-chapter-n">03</div></div>
+<div class="card accent-leaf">
+  <div class="day-hdr" onclick="tog('d3')">
+    <div class="day-badge" style="background:var(--leaf-soft);color:var(--leaf)">D3</div>
     <div class="meta">
       <div class="meta-t">Phraya Nakhon Cave + Tamarind Market</div>
       <div class="meta-s">Thu 3 Jul · The unmissable day trip</div>
@@ -918,449 +784,198 @@
     <span class="chev" id="c-d3">&#8964;</span>
   </div>
   <div class="body" id="d3">
-    <div class="note">
-      <span class="note-icon">☀️</span>
-      <span>The sunbeam inside Phraya Nakhon Cave hits the royal pavilion between 10–11:30am. Your 7:30am departure is timed to arrive at exactly 10am. Don't sleep in.</span>
+    <div class="banner b-tip">
+      <span class="banner-icon">☀️</span>
+      <div><strong>Don't sleep in today.</strong> The sunbeam hits the royal pavilion between 10–11:30am only. Your 7:30am departure is timed to arrive exactly at 10am. This is the image you'll frame.</div>
     </div>
     <div class="tl">
-      <div class="ti">
-        <div class="tt">7am</div>
-        <div class="tc">
-          <div class="tn">Light breakfast at hotel</div>
-          <div class="td">Eat before you go — there's no good food until after the hike. Book the private car the evening before via Radisson concierge.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">7:30am</div>
-        <div class="tc">
-          <div class="tn">Depart for Khao Sam Roi Yot National Park</div>
-          <div class="td">~1 hour drive. Private car only — parking and navigation at the park are difficult and not worth the stress.</div>
-          <div class="tp">฿1,500–2,000 return (÷4 = ~฿450/person)</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">8:30am</div>
-        <div class="tc">
-          <div class="tn">Ban Bang Pu — park entry + longtail boat</div>
-          <div class="td">Buy foreigner entry tickets at the gate. All 4 take the longtail boat to Laem Sala Beach (~10–15 min). The cave is not reachable by car — the boat is the only way in.</div>
-          <div class="tp">฿300/adult · ฿100/person each way (boat)</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">9am</div>
-        <div class="tc">
-          <div class="tn">Hike to Phraya Nakhon Cave</div>
-          <div class="td">30–45 min uphill jungle trail. Moderately steep with steps cut into the rock. Closed shoes, 1.5L water each, watch your footing on the rocks. Take it slowly.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">10am</div>
-        <div class="tc">
-          <div class="tn">Phraya Nakhon Cave + Kuha Karuhas Pavilion <span class="gold-star">⭐</span></div>
-          <div class="td">The sunbeam hits the royal pavilion right now. Two connected chambers, a jungle canopy opening above, and a 19th-century Thai pavilion bathed in natural light. Stay 45–60 minutes. This will genuinely be the most beautiful thing you see on the trip.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">11:30am</div>
-        <div class="tc">
-          <div class="tn">Hike down + boat back to car</div>
-          <div class="td">Going down takes about 25 minutes. Boat back to the carpark.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">12:30pm</div>
-        <div class="tc">
-          <div class="tn">Lunch — Kin Keng Restaurant</div>
-          <div class="td">Ask the driver to stop here on the way back. Famous for crab and big portions. Order the stir-fried crab and tom yum — very good value.</div>
-          <div class="tp">฿200–300/person</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">2:30pm</div>
-        <div class="tc">
-          <div class="tn">Hotel — pool and proper rest</div>
-          <div class="td">2.5 hours to recover from the hike. Use this time to pack for Bangkok tomorrow — everything ready tonight so the morning is clean.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">5pm</div>
-        <div class="tc">
-          <div class="tn">Tamarind Market</div>
-          <div class="td">Tuktuk 10 minutes from hotel. Local crowd, shaded by tamarind trees, zero tourist pressure. Graze across stalls for dinner: tom yum, grilled chicken, mango sticky rice. Your last Hua Hin evening — take it easy, wander slowly.</div>
-          <div class="tp">฿200–300/person</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">8pm</div>
-        <div class="tc">
-          <div class="tn">Hotel — final pack, early night</div>
-          <div class="td">8am checkout tomorrow. Everything packed tonight.</div>
-        </div>
-      </div>
+      <div class="ti"><div class="tt">7am</div><div><div class="tn">Light breakfast at hotel</div><div class="td">Eat before you go — nothing good until after the hike. Car confirmed from last night? Good. Confirm pickup at 7:30am sharp.</div></div></div>
+      <div class="ti"><div class="tt">7:30am</div><div><div class="tn">Private car to Khao Sam Roi Yot National Park</div><div class="td">~1 hour. Private car only — the parking and navigation at the park are genuinely difficult. Worth every baht not to deal with it yourself.</div><div class="tp">฿1,500–2,000 return car ÷ 4</div></div></div>
+      <div class="ti"><div class="tt">8:30am</div><div><div class="tn">Park entry + longtail boat to Laem Sala Beach</div><div class="td">Buy foreigner entry at the gate. Longtail boat to the cave — 10–15 min each way. Perfectly safe, beautiful crossing.</div><div class="tp">฿300/adult · ฿100 boat each way</div></div></div>
+      <div class="ti"><div class="tt">9am</div><div><div class="tn">Hike to Phraya Nakhon Cave</div><div class="td">30–45 min uphill through jungle with stone steps cut into rock. Moderately steep but totally doable. Closed shoes essential. 1.5L water each. Shade stops along the way — use them.</div></div></div>
+      <div class="ti"><div class="tt">10am</div><div><div class="tn">Phraya Nakhon Cave + Kuha Karuhas Pavilion ⭐</div><div class="td">The sunbeam is hitting the pavilion right now. Two cave chambers, a jungle canopy opening above, and a 19th-century royal pavilion bathed in a single shaft of natural light. Stay 45–60 minutes. Walk slowly. You earned this.</div></div></div>
+      <div class="ti"><div class="tt">11:30am</div><div><div class="tn">Hike down + longtail boat back</div><div class="td">~25 min downhill. Careful on the descent — harder on the knees going down than up.</div></div></div>
+      <div class="ti"><div class="tt">12:30pm</div><div><div class="tn">Lunch — Kin Keng Restaurant</div><div class="td">Ask the driver to stop on the return. Local crab and seafood, big portions, very affordable. Stir-fried crab and tom yum. Perfect post-hike reward.</div><div class="tp">฿800–1,200 total</div></div></div>
+      <div class="ti"><div class="tt">2:30pm</div><div><div class="tn">Hotel — pool + pack for Bangkok</div><div class="td">Two hours at the pool. Also use this time to pack for Bangkok — everything ready tonight so the morning is clean and quick.</div></div></div>
+      <div class="ti"><div class="tt">5pm</div><div><div class="tn">Tamarind Market</div><div class="td">Tuktuk 10 min from hotel. Local crowd under tamarind trees. Tom yum, grilled chicken skewers, mango sticky rice across stalls. Your last Hua Hin evening — take it slow.</div><div class="tp">฿800–1,200 total</div></div></div>
+      <div class="ti"><div class="tt">8pm</div><div><div class="tn">Hotel — finish packing, early night</div><div class="td">8am checkout tomorrow. Everything packed now. Set alarms. Bangkok next.</div></div></div>
     </div>
   </div>
 </div>
 
-<!-- ══ BANGKOK DAYS ══ -->
-<div class="sec">🏙 Bangkok — Days 4, 5, 6, 7</div>
+<!-- ══ BANGKOK SECTION ══ -->
+<div class="sec-label">🏙 Bangkok — Days 4, 5, 6, 7</div>
 
 <!-- DAY 4 -->
-<div class="card">
-  <div class="hdr" onclick="tog('d4')">
-    <div class="badge" style="background:var(--amber-dim);color:var(--amber)">D4</div>
+<div class="day-chapter"><div class="day-chapter-n">04</div></div>
+<div class="card accent-sand">
+  <div class="day-hdr" onclick="tog('d4')">
+    <div class="day-badge" style="background:var(--sand-soft);color:var(--sand)">D4</div>
     <div class="meta">
       <div class="meta-t">Bangkok Arrival + MBK + Jodd Fairs</div>
-      <div class="meta-s">Fri 4 Jul · Easy arrival day</div>
+      <div class="meta-s">Fri 4 Jul · Easy arrival day, big first evening</div>
     </div>
     <span class="chev" id="c-d4">&#8964;</span>
   </div>
   <div class="body" id="d4">
-    <div class="note">
-      <span class="note-icon">🚦</span>
-      <span>Friday Bangkok traffic adds 45+ minutes to the drive. Nothing planned before 2pm. Book the van the night before and leave Hua Hin at 8am sharp.</span>
+    <div class="banner b-info">
+      <span class="banner-icon">🚦</span>
+      <div>Friday Bangkok traffic is brutal — adds 45+ minutes. Leave Hua Hin at 8am sharp, no later.</div>
     </div>
     <div class="tl">
-      <div class="ti">
-        <div class="tt">8am</div>
-        <div class="tc">
-          <div class="tn">Checkout + van to Bangkok</div>
-          <div class="td">3 hrs + traffic. Pre-booked private 7-seater. Load bags the night before if the hotel allows it.</div>
-          <div class="tp">฿2,500–3,000 total van ÷ 4</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">12pm</div>
-        <div class="tc">
-          <div class="tn">Check in — Holiday Inn Express Bangkok</div>
-          <div class="td">Early check-in if available. Drop bags, freshen up, get changed.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">1pm</div>
-        <div class="tc">
-          <div class="tn">Lunch — Yana Restaurant (MBK 5F)</div>
-          <div class="td">Halal Thai and international, wide menu — great for the whole family after a long morning in a van. You're already at MBK; do a relaxed floor-by-floor browse after eating to get a feel for prices before you commit.</div>
-          <div class="tp">฿150–250/person</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">2:30pm</div>
-        <div class="tc">
-          <div class="tn">MBK Center — browse and buy</div>
-          <div class="td">Floors 1–3 for bags, accessories, cosmetics, sneakers, watches, and streetwear. Ask vendors to show "back room" stock for better quality. Start offers at 55–60% of asking price and compare across 3–4 stalls before buying anything.</div>
-          <div class="tp">฿1,500–3,000/person (variable)</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">5:30pm</div>
-        <div class="tc">
-          <div class="tn">Hotel — rest and get ready</div>
-          <div class="td">A proper 2-hour break. Shower, relax, change. You've done the drive and MBK — take the time to reset before the evening.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">7:30pm</div>
-        <div class="tc">
-          <div class="tn">Jodd Fairs Night Market <span class="gold-star">⭐</span></div>
-          <div class="td">Grab from hotel (~฿100). Bangkok's best night market right now — grilled meats, seafood, Thai desserts. Photogenic and atmospheric. Wander, eat, and take it all in. Your first real Bangkok evening. Stay 2 hours.</div>
-          <div class="tp">฿250–400/person for dinner</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">10pm</div>
-        <div class="tc">
-          <div class="tn">Grab back to hotel</div>
-          <div class="td">~฿100–150.</div>
-        </div>
-      </div>
+      <div class="ti"><div class="tt">8am</div><div><div class="tn">Checkout + private van to Bangkok</div><div class="td">~3 hours + traffic. Load bags the night before if the hotel allows. Sit back, rest, watch the countryside change into city.</div><div class="tp">฿700/person van (÷4)</div></div></div>
+      <div class="ti"><div class="tt">12pm</div><div><div class="tn">Check in — Holiday Inn Express Bangkok</div><div class="td">Early check-in if available. Drop bags, freshen up. You're in one of the most exciting cities on earth now.</div></div></div>
+      <div class="ti"><div class="tt">1pm</div><div><div class="tn">Lunch — Yana Restaurant (MBK 5F)</div><div class="td">Halal Thai and international. Good first Bangkok meal. Then a leisurely browse of MBK floors 1–3 to feel out prices before buying anything seriously.</div><div class="tp">฿600–1,000 total</div></div></div>
+      <div class="ti"><div class="tt">2:30pm</div><div><div class="tn">MBK Center — browse and compare</div><div class="td">Floors 1–3 for bags, accessories, sneakers, watches, cosmetics. Start at 55–60% of asking price. Compare 3–4 stalls before committing. This is a warmup — Day 7 has the final sweep.</div></div></div>
+      <div class="ti"><div class="tt">5:30pm</div><div><div class="tn">Hotel — rest, shower, change</div><div class="td">Proper 2-hour reset. Recover from the van, the heat, and MBK before the evening.</div></div></div>
+      <div class="ti"><div class="tt">7:30pm</div><div><div class="tn">Jodd Fairs Ratchada ⭐</div><div class="td">⚠ New address: Ratchadapisek Rd, next to Big C. MRT Thailand Cultural Centre Exit 4 (3-min walk) or Grab (~฿100). Grilled beef and chicken skewers, garlic prawns, Thai crepes, mango sticky rice. Atmospheric, local, neon-lit. Your first real Bangkok evening. Stay 2 hours, try everything.</div><div class="tp">฿1,000–1,600 total</div></div></div>
+      <div class="ti"><div class="tt">10pm</div><div><div class="tn">Grab back to hotel</div><div class="td">~฿100–150. Early start tomorrow for Chatuchak — set your alarm.</div></div></div>
     </div>
   </div>
 </div>
 
 <!-- DAY 5 -->
-<div class="card">
-  <div class="hdr" onclick="tog('d5')">
-    <div class="badge" style="background:var(--amber-dim);color:var(--amber)">D5</div>
+<div class="day-chapter"><div class="day-chapter-n">05</div></div>
+<div class="card accent-sand">
+  <div class="day-hdr" onclick="tog('d5')">
+    <div class="day-badge" style="background:var(--sand-soft);color:var(--sand)">D5</div>
     <div class="meta">
-      <div class="meta-t">Chatuchak + Go-Karts + Usman</div>
-      <div class="meta-s">Sat 5 Jul · Markets, racing, and the best halal dinner of the trip</div>
+      <div class="meta-t">Chatuchak + Easy Kart + Usman</div>
+      <div class="meta-s">Sat 5 Jul · Markets, speed, and the best halal dinner of the trip</div>
     </div>
     <span class="chev" id="c-d5">&#8964;</span>
   </div>
   <div class="body" id="d5">
     <div class="tl">
-      <div class="ti">
-        <div class="tt">7:30am</div>
-        <div class="tc">
-          <div class="tn">Breakfast at hotel</div>
-          <div class="td">Eat properly. Chatuchak is a full marathon in the heat — you need fuel. Bring a big bag and wear comfortable shoes.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">9am</div>
-        <div class="tc">
-          <div class="tn">BTS Mo Chit → Chatuchak Market</div>
-          <div class="td">Arrive at 9am — the earlier the better before the heat builds. Pick up the section map at the entrance. Sections 22–26 for home decor and gifts. Sections 5–6 for clothing. Sections 2–4 for jewellery. Find Saman Islam stall for lunch — ask locals inside for directions.</div>
-          <div class="tp">BTS ฿40–50/person</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">12pm</div>
-        <div class="tc">
-          <div class="tn">Lunch — Saman Islam (inside Chatuchak)</div>
-          <div class="td">Legendary halal stall. The khao mok gai (Thai chicken biryani) is widely considered the best in Bangkok. Arrive at noon before it sells out. Eat in the shade and rest your feet for 30 minutes.</div>
-          <div class="tp">฿80–150/person</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">1:30pm</div>
-        <div class="tc">
-          <div class="tn">Final sweep + exit by 2pm</div>
-          <div class="td">It gets genuinely exhausting and hot after midday. Don't push it. Last pass for anything you missed, then leave.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">2:30pm</div>
-        <div class="tc">
-          <div class="tn">Easy Kart — all 4 🏎</div>
-          <div class="td">Grab to Easy Kart (~฿100). Indoor circuit, full safety gear. Book 2 sessions each — the first run is a warmup, the second is where it gets competitive. One of those activities that's genuinely fun at any age.</div>
-          <div class="tp">฿350–500/session per person</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">5pm</div>
-        <div class="tc">
-          <div class="tn">Hotel — rest and freshen up</div>
-          <div class="td">Two hours to shower, rest, and get ready. Don't skip this — Usman is worth dressing for.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">7pm</div>
-        <div class="tc">
-          <div class="tn">Dinner — Usman Thai Muslim Food <span class="gold-star">⭐</span></div>
-          <div class="td">Michelin Bib Gourmand halal Thai on Sukhumvit Soi 22. Must-order: massaman curry, deep-fried seabass, tom yum, mango sticky rice. Order generously — it's all exceptional. Book ahead, fills up Saturday nights. Fully halal.</div>
-          <div class="tp">฿250–400/person</div>
-        </div>
-      </div>
+      <div class="ti"><div class="tt">7:30am</div><div><div class="tn">Breakfast at hotel</div><div class="td">Eat well — Chatuchak is a full endurance event. Bring a big bag, comfortable shoes, and ฿2,000–4,000 cash per person if you're buying seriously.</div></div></div>
+      <div class="ti"><div class="tt">9am</div><div><div class="tn">BTS to Mo Chit → Chatuchak Market</div><div class="td">Arrive at 9am before the heat and crowds build. Sec 22–26: home decor and gifts. Sec 5–6: clothing. Sec 2–4: jewellery. Find Saman Islam for lunch — ask locals inside, easier than Google Maps.</div><div class="tp">BTS ฿40–50/person</div></div></div>
+      <div class="ti"><div class="tt">12pm</div><div><div class="tn">Lunch — Saman Islam (inside Chatuchak)</div><div class="td">Legendary halal stall. Khao mok gai (Thai chicken biryani) — the best in Bangkok. Arrive exactly at noon before it sells out. Eat in the shade, rest 30 minutes, hydrate properly.</div><div class="tp">฿320–600 total</div></div></div>
+      <div class="ti"><div class="tt">1:30pm</div><div><div class="tn">Final sweep → exit by 2pm</div><div class="td">After midday, heat and crowd combine to drain you. Last pass for anything missed, then leave. Cash only everywhere.</div></div></div>
+      <div class="ti"><div class="tt">2:30pm</div><div><div class="tn">Easy Kart — all 4, 2 sessions each 🏎</div><div class="td">Grab to Easy Kart (~฿100). Indoor circuit, full safety gear. 2 sessions each — first run is warmup, second is where the competitive nonsense starts. Times are tracked. Someone will definitely gloat about theirs.</div><div class="tp">฿350–500/session per person</div></div></div>
+      <div class="ti"><div class="tt">5pm</div><div><div class="tn">Hotel — rest, shower, dress properly</div><div class="td">Two hours. Usman is a Michelin restaurant — go in looking the part.</div></div></div>
+      <div class="ti"><div class="tt">7pm</div><div><div class="tn">Dinner — Usman Thai Muslim Food ⭐</div><div class="td">Michelin Bib Gourmand. Fully halal. Sukhumvit Soi 22. Order: massaman curry, deep-fried seabass, tom yum, mango sticky rice. The massaman here is the best version of this dish you'll eat anywhere. Book ahead.</div><div class="tp">฿1,000–1,600 total</div></div></div>
     </div>
   </div>
 </div>
 
 <!-- DAY 6 -->
-<div class="card">
-  <div class="hdr" onclick="tog('d6')">
-    <div class="badge" style="background:var(--amber-dim);color:var(--amber)">D6</div>
+<div class="day-chapter"><div class="day-chapter-n">06</div></div>
+<div class="card accent-sea">
+  <div class="day-hdr" onclick="tog('d6')">
+    <div class="day-badge" style="background:var(--sea-soft);color:var(--sea)">D6</div>
     <div class="meta">
-      <div class="meta-t">Iconsiam + Rajadamnern Muay Thai</div>
-      <div class="meta-s">Sun 6 Jul · Culture, shopping, and fight night</div>
+      <div class="meta-t">Iconsiam + Rajadamnern Fight Night</div>
+      <div class="meta-s">Sun 6 Jul · The most electric evening of the trip</div>
     </div>
     <span class="chev" id="c-d6">&#8964;</span>
   </div>
   <div class="body" id="d6">
     <div class="tl">
-      <div class="ti">
-        <div class="tt">9:30am</div>
-        <div class="tc">
-          <div class="tn">Late breakfast at hotel</div>
-          <div class="td">Earned rest after a big Day 5. No alarms, no rush. A slow morning before a brilliant evening.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">11:30am</div>
-        <div class="tc">
-          <div class="tn">Grab to Iconsiam</div>
-          <div class="td">฿80–120 by Grab, or take the BTS and Chao Phraya ferry for a more scenic ride. One of the most stunning malls in Southeast Asia — full riverfront views from inside.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">12pm</div>
-        <div class="tc">
-          <div class="tn">Lunch — Sooksiam Food Court (ground floor)</div>
-          <div class="td">Indoor floating market concept — regional Thai food from all 77 provinces. Chicken and seafood options clearly marked throughout. Mango sticky rice, tom kha, southern curries. The atmosphere alone is worth the trip.</div>
-          <div class="tp">฿200–350/person</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">1:30pm</div>
-        <div class="tc">
-          <div class="tn">Iconsiam — explore and shop</div>
-          <div class="td">Sooksiam ground floor for quality Thai crafts, silk, and gifts. Upper floors for Apple, Uniqlo, and local brands. The riverside terrace is worth finding — great views of the Chao Phraya. Take it easy, 2 hours here feels right.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">4pm</div>
-        <div class="tc">
-          <div class="tn">Hotel — rest and change</div>
-          <div class="td">Grab back. 90 minutes to freshen up and get ready for Rajadamnern. Change into something comfortable.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">5:30pm</div>
-        <div class="tc">
-          <div class="tn">Grab to Rajadamnern Stadium</div>
-          <div class="td">~฿100. Arrive early — doors open 1 hour before the fights. Getting into your seats early is part of the experience: watch the trainers, the warm-ups, soak in the atmosphere before the first bell.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">6pm</div>
-        <div class="tc">
-          <div class="tn">Rajadamnern Muay Thai — 8 bouts <span class="gold-star">⭐</span></div>
-          <div class="td">The oldest and most prestigious Muay Thai venue in Thailand. Immersive dome projection inside, electric crowd, traditional betting atmosphere. The pre-fight wai kru ceremonies are mesmerising — each fighter performs a solo ritual before the first round. 3 hours of real Thai sport. Club Class seats are comfortable and perfectly positioned. One of the great live sporting experiences in Asia.</div>
-          <div class="tp">Club Class ฿1,900/person · Ringside ฿2,500/person</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">9:15pm</div>
-        <div class="tc">
-          <div class="tn">Late dinner — Soi Arab, Nana</div>
-          <div class="td">Grab to Nana (~฿80). Soi 3/1 — Bangkok's Arab Street. Shawarma, kebabs, chicken fried rice, fresh mango juice. Open late, relaxed, no booking needed. Wind down after the fights.</div>
-          <div class="tp">฿150–250/person</div>
-        </div>
-      </div>
+      <div class="ti"><div class="tt">9:30am</div><div><div class="tn">Slow morning — late breakfast</div><div class="td">You earned it after Day 5. No alarm, no rush. Eat well — the evening is long.</div></div></div>
+      <div class="ti"><div class="tt">11:30am</div><div><div class="tn">Grab to Iconsiam</div><div class="td">฿80–120 or BTS + Chao Phraya ferry for a scenic approach. One of the most stunning malls in Southeast Asia.</div></div></div>
+      <div class="ti"><div class="tt">12pm</div><div><div class="tn">Lunch — Sooksiam Food Court (ground floor)</div><div class="td">Indoor floating market — food from all 77 Thai provinces. Mango sticky rice, tom kha, southern curries. Great atmosphere for the price. Order from stalls with visible chicken and seafood.</div><div class="tp">฿800–1,400 total</div></div></div>
+      <div class="ti"><div class="tt">1:30pm</div><div><div class="tn">Iconsiam — explore and shop</div><div class="td">Sooksiam for Thai crafts, silk, and quality gifts. Upper floors for Apple, Uniqlo, local designers. Find the riverside terrace — stunning views worth 10 minutes just standing.</div></div></div>
+      <div class="ti"><div class="tt">4pm</div><div><div class="tn">Hotel — rest and change</div><div class="td">90 min. Comfortable clothes for the arena — but make it sharp.</div></div></div>
+      <div class="ti"><div class="tt">5:30pm</div><div><div class="tn">Grab to Rajadamnern Stadium</div><div class="td">~฿100. Arrive at least 30 minutes before the first fight. Getting in early is part of the experience — watch trainers, warm-ups, the crowd filling in.</div></div></div>
+      <div class="ti"><div class="tt">6pm</div><div><div class="tn">Rajadamnern Muay Thai — 8 bouts ⭐</div><div class="td">The oldest and most prestigious Muay Thai venue in Thailand. Immersive dome projection, traditional betting atmosphere, the wai kru ceremonies before each fight. Three hours of sport at the highest level. Club Class: comfortable, well-positioned, full energy of the crowd. All four of you. ฿1,900/person booked in advance.</div><div class="tp">฿7,600 total (Club Class ×4)</div></div></div>
+      <div class="ti"><div class="tt">9:15pm</div><div><div class="tn">Late dinner — Soi Arab, Nana Soi 3/1</div><div class="td">Grab to Nana (~฿80). Shawarma, chicken kebabs, fried rice, fresh mango juice. Open late, no booking. Wind down after the fights with something simple.</div><div class="tp">฿600–1,000 total</div></div></div>
     </div>
   </div>
 </div>
 
 <!-- DAY 7 -->
-<div class="card">
-  <div class="hdr" onclick="tog('d7')">
-    <div class="badge" style="background:var(--red-dim);color:var(--red)">D7</div>
+<div class="day-chapter"><div class="day-chapter-n">07</div></div>
+<div class="card accent-coral">
+  <div class="day-hdr" onclick="tog('d7')">
+    <div class="day-badge" style="background:var(--coral-soft);color:var(--coral)">D7</div>
     <div class="meta">
-      <div class="meta-t">Muay Thai → Lunch → Massages → Nusara</div>
-      <div class="meta-s">Mon 7 Jul · The perfect last day · 11:45pm flight</div>
+      <div class="meta-t">Muay Thai → Massages → Jirakaan</div>
+      <div class="meta-s">Mon 7 Jul · The best day of the trip · 11:45pm flight</div>
     </div>
     <span class="chev" id="c-d7">&#8964;</span>
   </div>
   <div class="body" id="d7">
-    <div class="upgrade-note">
-      <span>✦</span>
-      <span>Fully restructured as requested: Muay Thai at 10:30am → lunch → massages → Nusara dinner at 7pm. Also upgraded: The Local (not halal certified, pork-heavy) replaced by Nusara — Asia's #6 Best Restaurant 2025, Michelin-starred. The best meal of the trip and a worthy sendoff.</span>
+    <div class="banner b-gold">
+      <span class="banner-icon">✦</span>
+      <div>The flight is 11:45pm — you have the entire day. Muay Thai 10:30am → lunch → massages 2:30pm → Jirakaan dinner 7pm → airport 9:30pm. This is the single best day of the trip.</div>
     </div>
     <div class="tl">
-      <div class="ti">
-        <div class="tt">7:30am</div>
-        <div class="tc">
-          <div class="tn">Breakfast at hotel — all 4</div>
-          <div class="td">Eat well. Long, brilliant day ahead. The best day of the trip.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">9am</div>
-        <div class="tc">
-          <div class="tn">Parents — slow morning at the hotel</div>
-          <div class="td">Second breakfast, pool, balcony time. A proper holiday morning with no agenda before the group reunites. Check out by 11am and store bags with concierge.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">10:30am</div>
-        <div class="tc">
-          <div class="tn">Moiz + Idris → Yokkao Training Centre 🥊</div>
-          <div class="td">Book beginner drop-in at yokkao.com. Located on Sukhumvit Soi 16 (Asoke) — easy Grab from hotel (~฿60). 2-hr session: combinations, pad work, light sparring with a personal trainer. Reviewers consistently say the trainers are world-class and genuinely supportive with beginners. Bring hand wraps — available at the gym. Shoes off, respect the space.</div>
-          <div class="tp">฿600–1,000/person</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">12:30pm</div>
-        <div class="tc">
-          <div class="tn">All 4 reunite — Lunch at Baan Glom Gig</div>
-          <div class="td">Beautiful heritage Thai garden restaurant near the Chao Phraya. Shaded outdoor tables under trees — genuinely one of the most atmospheric lunch spots in Bangkok. Order chicken with holy basil, grilled river fish, tom kha. A calm, unhurried meal to anchor the last day. Book ahead.</div>
-          <div class="tp">฿300–500/person</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">2:30pm</div>
-        <div class="tc">
-          <div class="tn">All 4 — Massages at Asia Herb Association <span class="gold-star">⭐</span></div>
-          <div class="td">Book 4 slots at the Benchasiri branch (Sukhumvit 24) — consistently rated the best outlet. 2-hr herbal ball + traditional Thai massage package is the one to get: organic herb balls made fresh daily, private rooms, no sales pressure, exceptional quality. Reviewers say they sleep through it. You'll walk out feeling completely different.</div>
-          <div class="tp">฿600–900/person (2hr package)</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">5pm</div>
-        <div class="tc">
-          <div class="tn">Hotel — collect bags, freshen up, change</div>
-          <div class="td">Pick up stored luggage from concierge. Shower, get dressed properly — Nusara deserves it. This is the meal of the trip.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">6:30pm</div>
-        <div class="tc">
-          <div class="tn">Grab to Nusara — Old Bangkok</div>
-          <div class="td">~฿150–200. Located at 336 Maha Rat Rd, near Wat Pho. The driver will know it. Arrive 15 minutes early — the rooftop view over Wat Pho at dusk is the moment you want to catch before being seated.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">7pm</div>
-        <div class="tc">
-          <div class="tn">Dinner — Nusara <span class="gold-star">⭐⭐</span></div>
-          <div class="td">Asia's #6 Best Restaurant 2025. Michelin-starred. Rooftop over Wat Pho at golden hour, olive-green interiors with gold accents, 12-course heritage Thai tasting menu. Thai Wagyu stir-fry with holy basil, seasonal fish in torch ginger salad, ancient curries from Rama V-era royal cookbooks, regional relishes, and desserts you won't find anywhere else. The menu naturally centres on chicken, beef, and seafood — mention your preference at booking. Allow 2.5 hours. This is the trip's final, transcendent meal. All four of you will remember it for years.</div>
-          <div class="tp">฿2,500–3,500/person (set menu)</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">9:30pm</div>
-        <div class="tc">
-          <div class="tn">Grab to Suvarnabhumi Airport</div>
-          <div class="td">Book via Grab app (฿250–350). Do not take BTS + Airport Rail Link with luggage. Allow 45–60 min for the drive.</div>
-        </div>
-      </div>
-      <div class="ti">
-        <div class="tt">11:45pm</div>
-        <div class="tc">
-          <div class="tn">Fly home ✈️</div>
-          <div class="td">With the best memories.</div>
-        </div>
-      </div>
+      <div class="ti"><div class="tt">7:30am</div><div><div class="tn">Breakfast at hotel — all 4</div><div class="td">Eat properly. Check out and store bags with the concierge — you won't be back until the airport run. Long, beautiful day ahead.</div></div></div>
+      <div class="ti"><div class="tt">9am</div><div><div class="tn">Parents — slow morning near the hotel</div><div class="td">Second breakfast at a café, light walk, or just sit somewhere nice. Relaxed and unhurried. Meet the group for lunch at 12:30pm.</div></div></div>
+      <div class="ti"><div class="tt">10:30am</div><div><div class="tn">Moiz + Idris → Yokkao Training Centre 🥊</div><div class="td">Grab to Sukhumvit Soi 16, Asoke (~฿60). One of the most iconic Muay Thai gyms in the world. 2 sessions: combinations, pad work with a personal trainer, technique drills. Reviewers consistently say the trainers are exceptional with first-timers — professional, encouraging, genuinely fun. Walk out tired, proud, and with a story. Hand wraps available at the gym.</div><div class="tp">฿600–1,000/person</div></div></div>
+      <div class="ti"><div class="tt">12:30pm</div><div><div class="tn">All 4 reunite — Lunch at Phayathai Kitchen</div><div class="td">Halal Thai, Soi Phetchaburi 7, 100+ dishes from ฿60. Green curry chicken, khao pad, tom kha soup. Comfortable, air-conditioned, unhurried. Well within budget and the right size before the massages.</div><div class="tp">฿400–800 total</div></div></div>
+      <div class="ti"><div class="tt">2:30pm</div><div><div class="tn">All 4 — Massages at Asia Herb Association ⭐</div><div class="td">Benchasiri branch (Sukhumvit 24). 2-hour herbal ball + traditional Thai massage: organic herb balls made fresh daily, private rooms, no sales pressure. Book all 4 together in adjacent rooms. After a week of walking, Muay Thai, and beach days — this is the moment the trip exhales. You walk out completely new.</div><div class="tp">฿600–900/person (2hr package)</div></div></div>
+      <div class="ti"><div class="tt">5pm</div><div><div class="tn">Collect bags from hotel, get changed</div><div class="td">Pick up stored bags from concierge. Smart casual minimum for Jirakaan — this is the last dinner of the trip.</div></div></div>
+      <div class="ti"><div class="tt">7pm</div><div><div class="tn">Dinner — Jirakaan Restaurant ⭐</div><div class="td">Sukhumvit Soi 51. 100% halal fine dining in a colonial villa. Rattanakosin-era royal Thai recipes from the Rama V era — smoked Australian Wagyu brisket that melts, tom yum that earns its name, taro and mushroom starters that are centuries old. À la carte: order 4–5 shared dishes for 4 people. ฿1,800–2,400 total. Stay as long as you like. Let the night run.</div><div class="tp">฿1,800–2,400 total for 4 ✓</div></div></div>
+      <div class="ti"><div class="tt">9:30pm</div><div><div class="tn">Grab to Suvarnabhumi Airport</div><div class="td">฿250–350, 45–60 min. Book via Grab app, not metered taxi. Do not take BTS + Airport Rail Link with luggage on the last night.</div></div></div>
+      <div class="ti"><div class="tt">11:45pm</div><div><div class="tn">Fly home ✈️</div><div class="td">With the best memories you've made together in years.</div></div></div>
     </div>
   </div>
 </div>
 
 <!-- ══ BUDGET ══ -->
-<div class="sec">฿ Budget</div>
-<div class="card">
+<div class="sec-label">฿ Optimised budget</div>
+<div class="card accent-sea">
   <div class="hdr" onclick="tog('bud')">
-    <div class="badge" style="background:var(--teal-dim);color:var(--teal)">฿</div>
+    <div class="badge" style="background:var(--sea-soft)">฿</div>
     <div class="meta">
       <div class="meta-t">Estimated spend per person</div>
       <div class="meta-s">Activities + food + transport · excl. hotels and flights</div>
     </div>
-    <span class="chev" id="c-bud">&#8964;</span>
+    <span class="chev open" id="c-bud">&#8964;</span>
   </div>
-  <div class="body" id="bud">
-    <div class="blabel">Hua Hin (Days 1–3)</div>
+  <div class="body open" id="bud">
+    <div class="banner b-tip" style="border-bottom:none">
+      <span class="banner-icon">💡</span>
+      <div><strong>What changed from v3:</strong> Nusara (฿3,590/person) → Jirakaan à la carte (~฿500/person). Jet ski shared session instead of 4 individual bookings. Baan Glom Gig (฿400/person) → Phayathai Kitchen (~฿150/person). Net saving: ~฿4,500–5,000/person vs original plan.</div>
+    </div>
+    <div class="blabel">Hua Hin — Days 1–3</div>
     <div class="brow"><span>Airport → Hua Hin van (÷4)</span><span class="bval">฿700</span></div>
     <div class="brow"><span>Phraya Nakhon — car + park + boat</span><span class="bval">฿850–950</span></div>
-    <div class="brow"><span>Jet ski + parasailing + banana boat</span><span class="bval">฿1,400–1,800</span></div>
-    <div class="brow"><span>Food — 3 days (incl. Rocks upgrade Day 2)</span><span class="bval">฿2,200–3,200</span></div>
-    <div class="blabel">Bangkok (Days 4–7)</div>
+    <div class="brow"><span>Jet ski (shared) + parasailing + banana boat</span><span class="bval">฿1,000–1,400</span></div>
+    <div class="brow"><span>Food — 3 days (incl. Rocks exception)</span><span class="bval">฿2,000–2,800</span></div>
+    <div class="blabel">Bangkok — Days 4–7</div>
     <div class="brow"><span>Hua Hin → Bangkok van (÷4)</span><span class="bval">฿700</span></div>
     <div class="brow"><span>Grab + BTS across 4 days</span><span class="bval">฿600–900</span></div>
     <div class="brow"><span>Rajadamnern Club Class</span><span class="bval">฿1,900</span></div>
-    <div class="brow"><span>Easy Kart — 2 sessions</span><span class="bval">฿700–1,000</span></div>
-    <div class="brow"><span>Yokkao drop-in ×2 (Moiz + Idris only)</span><span class="bval">฿600–1,000</span></div>
+    <div class="brow"><span>Easy Kart — 2 sessions each</span><span class="bval">฿700–1,000</span></div>
+    <div class="brow"><span>Yokkao drop-in ×2 (Moiz + Idris)</span><span class="bval">฿600–1,000</span></div>
     <div class="brow"><span>Asia Herb Association — 2hr package</span><span class="bval">฿600–900</span></div>
-    <div class="brow"><span>Food — 4 days (incl. Nusara Day 7)</span><span class="bval">฿6,500–9,000</span></div>
+    <div class="brow"><span>Food — Days 4–6 (markets, Usman etc.)</span><span class="bval">฿2,500–3,800</span></div>
+    <div class="brow"><span>Day 7 lunch + Jirakaan dinner</span><span class="bval">฿550–800</span></div>
+    <div class="blabel">What you saved vs v3</div>
+    <div class="brow"><span>Nusara → Jirakaan à la carte</span><span class="bval saved">+฿3,090 saved</span></div>
+    <div class="brow"><span>Baan Glom Gig → Phayathai Kitchen</span><span class="bval saved">+฿300 saved</span></div>
+    <div class="brow"><span>Jet ski (shared vs 4 individual)</span><span class="bval saved">+฿300 saved</span></div>
+    <div class="brow total"><span>Total excl. shopping</span><span class="bval">฿12,700–16,250</span></div>
+    <div class="bnote">Rocks Restaurant is the only deliberate exception above ฿625/person — every other meal fits within budget.</div>
     <div class="blabel">Shopping (variable)</div>
     <div class="brow"><span>MBK + Chatuchak + final sweep</span><span class="bval">฿3,000–7,000</span></div>
-    <div class="brow total"><span>Total excl. shopping</span><span class="bval">฿16,750–22,450</span></div>
-    <div class="bnote">~₹40,000–54,000/person · excl. flights, hotel, shopping</div>
-    <div class="brow total"><span>With shopping (mid-range buyer)</span><span class="bval">฿19,750–29,450</span></div>
-    <div class="bnote">~₹47,500–71,000/person all-in · excl. flights and hotel</div>
-    <div class="bnote" style="color:var(--gold);padding-top:0">↑ Nusara adds ~฿2,000–3,000pp vs The Local. Worth every baht.</div>
+    <div class="brow total"><span>With shopping (mid buyer)</span><span class="bval">฿15,700–23,250</span></div>
+    <div class="bnote" style="color:var(--sea)">~฿37,700–55,800/person all-in · excl. flights and hotel · optimised v4</div>
   </div>
 </div>
 
 <div class="bottom-pad"></div>
 
 <script>
-function tog(id) {
-  const b = document.getElementById(id);
-  const c = document.getElementById('c-' + id);
-  if (!b || !c) return;
-  const open = b.classList.contains('open');
-  b.classList.toggle('open', !open);
-  c.classList.toggle('open', !open);
+// Accordion
+function tog(id){
+  const b=document.getElementById(id);
+  const c=document.getElementById('c-'+id);
+  if(!b||!c)return;
+  const open=b.classList.contains('open');
+  b.classList.toggle('open',!open);
+  c.classList.toggle('open',!open);
 }
+
+// Reading progress bar
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100;
+  prog.style.width=pct+'%';
+},{passive:true});
 </script>
 </body>
 </html>
